@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none">
+  <!-- Terminal bracket -->
+  <path d="M6 10 L12 16 L6 22" stroke="#0C7C97" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Pulse line -->
+  <path d="M15 16 L18 16 L20 9 L23 23 L26 14 L28 18 L30 16" stroke="#E07A5F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

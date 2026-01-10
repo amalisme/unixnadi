@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 50" fill="none">
+  <!-- Terminal bracket -->
+  <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- Pulse/heartbeat line -->
+  <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  
+  <!-- UnixPulse text -->
+  <text x="92" y="32" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+    <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+  </text>
+</svg>
