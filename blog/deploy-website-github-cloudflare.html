@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Deploy a Static Website with GitHub + Cloudflare - UnixPulse</title>
+  <meta name="title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
+  <meta name="description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare. Get your site live in under 20 minutes.">
+  <meta name="keywords" content="GitHub Pages, Cloudflare, static website, free hosting, deploy, HTML, web development">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html">
+  <meta property="og:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
+  <meta property="og:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2025-01-05">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="Web Dev">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
+  <meta name="twitter:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../../css/style.css">
+  
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Deploy a Static Website with GitHub + Cloudflare",
+    "description": "Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.",
+    "author": {
+      "@type": "Person",
+      "name": "UnixPulse"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "UnixPulse",
+      "url": "https://unixpulse.com"
+    },
+    "datePublished": "2025-01-05",
+    "dateModified": "2025-01-05",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html"
+    }
+  }
+  </script>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">Web Dev</span>
+          <h1>Deploy a Static Website with GitHub + Cloudflare</h1>
+          <div class="post-meta">
+            <time datetime="2025-01-05">January 5, 2025</time>
+            <span class="reading-time">8 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>
+            You don't need expensive hosting to put a website online. With GitHub Pages and Cloudflare, you can host a static website completely free—with SSL, CDN, and excellent performance. Here's exactly how to do it.
+          </p>
+          
+          <h2>What You'll Need</h2>
+          
+          <ul>
+            <li>A GitHub account (free)</li>
+            <li>A Cloudflare account (free)</li>
+            <li>A domain name (optional, ~$12/year)</li>
+            <li>Your website files (HTML, CSS, JS)</li>
+          </ul>
+          
+          <h2>Step 1: Create a GitHub Repository</h2>
+          
+          <p>
+            First, let's get your files on GitHub.
+          </p>
+          
+          <ol>
+            <li>Go to <a href="https://github.com" target="_blank" rel="noopener">github.com</a> and sign in</li>
+            <li>Click the <strong>+</strong> button → <strong>New repository</strong></li>
+            <li>Name it something like <code>my-website</code></li>
+            <li>Make it <strong>Public</strong> (required for free GitHub Pages)</li>
+            <li>Click <strong>Create repository</strong></li>
+          </ol>
+          
+          <h2>Step 2: Upload Your Files</h2>
+          
+          <p>
+            You can either use Git from the command line or upload directly through the browser.
+          </p>
+          
+          <h3>Option A: Using Git (Recommended)</h3>
+          
+          <pre><code class="language-bash"># Navigate to your website folder
+cd my-website
+
+# Initialize git
+git init
+
+# Add all files
+git add .
+
+# Commit
+git commit -m "Initial commit"
+
+# Add your GitHub repo as remote
+git remote add origin https://github.com/YOUR_USERNAME/my-website.git
+
+# Push to GitHub
+git branch -M main
+git push -u origin main</code></pre>
+          
+          <h3>Option B: Upload via Browser</h3>
+          
+          <ol>
+            <li>On your new repo page, click <strong>uploading an existing file</strong></li>
+            <li>Drag and drop your website files</li>
+            <li>Click <strong>Commit changes</strong></li>
+          </ol>
+          
+          <h2>Step 3: Enable GitHub Pages</h2>
+          
+          <p>
+            Now let's turn on hosting.
+          </p>
+          
+          <ol>
+            <li>Go to your repository on GitHub</li>
+            <li>Click <strong>Settings</strong> (tab at the top)</li>
+            <li>Scroll down to <strong>Pages</strong> in the left sidebar</li>
+            <li>Under "Source", select <strong>Deploy from a branch</strong></li>
+            <li>Choose <strong>main</strong> branch and <strong>/ (root)</strong> folder</li>
+            <li>Click <strong>Save</strong></li>
+          </ol>
+          
+          <p>
+            Wait a minute or two, then your site will be live at:
+          </p>
+          
+          <pre><code>https://YOUR_USERNAME.github.io/my-website/</code></pre>
+          
+          <p>
+            🎉 Congratulations! Your website is now online.
+          </p>
+          
+          <h2>Step 4: Add a Custom Domain (Optional)</h2>
+          
+          <p>
+            If you want your own domain (like <code>example.com</code>), keep reading. If the GitHub URL is fine for now, you can stop here.
+          </p>
+          
+          <h3>4.1: Add Domain to Cloudflare</h3>
+          
+          <ol>
+            <li>Sign up at <a href="https://cloudflare.com" target="_blank" rel="noopener">cloudflare.com</a></li>
+            <li>Click <strong>Add a Site</strong></li>
+            <li>Enter your domain name</li>
+            <li>Select the <strong>Free</strong> plan</li>
+            <li>Cloudflare will scan your existing DNS records</li>
+            <li>It will give you two nameservers—copy these</li>
+          </ol>
+          
+          <h3>4.2: Update Nameservers</h3>
+          
+          <p>
+            Go to wherever you bought your domain (Namecheap, GoDaddy, etc.) and update the nameservers to the ones Cloudflare gave you. This usually takes 5-30 minutes to propagate.
+          </p>
+          
+          <h3>4.3: Configure DNS Records</h3>
+          
+          <p>
+            In Cloudflare, go to <strong>DNS</strong> and add these records:
+          </p>
+          
+          <pre><code>Type: CNAME
+Name: @
+Target: YOUR_USERNAME.github.io
+Proxy: Yes (orange cloud)
+
+Type: CNAME
+Name: www
+Target: YOUR_USERNAME.github.io
+Proxy: Yes (orange cloud)</code></pre>
+          
+          <h3>4.4: Tell GitHub About Your Domain</h3>
+          
+          <ol>
+            <li>Go back to your GitHub repo → <strong>Settings</strong> → <strong>Pages</strong></li>
+            <li>Under "Custom domain", enter <code>www.yourdomain.com</code></li>
+            <li>Click <strong>Save</strong></li>
+            <li>Wait for the DNS check to pass (may take a few minutes)</li>
+            <li>Check <strong>Enforce HTTPS</strong></li>
+          </ol>
+          
+          <h3>4.5: Add CNAME File</h3>
+          
+          <p>
+            Create a file called <code>CNAME</code> (no extension) in your repo root with just your domain:
+          </p>
+          
+          <pre><code>www.yourdomain.com</code></pre>
+          
+          <p>
+            Commit and push this file.
+          </p>
+          
+          <h2>Step 5: Configure Cloudflare Settings</h2>
+          
+          <p>
+            A few tweaks to make everything run smoothly:
+          </p>
+          
+          <h3>SSL/TLS Settings</h3>
+          
+          <ol>
+            <li>Go to <strong>SSL/TLS</strong> in Cloudflare</li>
+            <li>Set encryption mode to <strong>Full</strong></li>
+          </ol>
+          
+          <h3>Page Rules (Optional)</h3>
+          
+          <p>
+            To redirect non-www to www (or vice versa):
+          </p>
+          
+          <ol>
+            <li>Go to <strong>Rules</strong> → <strong>Page Rules</strong></li>
+            <li>Add a rule: <code>yourdomain.com/*</code></li>
+            <li>Setting: <strong>Forwarding URL</strong> (301 Redirect)</li>
+            <li>Destination: <code>https://www.yourdomain.com/$1</code></li>
+          </ol>
+          
+          <h2>Updating Your Site</h2>
+          
+          <p>
+            Whenever you want to update your website:
+          </p>
+          
+          <pre><code class="language-bash"># Make your changes, then:
+git add .
+git commit -m "Update: description of changes"
+git push</code></pre>
+          
+          <p>
+            GitHub Pages will automatically rebuild your site in 1-2 minutes.
+          </p>
+          
+          <h2>Troubleshooting</h2>
+          
+          <p>
+            Common issues and fixes:
+          </p>
+          
+          <ul>
+            <li><strong>404 errors</strong> — Make sure you have an <code>index.html</code> file in the root</li>
+            <li><strong>CSS not loading</strong> — Check your file paths (use relative paths like <code>css/style.css</code>)</li>
+            <li><strong>HTTPS not working</strong> — Wait for DNS propagation, check Cloudflare SSL settings</li>
+            <li><strong>Changes not showing</strong> — Hard refresh (<code>Ctrl+Shift+R</code>) or clear cache</li>
+          </ul>
+          
+          <h2>What You Get for Free</h2>
+          
+          <p>
+            With this setup, you get:
+          </p>
+          
+          <ul>
+            <li>✅ Free hosting (GitHub Pages)</li>
+            <li>✅ Free SSL certificate (HTTPS)</li>
+            <li>✅ Global CDN (Cloudflare)</li>
+            <li>✅ DDoS protection</li>
+            <li>✅ Fast page loads worldwide</li>
+            <li>✅ Easy deployment via Git</li>
+          </ul>
+          
+          <p>
+            The only cost is your domain name (~$12/year), and even that's optional.
+          </p>
+          
+          <h2>Wrapping Up</h2>
+          
+          <p>
+            This is the same setup I use for this site and recommend to anyone building simple websites. It's reliable, fast, and costs almost nothing.
+          </p>
+          
+          <p>
+            Got stuck somewhere? <a href="/say-hello.html">Drop me a message</a> and I'll try to help.
+          </p>
+          
+          <!-- Related Product Box -->
+          <div class="post-related-box">
+            <p class="post-related-box-title">
+              📦 Related Resource
+            </p>
+            <p>
+              Want a head start? My <a href="https://unixpulse.gumroad.com/l/pdgubm" target="_blank" rel="noopener">Website Starter Kit</a> 
+              includes a complete HTML template with this deployment workflow documented step-by-step.
+            </p>
+          </div>
+          
+        </div>
+        
+        <!-- Post Navigation -->
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="getting-started-with-linux.html" class="post-nav-link">
+            ← Previous
+            <span>Getting Started with Linux: A Beginner's Journey</span>
+          </a>
+          <a href="vmware-esxi-basics.html" class="post-nav-link" style="text-align: right;">
+            Next →
+            <span>VMware ESXi Basics: What I Wish I Knew Earlier</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">
+        © 2025 UnixPulse. Made with ☕ and curiosity.
+      </p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="../../js/main.js"></script>
+</body>
+</html>
