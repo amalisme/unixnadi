@@ -1,0 +1,12 @@
+# UnixPulse robots.txt
+# https://unixpulse.com/robots.txt
+
+# Allow all crawlers
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://unixpulse.com/sitemap.xml
+
+# Disallow admin/private areas (none currently, but placeholder)
+# Disallow: /private/

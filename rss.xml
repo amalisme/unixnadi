@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>UnixPulse</title>
+    <description>Notes on Linux, VMware &amp; Web Dev</description>
+    <link>https://unixpulse.com</link>
+    <atom:link href="https://unixpulse.com/rss.xml" rel="self" type="application/rss+xml"/>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 09 Jan 2025 00:00:00 +0000</lastBuildDate>
+    <managingEditor>hello@unixpulse.com (UnixPulse)</managingEditor>
+    <webMaster>hello@unixpulse.com (UnixPulse)</webMaster>
+    <ttl>60</ttl>
+    <image>
+      <url>https://unixpulse.com/images/favicon.svg</url>
+      <title>UnixPulse</title>
+      <link>https://unixpulse.com</link>
+    </image>
+    
+    <!-- ============================================
+         RSS FEED INSTRUCTIONS
+         
+         When adding a new blog post:
+         1. Copy the <item> block below
+         2. Update all fields with your post info
+         3. Put newest posts at the TOP
+         4. Update <lastBuildDate> above to today's date
+         
+         Date format: Day, DD Mon YYYY HH:MM:SS +0000
+         Example: Thu, 09 Jan 2025 00:00:00 +0000
+         ============================================ -->
+    
+    <!-- Post 1 -->
+    <item>
+      <title>Getting Started with Linux: A Beginner's Journey</title>
+      <link>https://unixpulse.com/blog/posts/getting-started-with-linux.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/getting-started-with-linux.html</guid>
+      <pubDate>Thu, 09 Jan 2025 00:00:00 +0000</pubDate>
+      <category>Linux</category>
+      <description>My notes on starting out with Linux, from choosing a distro to setting up your first server.</description>
+      <content:encoded><![CDATA[
+        <p>My notes on starting out with Linux, from choosing a distro to setting up your first server.</p>
+        <p><a href="https://unixpulse.com/blog/posts/getting-started-with-linux.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
+    <!-- Post 2 -->
+    <item>
+      <title>Deploy a Static Website with GitHub + Cloudflare</title>
+      <link>https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html</guid>
+      <pubDate>Sun, 05 Jan 2025 00:00:00 +0000</pubDate>
+      <category>Web Dev</category>
+      <description>Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.</description>
+      <content:encoded><![CDATA[
+        <p>Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.</p>
+        <p><a href="https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
+    <!-- Post 3 -->
+    <item>
+      <title>VMware ESXi Basics: What I Wish I Knew Earlier</title>
+      <link>https://unixpulse.com/blog/posts/vmware-esxi-basics.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/vmware-esxi-basics.html</guid>
+      <pubDate>Thu, 02 Jan 2025 00:00:00 +0000</pubDate>
+      <category>VMware</category>
+      <description>A practical introduction to VMware ESXi for those just starting with virtualization.</description>
+      <content:encoded><![CDATA[
+        <p>A practical introduction to VMware ESXi for those just starting with virtualization.</p>
+        <p><a href="https://unixpulse.com/blog/posts/vmware-esxi-basics.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
+  </channel>
+</rss>
