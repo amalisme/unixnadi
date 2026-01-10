@@ -7,8 +7,8 @@
   <!-- Primary Meta Tags -->
   <title>VMware ESXi Basics: What I Wish I Knew Earlier - UnixPulse</title>
   <meta name="title" content="VMware ESXi Basics: What I Wish I Knew Earlier - UnixPulse">
-  <meta name="description" content="A practical introduction to VMware ESXi for those just starting with virtualization. Core concepts, common tasks, and tips from real experience.">
-  <meta name="keywords" content="VMware, ESXi, virtualization, hypervisor, vSphere, beginner, tutorial, virtual machines">
+  <meta name="description" content="A practical introduction to VMware ESXi and vSphere for those just starting with virtualization. Core concepts, common tasks, and tips from real experience.">
+  <meta name="keywords" content="VMware, ESXi, vSphere, vCenter, virtualization, hypervisor, beginner, tutorial, virtual machines">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
   
@@ -16,7 +16,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://unixpulse.com/blog/posts/vmware-esxi-basics.html">
   <meta property="og:title" content="VMware ESXi Basics: What I Wish I Knew Earlier - UnixPulse">
-  <meta property="og:description" content="A practical introduction to VMware ESXi for those just starting with virtualization.">
+  <meta property="og:description" content="A practical introduction to VMware ESXi and vSphere for those just starting with virtualization.">
   <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
   <meta property="article:published_time" content="2025-01-02">
   <meta property="article:author" content="UnixPulse">
@@ -25,7 +25,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VMware ESXi Basics: What I Wish I Knew Earlier - UnixPulse">
-  <meta name="twitter:description" content="A practical introduction to VMware ESXi for those just starting with virtualization.">
+  <meta name="twitter:description" content="A practical introduction to VMware ESXi and vSphere for those just starting with virtualization.">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
@@ -46,7 +46,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "VMware ESXi Basics: What I Wish I Knew Earlier",
-    "description": "A practical introduction to VMware ESXi for those just starting with virtualization.",
+    "description": "A practical introduction to VMware ESXi and vSphere for those just starting with virtualization.",
     "author": {
       "@type": "Person",
       "name": "UnixPulse"
@@ -57,7 +57,7 @@
       "url": "https://unixpulse.com"
     },
     "datePublished": "2025-01-02",
-    "dateModified": "2025-01-02",
+    "dateModified": "2025-01-10",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://unixpulse.com/blog/posts/vmware-esxi-basics.html"
@@ -130,7 +130,7 @@
           <h1>VMware ESXi Basics: What I Wish I Knew Earlier</h1>
           <div class="post-meta">
             <time datetime="2025-01-02">January 2, 2025</time>
-            <span class="reading-time">6 min read</span>
+            <span class="reading-time">7 min read</span>
           </div>
         </div>
       </header>
@@ -140,7 +140,7 @@
         <div class="post-content">
           
           <p>
-            VMware ESXi can seem intimidating at first—all those terms, the web interface, the command line. But once you understand the basics, it's actually pretty straightforward. Here's what I wish someone had explained to me when I started.
+            VMware ESXi can seem intimidating at first. All those terms, the web interface, the command line. But once you understand the basics, it's actually pretty straightforward. Here's what I wish someone had explained to me when I started.
           </p>
           
           <h2>What is ESXi, Exactly?</h2>
@@ -163,70 +163,93 @@
             Each VM thinks it has its own hardware, but ESXi is actually sharing the physical resources among them.
           </p>
           
-          <h2>ESXi vs vSphere vs vCenter</h2>
+          <h2>ESXi vs vSphere vs vCenter — What's the Difference?</h2>
           
           <p>
             These terms confused me for months. Here's the simple breakdown:
           </p>
           
           <ul>
-            <li><strong>ESXi</strong> — The hypervisor that runs on each physical server</li>
-            <li><strong>vSphere</strong> — The overall product suite (ESXi + vCenter + other tools)</li>
-            <li><strong>vCenter</strong> — Management server for controlling multiple ESXi hosts centrally</li>
+            <li><strong>ESXi</strong> — The hypervisor that runs on each physical server. This is the actual software that creates and runs VMs.</li>
+            <li><strong>vCenter Server</strong> — A management server for controlling multiple ESXi hosts from a single interface. Adds features like vMotion, HA, and DRS.</li>
+            <li><strong>vSphere</strong> — The overall product suite that includes ESXi + vCenter + the vSphere Client interface. It's the "brand name" for the whole ecosystem.</li>
           </ul>
           
           <p>
-            If you have one server, you just need ESXi. If you have multiple servers and want to manage them together, you add vCenter.
+            <strong>When do you use each?</strong>
           </p>
           
-          <h2>Getting ESXi</h2>
+          <ul>
+            <li><strong>One server?</strong> → You just need ESXi. Access it directly via the ESXi Host Client (web interface at <code>https://your-esxi-ip</code>).</li>
+            <li><strong>Multiple servers?</strong> → Add vCenter to manage them all from one place. You can see all hosts, migrate VMs between them, set up clusters, etc.</li>
+            <li><strong>Using vSphere Client?</strong> → This is the interface you use to connect to vCenter (or a single ESXi host). When people say "log into vSphere," they usually mean opening the vSphere Client and connecting to vCenter.</li>
+          </ul>
           
           <p>
-            VMware offers a <strong>free version</strong> of ESXi for personal/lab use. It has some limitations (no vCenter integration, limited API access) but is perfectly fine for learning and small setups.
+            In an enterprise environment, you'll typically hear people say "we're running vSphere" — meaning they have multiple ESXi hosts managed by vCenter, accessed through the vSphere Client.
           </p>
-          
-          <ol>
-            <li>Create a VMware account at <a href="https://www.vmware.com" target="_blank" rel="noopener">vmware.com</a></li>
-            <li>Search for "VMware vSphere Hypervisor" (the free version)</li>
-            <li>Download the ISO</li>
-            <li>Get your free license key (important—save this!)</li>
-          </ol>
-          
-          <h2>Basic Installation</h2>
-          
-          <p>
-            Installing ESXi is surprisingly simple:
-          </p>
-          
-          <ol>
-            <li>Flash the ISO to a USB drive</li>
-            <li>Boot your server from the USB</li>
-            <li>Follow the prompts (select disk, set root password)</li>
-            <li>Wait for installation (usually 5-10 minutes)</li>
-            <li>Note the IP address shown on the console</li>
-            <li>Access the web interface at <code>https://YOUR_IP</code></li>
-          </ol>
-          
-          <blockquote>
-            <p><strong>Tip:</strong> ESXi installs to a small partition. You can install it on a USB drive or SD card, leaving all your storage for VMs.</p>
-          </blockquote>
           
           <h2>Key Concepts to Understand</h2>
+          
+          <h3>vCenter Inventory Hierarchy</h3>
+          
+          <p>
+            When you use vCenter to manage multiple hosts, everything is organized in a hierarchy. Understanding this structure helps you navigate the interface and plan your setup:
+          </p>
+          
+          <pre><code>vCenter Server
+└── Datacenter
+    ├── Cluster
+    │   ├── ESXi Host 1
+    │   │   ├── VM 1
+    │   │   ├── VM 2
+    │   │   └── VM 3
+    │   ├── ESXi Host 2
+    │   │   ├── VM 4
+    │   │   └── VM 5
+    │   └── ESXi Host 3
+    │       └── VM 6
+    │
+    └── Standalone Host (not in a cluster)
+        └── VM 7</code></pre>
+          
+          <p>
+            Here's what each level means:
+          </p>
+          
+          <ul>
+            <li><strong>vCenter Server</strong> — The top level. One vCenter can manage hundreds of hosts.</li>
+            <li><strong>Datacenter</strong> — A logical container for organizing hosts. Could represent a physical location, department, or environment (prod/dev). You need at least one datacenter.</li>
+            <li><strong>Cluster</strong> — A group of ESXi hosts that share resources. Enables advanced features like:
+              <ul>
+                <li><strong>vMotion</strong> — Live migrate VMs between hosts with no downtime</li>
+                <li><strong>HA (High Availability)</strong> — Automatically restart VMs if a host fails</li>
+                <li><strong>DRS (Distributed Resource Scheduler)</strong> — Automatically balance VM workloads across hosts</li>
+              </ul>
+            </li>
+            <li><strong>ESXi Host</strong> — The physical server running ESXi.</li>
+            <li><strong>Virtual Machines</strong> — Your actual VMs running on the hosts.</li>
+          </ul>
+          
+          <blockquote>
+            <p><strong>Tip:</strong> You can have standalone hosts outside of clusters, but they won't get HA/DRS features. For production workloads, clusters are recommended.</p>
+          </blockquote>
           
           <h3>Datastores</h3>
           
           <p>
-            A datastore is where your VMs live—it's just storage that ESXi can see. It can be:
+            A datastore is where your VMs live—it's storage that ESXi can see. It can be:
           </p>
           
           <ul>
             <li>A local disk in the server</li>
-            <li>A SAN/NAS volume connected over the network</li>
+            <li>A SAN/NAS volume connected over the network (iSCSI, Fibre Channel)</li>
             <li>An NFS share</li>
+            <li>vSAN (VMware's software-defined storage)</li>
           </ul>
           
           <p>
-            Name your datastores clearly (e.g., <code>SSD-Local-500GB</code>) so you know what you're working with.
+            Name your datastores clearly (e.g., <code>SSD-Local-500GB</code> or <code>NFS-Prod-Storage</code>) so you know what you're working with.
           </p>
           
           <h3>Virtual Switches (vSwitches)</h3>
@@ -240,29 +263,50 @@
           </p>
           
           <ul>
-            <li>Separate different types of traffic</li>
+            <li>Separate different types of traffic (management, VM, vMotion, storage)</li>
             <li>Create isolated networks for testing</li>
-            <li>Connect to different physical NICs</li>
+            <li>Connect to different physical NICs for redundancy</li>
           </ul>
+          
+          <p>
+            In larger environments with vCenter, you'll often use <strong>Distributed vSwitches (dvSwitch)</strong> - these are managed centrally and apply consistent networking across all hosts in a datacenter.
+          </p>
           
           <h3>Port Groups</h3>
           
           <p>
-            Port groups are labels you assign to vSwitch connections. When creating a VM, you select which port group it connects to. Think of them as VLAN labels.
+            Port groups are labels you assign to vSwitch connections. When creating a VM, you select which port group it connects to. Think of them as VLAN labels or network segments.
           </p>
           
           <h2>Common Tasks</h2>
           
           <h3>Creating a VM</h3>
           
+          <p>
+            <strong>Via ESXi Host Client (single host):</strong>
+          </p>
+          
           <ol>
-            <li>In the web client, go to <strong>Virtual Machines</strong></li>
+            <li>Log in to <code>https://your-esxi-ip</code></li>
+            <li>Go to <strong>Virtual Machines</strong></li>
             <li>Click <strong>Create / Register VM</strong></li>
             <li>Choose "Create a new virtual machine"</li>
             <li>Name it and select the guest OS type</li>
             <li>Choose your datastore</li>
             <li>Configure CPU, RAM, disk, network</li>
             <li>Finish and power on</li>
+          </ol>
+          
+          <p>
+            <strong>Via vSphere Client (vCenter):</strong>
+          </p>
+          
+          <ol>
+            <li>Log in to your vCenter via vSphere Client</li>
+            <li>Right-click on a host, cluster, or folder</li>
+            <li>Select <strong>New Virtual Machine</strong></li>
+            <li>Follow the wizard (similar steps as above)</li>
+            <li>You can choose which host/cluster to place the VM on</li>
           </ol>
           
           <h3>Uploading an ISO</h3>
@@ -273,35 +317,93 @@
           
           <ol>
             <li>Go to <strong>Storage</strong> → select your datastore</li>
-            <li>Click <strong>Datastore browser</strong></li>
+            <li>Click <strong>Datastore browser</strong> (or <strong>Files</strong> in vSphere Client)</li>
             <li>Create a folder called <code>ISOs</code></li>
             <li>Click <strong>Upload</strong> and select your ISO file</li>
           </ol>
           
           <p>
-            Then when creating a VM, you can mount this ISO to the virtual CD/DVD drive.
+            Then when creating or editing a VM, you can mount this ISO to the virtual CD/DVD drive.
           </p>
           
           <h3>Taking Snapshots</h3>
           
           <p>
-            Snapshots save the state of a VM at a point in time. Super useful before making risky changes.
+            Snapshots save the state of a VM at a point in time. Super useful before making risky changes like OS updates or configuration changes.
           </p>
           
-          <pre><code class="language-bash"># Via SSH (enable SSH first in host settings)
-vim-cmd vmsvc/getallvms              # List all VMs
-vim-cmd vmsvc/snapshot.create [vmid] "Before Update" "Pre-update snapshot"
-vim-cmd vmsvc/snapshot.revert [vmid] [snapshotid]   # Revert if needed
-vim-cmd vmsvc/snapshot.remove [vmid] [snapshotid]   # Remove when done</code></pre>
+          <p>
+            <strong>Via vSphere Client (vCenter) — Recommended:</strong>
+          </p>
+          
+          <ol>
+            <li>Right-click on the VM</li>
+            <li>Select <strong>Snapshots</strong> → <strong>Take Snapshot</strong></li>
+            <li>Enter a name (e.g., "Before Windows Update")</li>
+            <li>Optionally add a description</li>
+            <li>Choose options:
+              <ul>
+                <li><strong>Snapshot the virtual machine's memory</strong> — Captures running state (takes longer but allows instant restore)</li>
+                <li><strong>Quiesce guest file system</strong> — Ensures data consistency (requires VMware Tools)</li>
+              </ul>
+            </li>
+            <li>Click <strong>OK</strong></li>
+          </ol>
+          
+          <p>
+            <strong>To revert or delete snapshots:</strong>
+          </p>
+          
+          <ol>
+            <li>Right-click on the VM</li>
+            <li>Select <strong>Snapshots</strong> → <strong>Manage Snapshots</strong></li>
+            <li>You'll see a snapshot tree</li>
+            <li>Select a snapshot and choose:
+              <ul>
+                <li><strong>Revert to</strong> — Go back to that point in time</li>
+                <li><strong>Delete</strong> — Remove the snapshot (consolidates changes)</li>
+                <li><strong>Delete All</strong> — Remove all snapshots</li>
+              </ul>
+            </li>
+          </ol>
+          
+          <p>
+            <strong>Via ESXi Host Client:</strong>
+          </p>
+          
+          <ol>
+            <li>Select the VM</li>
+            <li>Click <strong>Actions</strong> → <strong>Snapshots</strong> → <strong>Take snapshot</strong></li>
+            <li>Same options as above</li>
+          </ol>
+          
+          <p>
+            <strong>Via SSH (command line):</strong>
+          </p>
+          
+          <pre><code class="language-bash"># List all VMs and their IDs
+vim-cmd vmsvc/getallvms
+
+# Take a snapshot
+vim-cmd vmsvc/snapshot.create [vmid] "Snapshot Name" "Description"
+
+# List snapshots for a VM
+vim-cmd vmsvc/snapshot.get [vmid]
+
+# Revert to a snapshot
+vim-cmd vmsvc/snapshot.revert [vmid] [snapshotid]
+
+# Remove a snapshot
+vim-cmd vmsvc/snapshot.remove [vmid] [snapshotid]</code></pre>
           
           <blockquote>
-            <p><strong>Warning:</strong> Don't leave snapshots running long-term. They grow over time and hurt performance. Use them for temporary protection, then delete.</p>
+            <p><strong>Warning:</strong> Don't leave snapshots running long-term! They grow over time as changes accumulate, consuming disk space and hurting performance. Use them for temporary protection (hours or days), then delete once you've verified your changes work.</p>
           </blockquote>
           
           <h2>Useful CLI Commands</h2>
           
           <p>
-            SSH into your ESXi host (enable SSH in <strong>Host</strong> → <strong>Actions</strong> → <strong>Services</strong>) and try these:
+            SSH into your ESXi host (enable SSH in <strong>Host</strong> → <strong>Actions</strong> → <strong>Services</strong> → <strong>Enable SSH</strong>) and try these:
           </p>
           
           <pre><code class="language-bash"># System info
@@ -312,15 +414,23 @@ esxcli hardware memory get
 # Network
 esxcli network nic list
 esxcli network ip interface ipv4 get
+esxcli network vswitch standard list
 
 # Storage
 esxcli storage filesystem list
+esxcli storage core path list
 
 # VM operations
-vim-cmd vmsvc/getallvms        # List VMs
-vim-cmd vmsvc/power.on [vmid]  # Power on
-vim-cmd vmsvc/power.off [vmid] # Power off (hard)
-vim-cmd vmsvc/power.shutdown [vmid]  # Graceful shutdown</code></pre>
+vim-cmd vmsvc/getallvms          # List all VMs with IDs
+vim-cmd vmsvc/power.on [vmid]    # Power on
+vim-cmd vmsvc/power.off [vmid]   # Power off (hard - like pulling the plug)
+vim-cmd vmsvc/power.shutdown [vmid]   # Graceful shutdown (requires VMware Tools)
+vim-cmd vmsvc/power.reboot [vmid]     # Reboot
+
+# Host operations
+esxcli system maintenanceMode set --enable true   # Enter maintenance mode
+esxcli system maintenanceMode set --enable false  # Exit maintenance mode
+esxcli system shutdown reboot -r "Reason"         # Reboot host</code></pre>
           
           <h2>Common Gotchas</h2>
           
@@ -329,11 +439,12 @@ vim-cmd vmsvc/power.shutdown [vmid]  # Graceful shutdown</code></pre>
           </p>
           
           <ul>
-            <li><strong>License expiration</strong> — The evaluation period is 60 days. Apply your free license key before it expires, or your VMs won't start.</li>
-            <li><strong>SSH is disabled by default</strong> — Enable it in host services if you need command-line access.</li>
-            <li><strong>Thick vs Thin provisioning</strong> — Thin saves space but can lead to overcommitment. Thick reserves the space upfront.</li>
-            <li><strong>VMware Tools</strong> — Always install VMware Tools in your VMs for better performance and graceful shutdowns.</li>
-            <li><strong>Hardware compatibility</strong> — Check the VMware HCL before buying hardware. Not everything works.</li>
+            <li><strong>VMware Tools</strong> — Always install VMware Tools in your VMs. It enables graceful shutdowns, better performance, time sync, and features like quiesced snapshots.</li>
+            <li><strong>Thick vs Thin provisioning</strong> — Thin provisioning saves disk space by only using what's needed, but can lead to overcommitment. Thick provisioning reserves the full disk space upfront. Use thin for flexibility, thick for guaranteed space.</li>
+            <li><strong>SSH is disabled by default</strong> — Enable it in host services if you need command-line access. Remember to disable it when not needed for security.</li>
+            <li><strong>Snapshot ≠ Backup</strong> — Snapshots are not backups! They're stored with the VM and if the datastore fails, you lose both. Use proper backup software.</li>
+            <li><strong>Resource overcommitment</strong> — You can assign more vCPUs and RAM than physically available, but performance suffers. Monitor your resource usage.</li>
+            <li><strong>Hardware compatibility</strong> — Check the VMware Hardware Compatibility List (HCL) before buying hardware. Not everything works, especially NICs and storage controllers.</li>
           </ul>
           
           <h2>Next Steps</h2>
@@ -343,16 +454,17 @@ vim-cmd vmsvc/power.shutdown [vmid]  # Graceful shutdown</code></pre>
           </p>
           
           <ul>
-            <li>Set up automated backups (Veeam has a free version)</li>
+            <li>Set up automated backups (Veeam, Nakivo, or ghettoVCB for free)</li>
             <li>Learn about resource pools and reservations</li>
-            <li>Explore templates and cloning</li>
-            <li>Consider vCenter if managing multiple hosts</li>
+            <li>Explore templates and cloning for faster VM deployment</li>
+            <li>Set up vCenter if managing multiple hosts</li>
+            <li>Look into vSAN if you need shared storage without a SAN</li>
           </ul>
           
           <h2>Wrapping Up</h2>
           
           <p>
-            ESXi is powerful once you get past the initial learning curve. Start small—one host, a few VMs—and expand as you get comfortable. The skills transfer directly to enterprise environments, so it's worth learning properly.
+            ESXi and vSphere are powerful once you get past the initial learning curve. Start small - one host, a few VMs - and expand as you get comfortable. The skills transfer directly to enterprise environments, so it's worth learning properly.
           </p>
           
           <p>
