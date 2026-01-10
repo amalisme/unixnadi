@@ -7,8 +7,8 @@
   <!-- Primary Meta Tags -->
   <title>Deploy a Static Website with GitHub + Cloudflare - UnixPulse</title>
   <meta name="title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
-  <meta name="description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare. Get your site live in under 20 minutes.">
-  <meta name="keywords" content="GitHub Pages, Cloudflare, static website, free hosting, deploy, HTML, web development">
+  <meta name="description" content="Step-by-step guide to hosting your website for free using GitHub and Cloudflare Pages. Get your site live in under 20 minutes.">
+  <meta name="keywords" content="GitHub, Cloudflare Pages, static website, free hosting, deploy, HTML, web development">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
   
@@ -16,7 +16,7 @@
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html">
   <meta property="og:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
-  <meta property="og:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  <meta property="og:description" content="Step-by-step guide to hosting your website for free using GitHub and Cloudflare Pages.">
   <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
   <meta property="article:published_time" content="2025-01-05">
   <meta property="article:author" content="UnixPulse">
@@ -25,7 +25,7 @@
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
-  <meta name="twitter:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  <meta name="twitter:description" content="Step-by-step guide to hosting your website for free using GitHub and Cloudflare Pages.">
   
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
@@ -46,7 +46,7 @@
     "@context": "https://schema.org",
     "@type": "BlogPosting",
     "headline": "Deploy a Static Website with GitHub + Cloudflare",
-    "description": "Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.",
+    "description": "Step-by-step guide to hosting your website for free using GitHub and Cloudflare Pages.",
     "author": {
       "@type": "Person",
       "name": "UnixPulse"
@@ -57,7 +57,7 @@
       "url": "https://unixpulse.com"
     },
     "datePublished": "2025-01-05",
-    "dateModified": "2025-01-05",
+    "dateModified": "2025-01-10",
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html"
@@ -140,7 +140,7 @@
         <div class="post-content">
           
           <p>
-            You don't need expensive hosting to put a website online. With GitHub Pages and Cloudflare, you can host a static website completely free—with SSL, CDN, and excellent performance. Here's exactly how to do it.
+            You don't need expensive hosting to put a website online. With GitHub and Cloudflare Pages, you can host a static website completely free—with SSL, CDN, and excellent performance. Here's exactly how to do it.
           </p>
           
           <h2>What You'll Need</h2>
@@ -162,8 +162,7 @@
             <li>Go to <a href="https://github.com" target="_blank" rel="noopener">github.com</a> and sign in</li>
             <li>Click the <strong>+</strong> button → <strong>New repository</strong></li>
             <li>Name it something like <code>my-website</code></li>
-            <li>Make it <strong>Public</strong> (required for free GitHub Pages)</li>
-            <li>Turn ON Add README</li>
+            <li>Make it <strong>Public</strong> (required for free Cloudflare Pages)</li>
             <li>Click <strong>Create repository</strong></li>
           </ol>
           
@@ -202,26 +201,45 @@ git push -u origin main</code></pre>
             <li>Click <strong>Commit changes</strong></li>
           </ol>
           
-          <h2>Step 3: Enable GitHub Pages</h2>
+          <h2>Step 3: Connect GitHub to Cloudflare Pages</h2>
           
           <p>
-            Now let's turn on hosting.
+            Now let's deploy your site using Cloudflare Pages.
           </p>
           
           <ol>
-            <li>Go to your repository on GitHub</li>
-            <li>Click <strong>Settings</strong> (tab at the top)</li>
-            <li>Scroll down to <strong>Pages</strong> in the left sidebar</li>
-            <li>Under "Source", select <strong>Deploy from a branch</strong></li>
-            <li>Choose <strong>main</strong> branch and <strong>/ (root)</strong> folder</li>
-            <li>Click <strong>Save</strong></li>
+            <li>Sign up or log in at <a href="https://dash.cloudflare.com" target="_blank" rel="noopener">dash.cloudflare.com</a></li>
+            <li>In the left sidebar, click <strong>Workers & Pages</strong></li>
+            <li>Click <strong>Create application</strong></li>
+            <li>Select the <strong>Pages</strong> tab</li>
+            <li>Click <strong>Connect to Git</strong></li>
+            <li>Authorize Cloudflare to access your GitHub account</li>
+            <li>Select your repository (e.g., <code>my-website</code>)</li>
+            <li>Click <strong>Begin setup</strong></li>
           </ol>
           
+          <h3>Configure Build Settings</h3>
+          
           <p>
-            Wait a minute or two, then your site will be live at:
+            For a simple static HTML site (no build process):
           </p>
           
-          <pre><code>https://YOUR_USERNAME.github.io/my-website/</code></pre>
+          <ul>
+            <li><strong>Project name:</strong> your-project-name (this becomes your subdomain)</li>
+            <li><strong>Production branch:</strong> main</li>
+            <li><strong>Build command:</strong> <em>leave empty</em></li>
+            <li><strong>Build output directory:</strong> <em>leave empty</em> (or <code>/</code> if required)</li>
+          </ul>
+          
+          <p>
+            Click <strong>Save and Deploy</strong>.
+          </p>
+          
+          <p>
+            Wait 1-2 minutes for the deployment to complete. Once done, your site will be live at:
+          </p>
+          
+          <pre><code>https://your-project-name.pages.dev</code></pre>
           
           <p>
             🎉 Congratulations! Your website is now online.
@@ -230,103 +248,80 @@ git push -u origin main</code></pre>
           <h2>Step 4: Add a Custom Domain (Optional)</h2>
           
           <p>
-            If you want your own domain (like <code>example.com</code>), keep reading. If the GitHub URL is fine for now, you can stop here.
+            If you want your own domain (like <code>example.com</code>), keep reading. If the <code>.pages.dev</code> URL is fine for now, you can stop here.
           </p>
           
-          <h3>4.1: Add Domain to Cloudflare</h3>
+          <h3>4.1: Add Your Domain to Cloudflare</h3>
+          
+          <p>
+            First, your domain needs to be managed by Cloudflare:
+          </p>
           
           <ol>
-            <li>Sign up at <a href="https://cloudflare.com" target="_blank" rel="noopener">cloudflare.com</a></li>
-            <li>Click <strong>Add a Site</strong></li>
-            <li>Enter your domain name</li>
+            <li>In Cloudflare dashboard, click <strong>Add a Site</strong></li>
+            <li>Enter your domain name (e.g., <code>example.com</code>)</li>
             <li>Select the <strong>Free</strong> plan</li>
             <li>Cloudflare will scan your existing DNS records</li>
             <li>It will give you two nameservers—copy these</li>
           </ol>
           
-          <h3>4.2: Update Nameservers</h3>
+          <h3>4.2: Update Nameservers at Your Registrar</h3>
           
           <p>
-            Go to wherever you bought your domain (Namecheap, GoDaddy, etc.) and update the nameservers to the ones Cloudflare gave you. This usually takes 5-30 minutes to propagate.
+            Go to wherever you bought your domain (Namecheap, GoDaddy, Porkbun, etc.) and update the nameservers to the ones Cloudflare gave you. This usually takes 5-30 minutes to propagate (sometimes up to 24 hours).
           </p>
           
-          <h3>4.3: Configure DNS Records</h3>
+          <h3>4.3: Add Custom Domain to Cloudflare Pages</h3>
           
           <p>
-            In Cloudflare, go to <strong>DNS</strong> and add these records:
-          </p>
-          
-          <pre><code>Type: CNAME
-Name: @
-Target: YOUR_USERNAME.github.io
-Proxy: Yes (orange cloud)
-
-Type: CNAME
-Name: www
-Target: YOUR_USERNAME.github.io
-Proxy: Yes (orange cloud)</code></pre>
-          
-          <h3>4.4: Tell GitHub About Your Domain</h3>
-          
-          <ol>
-            <li>Go back to your GitHub repo → <strong>Settings</strong> → <strong>Pages</strong></li>
-            <li>Under "Custom domain", enter <code>www.yourdomain.com</code></li>
-            <li>Click <strong>Save</strong></li>
-            <li>Wait for the DNS check to pass (may take a few minutes)</li>
-            <li>Check <strong>Enforce HTTPS</strong></li>
-          </ol>
-          
-          <h3>4.5: Add CNAME File</h3>
-          
-          <p>
-            Create a file called <code>CNAME</code> (no extension) in your repo root with just your domain:
-          </p>
-          
-          <pre><code>www.yourdomain.com</code></pre>
-          
-          <p>
-            Commit and push this file.
-          </p>
-          
-          <h2>Step 5: Configure Cloudflare Settings</h2>
-          
-          <p>
-            A few tweaks to make everything run smoothly:
-          </p>
-          
-          <h3>SSL/TLS Settings</h3>
-          
-          <ol>
-            <li>Go to <strong>SSL/TLS</strong> in Cloudflare</li>
-            <li>Set encryption mode to <strong>Full</strong></li>
-          </ol>
-          
-          <h3>Page Rules (Optional)</h3>
-          
-          <p>
-            To redirect non-www to www (or vice versa):
+            Once your domain is active in Cloudflare:
           </p>
           
           <ol>
-            <li>Go to <strong>Rules</strong> → <strong>Page Rules</strong></li>
-            <li>Add a rule: <code>yourdomain.com/*</code></li>
-            <li>Setting: <strong>Forwarding URL</strong> (301 Redirect)</li>
-            <li>Destination: <code>https://www.yourdomain.com/$1</code></li>
+            <li>Go to <strong>Workers & Pages</strong></li>
+            <li>Click on your Pages project</li>
+            <li>Go to the <strong>Custom domains</strong> tab</li>
+            <li>Click <strong>Set up a custom domain</strong></li>
+            <li>Enter your domain (e.g., <code>www.example.com</code> or <code>example.com</code>)</li>
+            <li>Click <strong>Continue</strong></li>
+            <li>Cloudflare will automatically configure the DNS records</li>
+            <li>Click <strong>Activate domain</strong></li>
           </ol>
+          
+          <p>
+            Cloudflare handles everything automatically—DNS records, SSL certificate, the works. Within a few minutes, your custom domain will be live.
+          </p>
+          
+          <blockquote>
+            <p><strong>Tip:</strong> Add both <code>example.com</code> and <code>www.example.com</code> as custom domains so both work.</p>
+          </blockquote>
           
           <h2>Updating Your Site</h2>
           
           <p>
-            Whenever you want to update your website:
+            Whenever you want to update your website, you have two options:
           </p>
           
-          <pre><code class="language-bash"># Make your changes, then:
+          <h3>Option A: Using Git (Recommended)</h3>
+          
+          <pre><code class="language-bash"># Make your changes locally, then:
 git add .
 git commit -m "Update: description of changes"
 git push</code></pre>
           
+          <h3>Option B: Direct Upload on GitHub</h3>
+          
+          <ol>
+            <li>Go to your repository on GitHub</li>
+            <li>Navigate to the file you want to update</li>
+            <li>Click the <strong>pencil icon</strong> (Edit this file) to edit directly, OR</li>
+            <li>Click <strong>Add file</strong> → <strong>Upload files</strong> to upload updated files</li>
+            <li>Upload your updated HTML file (it will replace the existing file with the same name)</li>
+            <li>Click <strong>Commit changes</strong></li>
+          </ol>
+          
           <p>
-            GitHub Pages will automatically rebuild your site in 1-2 minutes.
+            Cloudflare Pages automatically detects the changes and redeploys your site within 1-2 minutes.
           </p>
           
           <h2>Troubleshooting</h2>
@@ -336,10 +331,11 @@ git push</code></pre>
           </p>
           
           <ul>
-            <li><strong>404 errors</strong> — Make sure you have an <code>index.html</code> file in the root</li>
-            <li><strong>CSS not loading</strong> — Check your file paths (use relative paths like <code>css/style.css</code>)</li>
-            <li><strong>HTTPS not working</strong> — Wait for DNS propagation, check Cloudflare SSL settings</li>
-            <li><strong>Changes not showing</strong> — Hard refresh (<code>Ctrl+Shift+R</code>) or clear cache</li>
+            <li><strong>404 errors</strong> — Make sure you have an <code>index.html</code> file in the root of your repository</li>
+            <li><strong>CSS not loading</strong> — Check your file paths (use relative paths like <code>css/style.css</code>, not <code>/css/style.css</code>)</li>
+            <li><strong>Custom domain not working</strong> — Wait for DNS propagation (can take up to 24 hours), check nameservers are updated</li>
+            <li><strong>Changes not showing</strong> — Hard refresh (<code>Ctrl+Shift+R</code>) or clear browser cache</li>
+            <li><strong>Build failed</strong> — For static HTML, make sure build command is empty</li>
           </ul>
           
           <h2>What You Get for Free</h2>
@@ -349,16 +345,17 @@ git push</code></pre>
           </p>
           
           <ul>
-            <li>✅ Free hosting (GitHub Pages)</li>
+            <li>✅ Free hosting (Cloudflare Pages — unlimited bandwidth)</li>
             <li>✅ Free SSL certificate (HTTPS)</li>
-            <li>✅ Global CDN (Cloudflare)</li>
+            <li>✅ Global CDN (Cloudflare's network)</li>
             <li>✅ DDoS protection</li>
             <li>✅ Fast page loads worldwide</li>
-            <li>✅ Easy deployment via Git</li>
+            <li>✅ Automatic deployments when you push to GitHub</li>
+            <li>✅ Preview deployments for branches</li>
           </ul>
           
           <p>
-            The only cost is your domain name (~$12/year), and even that's optional.
+            The only cost is your domain name (~$12/year), and even that's optional if you're happy with the <code>.pages.dev</code> URL.
           </p>
           
           <h2>Wrapping Up</h2>
