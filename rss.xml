@@ -33,7 +33,7 @@
     <item>
       <title>Fixing the 'Collecting but Not Receiving Data' Warning in vROps NSX ALB Adapter</title>
       <link>https://unixpulse.com/blog/posts/aria-ops-avi-adapter-not-working.html</link>
-      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</guid>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/aria-ops-avi-adapter-not-working.html</guid>
       <pubDate>Fri, 10 Jan 2026 00:00:00 +0000</pubDate>
       <category>VMware</category>
       <description>How to fix the 'Collecting but Not Receiving Data' warning in VMware vRealize Operations NSX ALB adapter when connection tests pass but data isn't flowing.</description>
