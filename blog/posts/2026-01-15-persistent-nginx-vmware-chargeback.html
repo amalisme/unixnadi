@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>Making Persistent Nginx Changes in VMware Chargeback Docker Containers - UnixPulse</title>
+  <meta name="title" content="Making Persistent Nginx Changes in VMware Chargeback Docker Containers - UnixPulse">
+  <meta name="description" content="Learn why your nginx config changes keep disappearing in VMware Chargeback and how to make them stick using Docker templates. A practical guide for PCI compliance and configuration persistence.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html">
+  <meta property="og:title" content="Making Persistent Nginx Changes in VMware Chargeback Docker Containers - UnixPulse">
+  <meta property="og:description" content="Learn why your nginx config changes keep disappearing in VMware Chargeback and how to make them stick using Docker templates.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-01-15">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="VMware">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Making Persistent Nginx Changes in VMware Chargeback Docker Containers - UnixPulse">
+  <meta name="twitter:description" content="Learn why your nginx config changes keep disappearing in VMware Chargeback and how to make them stick using Docker templates.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">VMware</span>
+          <h1>Making Persistent Nginx Changes in VMware Chargeback Docker Containers</h1>
+          <div class="post-meta">
+            <time datetime="2026-01-15">January 15, 2026</time>
+            <span class="reading-time">10 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>Yesterday I ran into one of those frustrating issues that makes you question your sanity. I was working on PCI compliance requirements for VMware Chargeback 8.10, and needed to modify the nginx configuration. Simple enough, right? I made my changes to <code>/etc/nginx/nginx.conf</code>, tested everything, confirmed it worked perfectly, and called it a day.</p>
+
+          <p>Then I rebooted the appliance.</p>
+
+          <p>All my changes were gone. Completely wiped. It was like I'd never touched the file.</p>
+
+          <p>If you're reading this because your nginx config keeps disappearing after reboots in VMware Chargeback, you're in the right place. Here's what I learned and how to actually make those changes stick.</p>
+
+          <h2>The Problem: Why Your Changes Keep Disappearing</h2>
+          
+          <p>VMware Chargeback runs its web interface in a Docker container called <code>tenant-app-ui</code>. Like many containerized applications, it uses a template-based configuration system. Here's the key thing that caught me off guard:</p>
+
+          <p>Every time the container starts (or restarts), it regenerates <code>/etc/nginx/nginx.conf</code> from a template file located at <code>/etc/nginx/conf.d/nginx.conf.template</code>.</p>
+
+          <p>So when you edit <code>nginx.conf</code> directly, you're editing a file that gets overwritten on every container restart. It's not a bug—it's by design. The template ensures the container always starts with a known-good configuration.</p>
+
+          <p>The solution? Edit the template file instead of the generated config file.</p>
+
+          <h2>The Environment</h2>
+
+          <p>Before we dive into the steps, here's what I was working with:</p>
+
+          <ul>
+            <li><strong>Product:</strong> VMware Chargeback version 8.10</li>
+            <li><strong>Container name:</strong> tenant-app-ui</li>
+            <li><strong>Config file:</strong> /etc/nginx/conf.d/nginx.conf.template</li>
+            <li><strong>Use case:</strong> PCI compliance nginx modifications</li>
+          </ul>
+
+          <h2>Part 1: Making Temporary Changes (Testing)</h2>
+
+          <p>When you're making nginx configuration changes, you'll want to test them first before making them permanent. Here's my workflow using host-based editing, which I prefer because it lets me use a proper text editor instead of wrestling with vi inside a container.</p>
+
+          <h3>Step 1: Copy the Template to the Host</h3>
+
+          <p>First, let's create a backup with a timestamp. This is essential—you'll thank yourself later if something goes wrong:</p>
+
+          <pre><code class="language-bash">docker cp tenant-app-ui:/etc/nginx/conf.d/nginx.conf.template \
+  /opt/vmware/nginx.conf.template.backup-$(date +%Y%m%d-%H%M%S)</code></pre>
+
+          <h3>Step 2: Create a Working Copy</h3>
+
+          <p>Now create a working copy that you'll actually edit:</p>
+
+          <pre><code class="language-bash">docker cp tenant-app-ui:/etc/nginx/conf.d/nginx.conf.template \
+  /root/nginx.conf.template</code></pre>
+
+          <h3>Step 3: Edit on the Host</h3>
+
+          <p>This is where host-based editing shines. Use whatever editor you're comfortable with:</p>
+
+          <pre><code class="language-bash">vim /root/nginx.conf.template</code></pre>
+
+          <p>Make your required changes. In my case, I was adjusting SSL settings and security headers for PCI compliance.</p>
+
+          <h3>Step 4: Copy the Modified Template Back</h3>
+
+          <p>Once you're happy with your changes, copy the modified template back into the container:</p>
+
+          <pre><code class="language-bash">docker cp /root/nginx.conf.template \
+  tenant-app-ui:/etc/nginx/conf.d/nginx.conf.template</code></pre>
+
+          <h3>Step 5: Restart the Container</h3>
+
+          <p>Now restart the container to apply your changes:</p>
+
+          <pre><code class="language-bash">docker restart tenant-app-ui</code></pre>
+
+          <h3>Step 6: Verify It's Running</h3>
+
+          <p>Check that the container restarted successfully:</p>
+
+          <pre><code class="language-bash">docker ps | grep tenant-app-ui</code></pre>
+
+          <p>You should see output like this:</p>
+
+          <pre><code class="language-bash">CONTAINER ID   IMAGE                    COMMAND              CREATED        STATUS         PORTS
+6e6e21baba61   vmware/tenant-app-ui     "/bin/sh -c /etc/…"  11 hours ago   Up 6 seconds   0.0.0.0:80->8085/tcp, 0.0.0.0:443->9443/tcp</code></pre>
+
+          <h3>Step 7: Check the Logs</h3>
+
+          <p>Always check the logs to make sure nginx started without errors:</p>
+
+          <pre><code class="language-bash">docker logs --tail 30 tenant-app-ui</code></pre>
+
+          <p>Look for any nginx errors or warnings. You might see some warnings (like duplicate MIME types) that were already present—that's normal. What you're looking for is confirmation that nginx started successfully and your changes didn't break anything.</p>
+
+          <blockquote>
+            <p><strong>Important:</strong> At this point, your changes are active but NOT permanent. If you reboot the appliance or the container gets recreated, you'll need to repeat these steps. For permanent changes, continue to Part 2.</p>
+          </blockquote>
+
+          <h2>Part 2: Making Changes Permanent</h2>
+
+          <p>Once you've tested your changes and confirmed everything works, it's time to make them permanent. There are several ways to do this, but here's the approach I use because it's straightforward and gives you a rollback option.</p>
+
+          <h3>Step 1: Create a Committed Docker Image</h3>
+
+          <p>This creates a new Docker image with your changes baked in:</p>
+
+          <pre><code class="language-bash">docker commit tenant-app-ui vmware/tenant-app-ui:pci-fixed-$(date +%Y%m%d)</code></pre>
+
+          <p>You'll get back a SHA256 hash confirming the image was created:</p>
+
+          <pre><code class="language-bash">sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx</code></pre>
+
+          <h3>Step 2: Store the Master Template on the Host</h3>
+
+          <p>Keep a copy of your working template on the host for future reference:</p>
+
+          <pre><code class="language-bash">cp /root/nginx.conf.template \
+  /opt/vmware/chargeback-nginx-template-MASTER-$(date +%Y%m%d).conf</code></pre>
+
+          <p>This gives you a master copy you can refer to if you need to make additional changes later.</p>
+
+          <h3>Step 3: Verify the Committed Image</h3>
+
+          <p>Check that your new image was created successfully:</p>
+
+          <pre><code class="language-bash">docker images | grep tenant-app-ui</code></pre>
+
+          <p>You should see your new image with today's date:</p>
+
+          <pre><code class="language-bash">REPOSITORY              TAG                  IMAGE ID       CREATED          SIZE
+vmware/tenant-app-ui    pci-fixed-20260115   ff08e8ed63a6   17 seconds ago   362MB
+vmware/tenant-app-ui    8.10.0-20748992      68d18468034b   3 years ago      362MB
+vmware/tenant-app-ui    latest               68d18468034b   3 years ago      362MB</code></pre>
+
+          <h3>Step 4: Test the Persistence</h3>
+
+          <p>The moment of truth—restart the container and verify your changes survive:</p>
+
+          <pre><code class="language-bash">docker restart tenant-app-ui</code></pre>
+
+          <p>Then verify it's running:</p>
+
+          <pre><code class="language-bash">docker ps | grep tenant-app-ui</code></pre>
+
+          <p>Your changes should still be there. Test your nginx configuration by accessing the web interface and verifying your PCI compliance requirements are met.</p>
+
+          <h2>What I Learned</h2>
+
+          <p>This whole experience taught me an important lesson about containerized applications: always look for template files. If your configuration changes aren't persisting, there's probably a template somewhere that's regenerating the file you're editing.</p>
+
+          <p>A few other takeaways:</p>
+
+          <ul>
+            <li><strong>Always create timestamped backups</strong> before making changes. That <code>$(date +%Y%m%d-%H%M%S)</code> pattern has saved me more times than I can count.</li>
+            <li><strong>Host-based editing is your friend</strong> when working with containers. It's much easier than trying to edit files with limited tools inside a container.</li>
+            <li><strong>Check the logs</strong> after every change. Nginx errors can be subtle, and you don't want to discover a syntax error during a production issue.</li>
+            <li><strong>Document your changes</strong>. Future you (or your team) will appreciate knowing exactly what was modified and why.</li>
+          </ul>
+
+          <h2>Wrapping Up</h2>
+
+          <p>Dealing with containerized applications can be tricky when you're used to traditional server configurations. The key is understanding how the container manages its configuration files and working with that system rather than against it.</p>
+
+          <p>If you're working with VMware Chargeback or any other containerized application and your config changes keep disappearing, look for template files. Nine times out of ten, that's your answer.</p>
+
+          <p>Have you run into similar issues with other VMware products or Docker containers? I'd be interested to hear what you've learned. Feel free to reach out.</p>
+          
+        </div>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">
+        © 2026 UnixPulse. Made with ☕ and curiosity.
+      </p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
