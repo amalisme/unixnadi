@@ -2,7 +2,7 @@
   {
     "title": "Making Persistent Nginx Changes in VMware Chargeback Docker Containers",
     "slug": "2026-01-15-persistent-nginx-vmware-chargeback",
-    "category": "VMware\Docker",
+    "category": "VMware/Docker",
     "date": "2026-01-15",
     "dateDisplay": "January 15, 2026",
     "readTime": "10 min read",
