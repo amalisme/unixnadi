@@ -26,7 +26,7 @@
   <meta name="twitter:description" content="Quick troubleshooting fix for when the NSX Advanced Load Balancer adapter gets stuck in a warning state in VMware vRealize Operations 8.10.">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="../../images/favicon.svg">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
   
@@ -36,12 +36,38 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="../../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Schema.org Article markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Fixing the Collecting but Not Receiving Data Warning in vROps NSX ALB Adapter",
+    "description": "Quick troubleshooting fix for when the NSX Advanced Load Balancer adapter gets stuck in a warning state in VMware vRealize Operations 8.10.",
+    "author": {
+      "@type": "Person",
+      "name": "UnixPulse"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "UnixPulse",
+      "url": "https://unixpulse.com"
+    },
+    "datePublished": "2026-01-15",
+    "dateModified": "2026-01-15",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://unixpulse.com/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html"
+    }
+  }
+  </script>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="container header-inner">
-      <a href="../../" class="logo" aria-label="UnixPulse Home">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
         <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
           <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
           <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -53,12 +79,12 @@
       
       <nav class="nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li><a href="../../" class="nav-link">Home</a></li>
-          <li><a href="../" class="nav-link active">Blog</a></li>
-          <li><a href="../../toolbox.html" class="nav-link">Toolbox</a></li>
-          <li><a href="../../projects.html" class="nav-link">Projects</a></li>
-          <li><a href="../../work-with-me.html" class="nav-link">Work With Me</a></li>
-          <li><a href="../../say-hello.html" class="nav-link">Say Hello</a></li>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
         </ul>
         
         <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
@@ -94,85 +120,111 @@
   </header>
 
   <main>
-    <article class="blog-post">
+    <article>
+      <!-- Post Header -->
       <header class="post-header">
-        <span class="post-category">VMware</span>
-        <h1 class="post-title">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</h1>
-        <p class="post-meta">
-          <time datetime="2026-01-15">January 15, 2026</time> · 4 min read
-        </p>
-      </header>
-
-      <div class="post-content">
-        <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state—specifically, "Collecting but Not Receiving Data." Everything looked fine, but vROps wasn't happy. Here's what happened and how I fixed it.</p>
-
-        <h2>The Problem</h2>
-        <p>After setting up the NSX ALB (formerly Avi) adapter instance in vROps, the adapter status showed a yellow warning icon. The message said it was collecting but not receiving data. Not ideal when you're trying to monitor your load balancers.</p>
-        
-        <p>The frustrating part? No obvious errors. The adapter was configured correctly, credentials were valid, and the NSX ALB controller was reachable. Yet the warning persisted.</p>
-
-        <h2>What I Tried First</h2>
-        <p>My first instinct was to validate the connection. In vROps, I went to the adapter instance and hit <strong>Test Connection</strong> multiple times. Each time: success. No errors, no complaints. The adapter could clearly talk to the NSX ALB controller.</p>
-        
-        <img src="../../images/vrops-validate-connection.png" alt="Validate connection showing success but warning persists" loading="lazy">
-        
-        <p>I waited. Sometimes these things just need time to sync up. But after several collection cycles, the warning was still there. The adapter stubbornly refused to show actual data coming in.</p>
-        
-        <p>I double-checked the usual suspects:</p>
-        <ul>
-          <li>Credentials: Correct</li>
-          <li>Controller URL: Correct</li>
-          <li>Network connectivity: Fine</li>
-          <li>Permissions on the NSX ALB side: All good</li>
-        </ul>
-        
-        <p>Everything checked out, but the problem remained.</p>
-
-        <h2>The Fix: Rebooting the vROps Cluster</h2>
-        <p>After exhausting the obvious options, I decided to restart the vROps cluster. Sometimes that's just what it takes.</p>
-        
-        <p>In the vROps admin interface, I initiated a cluster restart and waited for all nodes to come back online. It takes a few minutes, so grab a coffee.</p>
-        
-        <img src="../../images/vrops-cluster-reboot.png" alt="Cluster reboot in progress" loading="lazy">
-
-        <h2>Back to Normal</h2>
-        <p>Once the cluster was fully back up and the services had stabilized, I checked the adapter instance again.</p>
-        
-        <p>After the reboot, the adapter status changed to OK. Green icon, collecting data, receiving data—everything working as expected. The NSX ALB metrics started flowing into vROps without any further intervention.</p>
-        
-        <img src="../../images/vrops-cluster-reboot.png" alt="Adapter instance now showing OK status and receiving data" loading="lazy">
-
-        <h2>Why Did This Work?</h2>
-        <p>Honestly? I'm not 100% sure. My best guess is that something got stuck in the collector service—maybe a hung process or a stale connection that wasn't releasing properly. The reboot cleared whatever was blocking the data flow.</p>
-        
-        <p>This isn't the most satisfying answer, but in the VMware world, sometimes a restart fixes things that have no clear root cause. The important thing is documenting it so future-me (or you) doesn't spend hours chasing ghosts.</p>
-
-        <h2>Key Takeaways</h2>
-        <ul>
-          <li>"Collecting but Not Receiving Data" doesn't always mean a configuration problem</li>
-          <li>Successful connection tests don't guarantee the adapter is fully functional</li>
-          <li>When in doubt, reboot the cluster—it's not elegant, but it works</li>
-          <li>Document these fixes—you'll forget, and you'll hit this again in six months</li>
-        </ul>
-        
-        <p>If you're running vROps 8.10 with the NSX ALB adapter and see this warning, try the connection validation first. But if that comes back clean and the warning persists, a cluster reboot might be your answer.</p>
-
-        <div class="post-related-box">
-          <p class="post-related-box-title">💼 Need Help With VMware?</p>
-          <p>Running into other vROps adapter issues? I do VMware consulting and might be able to help—check out the <a href="../../work-with-me.html">Work With Me</a> page.</p>
+        <div class="container content-width">
+          <span class="post-category">VMware</span>
+          <h1>Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</h1>
+          <div class="post-meta">
+            <time datetime="2026-01-15">January 15, 2026</time>
+            <span class="reading-time">4 min read</span>
+          </div>
         </div>
+      </header>
+      
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state—specifically, "Collecting but Not Receiving Data." Everything looked fine, but vROps wasn't happy. Here's what happened and how I fixed it.</p>
+
+          <h2>The Problem</h2>
+          
+          <p>After setting up the NSX ALB (formerly Avi) adapter instance in vROps, the adapter status showed a yellow warning icon. The message said it was collecting but not receiving data. Not ideal when you're trying to monitor your load balancers.</p>
+          
+          <p>The frustrating part? No obvious errors. The adapter was configured correctly, credentials were valid, and the NSX ALB controller was reachable. Yet the warning persisted.</p>
+
+          <h2>What I Tried First</h2>
+          
+          <p>My first instinct was to validate the connection. In vROps, I went to the adapter instance and hit <strong>Test Connection</strong> multiple times. Each time: success. No errors, no complaints. The adapter could clearly talk to the NSX ALB controller.</p>
+          
+          <img src="/images/vrops-validate-connection.png" alt="Validate connection showing success but warning persists" loading="lazy">
+          
+          <p>I waited. Sometimes these things just need time to sync up. But after several collection cycles, the warning was still there. The adapter stubbornly refused to show actual data coming in.</p>
+          
+          <p>I double-checked the usual suspects:</p>
+          
+          <ul>
+            <li>Credentials: Correct</li>
+            <li>Controller URL: Correct</li>
+            <li>Network connectivity: Fine</li>
+            <li>Permissions on the NSX ALB side: All good</li>
+          </ul>
+          
+          <p>Everything checked out, but the problem remained.</p>
+
+          <h2>The Fix: Rebooting the vROps Cluster</h2>
+          
+          <p>After exhausting the obvious options, I decided to restart the vROps cluster. Sometimes that's just what it takes.</p>
+          
+          <p>In the vROps admin interface, I initiated a cluster restart and waited for all nodes to come back online. It takes a few minutes, so grab a coffee.</p>
+          
+          <img src="/images/vrops-cluster-reboot.png" alt="Cluster reboot in progress" loading="lazy">
+
+          <h2>Back to Normal</h2>
+          
+          <p>Once the cluster was fully back up and the services had stabilized, I checked the adapter instance again.</p>
+          
+          <p>After the reboot, the adapter status changed to OK. Green icon, collecting data, receiving data—everything working as expected. The NSX ALB metrics started flowing into vROps without any further intervention.</p>
+          
+          <img src="/images/vrops-adapter-ok.png" alt="Adapter instance now showing OK status and receiving data" loading="lazy">
+
+          <h2>Why Did This Work?</h2>
+          
+          <p>Honestly? I'm not 100% sure. My best guess is that something got stuck in the collector service—maybe a hung process or a stale connection that wasn't releasing properly. The reboot cleared whatever was blocking the data flow.</p>
+          
+          <p>This isn't the most satisfying answer, but in the VMware world, sometimes a restart fixes things that have no clear root cause. The important thing is documenting it so future-me (or you) doesn't spend hours chasing ghosts.</p>
+
+          <h2>Key Takeaways</h2>
+          
+          <ul>
+            <li>"Collecting but Not Receiving Data" doesn't always mean a configuration problem</li>
+            <li>Successful connection tests don't guarantee the adapter is fully functional</li>
+            <li>When in doubt, reboot the cluster—it's not elegant, but it works</li>
+            <li>Document these fixes—you'll forget, and you'll hit this again in six months</li>
+          </ul>
+          
+          <p>If you're running vROps 8.10 with the NSX ALB adapter and see this warning, try the connection validation first. But if that comes back clean and the warning persists, a cluster reboot might be your answer.</p>
+
+          <!-- Related Product Box -->
+          <div class="post-related-box">
+            <p class="post-related-box-title">💼 Need Help With VMware?</p>
+            <p>Running into other vROps adapter issues? I do VMware consulting and might be able to help—check out the <a href="/work-with-me.html">Work With Me</a> page.</p>
+          </div>
+          
+        </div>
+        
+        <!-- Post Navigation -->
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="getting-started-with-linux.html" class="post-nav-link">
+            ← Previous
+            <span>Getting Started with Linux: A Beginner's Journey</span>
+          </a>
+        </nav>
       </div>
     </article>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-text">
         © 2026 UnixPulse. Made with ☕ and curiosity.
       </p>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="../../about.html" class="footer-link">About</a>
-        <a href="../../say-hello.html" class="footer-link">Contact</a>
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
         <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
@@ -183,6 +235,6 @@
     </div>
   </footer>
 
-  <script src="../../js/main.js"></script>
+  <script src="/js/main.js"></script>
 </body>
 </html>
