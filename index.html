@@ -60,6 +60,7 @@
     }
   }
   </script>
+  <script src="/js/blog-loader.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -144,46 +145,9 @@
           </h2>
           <p class="section-subtitle">Recent posts from the blog</p>
         </header>
-        
-        <div class="card-grid">
-          <!-- Post Card 1 -->
-          <article class="card post-card">
-            <span class="post-category">VMware</span>
-            <h3 class="card-title">
-              <a href="blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</a>
-            </h3>
-            <p class="card-meta">January 10, 2026 · 4 min read</p>
-            <p class="card-excerpt">
-              How to fix the "Collecting but Not Receiving Data" warning in VMware vRealize Operations NSX ALB adapter when connection tests pass but data isn't flowing.
-            </p>
-            <a href="blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html" class="card-link">Read more</a>
-          </article>
-          
-          <!-- Post Card 2 -->
-          <article class="card post-card">
-            <span class="post-category">Linux</span>
-            <h3 class="card-title">
-              <a href="blog/posts/getting-started-with-linux.html">Getting Started with Linux: A Beginner's Journey</a>
-            </h3>
-            <p class="card-meta">December 9, 2025 · 5 min read</p>
-            <p class="card-excerpt">
-              My notes on starting out with Linux, from choosing a distro to setting up your first server.
-            </p>
-            <a href="blog/posts/getting-started-with-linux.html" class="card-link">Read more</a>
-          </article>
-          
-          <!-- Post Card 3 -->
-          <article class="card post-card">
-            <span class="post-category">Web Dev</span>
-            <h3 class="card-title">
-              <a href="blog/posts/deploy-website-github-cloudflare.html">Deploy a Static Website with GitHub + Cloudflare</a>
-            </h3>
-            <p class="card-meta">December 5, 2025 · 8 min read</p>
-            <p class="card-excerpt">
-              Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.
-            </p>
-            <a href="blog/posts/deploy-website-github-cloudflare.html" class="card-link">Read more</a>
-          </article>
+
+        <div class="posts-grid" id="latest-posts-container">
+          <p style="text-align: center;">Loading latest posts...</p>
         </div>
         
         <div class="text-center mt-xl">
