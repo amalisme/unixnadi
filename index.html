@@ -60,7 +60,6 @@
     }
   }
   </script>
-  <script src="/js/blog-loader.js"></script>
 </head>
 <body>
   <!-- Header -->
@@ -147,7 +146,8 @@
         </header>
 
         <div class="posts-grid" id="latest-posts-container">
-          <p style="text-align: center;">Loading latest posts...</p>
+          <!-- Posts will be loaded here by blog-loader.js -->
+          <p style="text-align: center; color: var(--color-slate-light);">Loading latest posts...</p>
         </div>
         
         <div class="text-center mt-xl">
@@ -227,5 +227,6 @@
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
+  <script src="js/blog-loader.js"></script>
 </body>
 </html>
