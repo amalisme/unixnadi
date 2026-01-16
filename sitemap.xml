@@ -71,8 +71,15 @@
   
   <!-- Blog Posts -->
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</loc>
-    <lastmod>2026-01-10</lastmod>
+    <loc>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://unixpulse.com/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html</loc>
+    <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
