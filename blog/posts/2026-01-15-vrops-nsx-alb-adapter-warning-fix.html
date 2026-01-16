@@ -137,17 +137,17 @@
       <div class="container content-width">
         <div class="post-content">
           
-          <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state—specifically, "Collecting but Not Receiving Data." Everything looked fine, but vROps wasn't happy. Here's what happened and how I fixed it.</p>
+          <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state specifically, "Collecting but Not Receiving Data." Everything looked fine, but vROps wasn't happy. Here's what happened and how I fixed it.</p>
 
           <h2>The Problem</h2>
           
-          <p>After setting up the NSX ALB (formerly Avi) adapter instance in vROps, the adapter status showed a yellow warning icon. The message said it was collecting but not receiving data. Not ideal when you're trying to monitor your load balancers.</p>
+          <p>Administrative alerts shows the NSX ALB adapter status showed a yellow warning icon. The message said it was collecting but not receiving data. Not ideal when you're trying to monitor your load balancers.</p>
           
           <p>The frustrating part? No obvious errors. The adapter was configured correctly, credentials were valid, and the NSX ALB controller was reachable. Yet the warning persisted.</p>
 
           <h2>What I Tried First</h2>
           
-          <p>My first instinct was to validate the connection. In vROps, I went to the adapter instance and hit <strong>Test Connection</strong> multiple times. Each time: success. No errors, no complaints. The adapter could clearly talk to the NSX ALB controller.</p>
+          <p>My first instinct was to validate the connection. In vROps, I went to the adapter instance and hit <strong>VALIDATE CONNECTION</strong> multiple times. The first time, it prompted me to accept new certificate. Each time: success. No errors, no complaints. The adapter could clearly talk to the NSX ALB controller.</p>
           
           <img src="/images/vrops-validate-connection.png" alt="Validate connection showing success but warning persists" loading="lazy">
           
@@ -176,13 +176,13 @@
           
           <p>Once the cluster was fully back up and the services had stabilized, I checked the adapter instance again.</p>
           
-          <p>After the reboot, the adapter status changed to OK. Green icon, collecting data, receiving data—everything working as expected. The NSX ALB metrics started flowing into vROps without any further intervention.</p>
+          <p>After the reboot, the adapter status changed to OK. Green icon, collecting data, receiving data. Everything working as expected. The NSX ALB metrics started flowing into vROps without any further intervention.</p>
           
           <img src="/images/vrops-adapter-ok-2.png" alt="Adapter instance now showing OK status and receiving data" loading="lazy">
 
           <h2>Why Did This Work?</h2>
           
-          <p>Honestly? I'm not 100% sure. My best guess is that something got stuck in the collector service—maybe a hung process or a stale connection that wasn't releasing properly. The reboot cleared whatever was blocking the data flow.</p>
+          <p>Honestly? I'm not 100% sure. My best guess is that something got stuck in the collector service. Maybe a hung process or a stale connection that wasn't releasing properly. The reboot cleared whatever was blocking the data flow.</p>
           
           <p>This isn't the most satisfying answer, but in the VMware world, sometimes a restart fixes things that have no clear root cause. The important thing is documenting it so future-me (or you) doesn't spend hours chasing ghosts.</p>
 
@@ -191,8 +191,8 @@
           <ul>
             <li>"Collecting but Not Receiving Data" doesn't always mean a configuration problem</li>
             <li>Successful connection tests don't guarantee the adapter is fully functional</li>
-            <li>When in doubt, reboot the cluster—it's not elegant, but it works</li>
-            <li>Document these fixes—you'll forget, and you'll hit this again in six months</li>
+            <li>When in doubt, reboot the cluster - it's not elegant, but it works</li>
+            <li>Document these fixes - you'll forget, and you'll hit this again in six months</li>
           </ul>
           
           <p>If you're running vROps 8.10 with the NSX ALB adapter and see this warning, try the connection validation first. But if that comes back clean and the warning persists, a cluster reboot might be your answer.</p>
