@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Primary Meta Tags -->
+  <title>ESXi Host Disconnected: 6 Quick Checks Before Calling Support - UnixPulse</title>
+  <meta name="title" content="ESXi Host Disconnected: 6 Quick Checks Before Calling Support - UnixPulse">
+  <meta name="description" content="Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter. Learn the difference between Not Responding and Disconnected states, and fix common problems fast.">
+  <meta name="robots" content="index, follow">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html">
+  <meta property="og:title" content="ESXi Host Disconnected: 6 Quick Checks Before Calling Support - UnixPulse">
+  <meta property="og:description" content="Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter. Learn the difference between Not Responding and Disconnected states.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-01-17">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="VMware">
+  
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="ESXi Host Disconnected: 6 Quick Checks Before Calling Support - UnixPulse">
+  <meta name="twitter:description" content="Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "ESXi Host Disconnected: 6 Quick Checks Before Calling Support",
+    "description": "Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter. Learn the difference between Not Responding and Disconnected states, and fix common problems fast.",
+    "author": {
+      "@type": "Person",
+      "name": "UnixPulse"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "UnixPulse",
+      "url": "https://unixpulse.com"
+    },
+    "datePublished": "2026-01-17",
+    "dateModified": "2026-01-17",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html"
+    }
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+        </button>
+        
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">VMware</span>
+          <h1>ESXi Host Disconnected: 6 Quick Checks Before Calling Support</h1>
+          <div class="post-meta">
+            <time datetime="2026-01-17">January 17, 2026</time>
+            <span class="reading-time">8 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>There's nothing quite like the sinking feeling you get when you open vSphere Client and see one or more of your ESXi hosts showing as grey and unresponsive. Whether it says "Not Responding" or "Disconnected," your first instinct might be to panic and immediately call VMware support.</p>
+
+          <p>But here's the thing—most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
+
+          <p>Before you spend hours on hold with support, let's walk through six critical checks that will solve most disconnection issues. Understanding what's actually happening is half the battle.</p>
+
+          <h2>Understanding the Difference: Not Responding vs. Disconnected</h2>
+          
+          <p>First things first—these two states look similar in vSphere Client (both show a greyed-out host), but they mean very different things:</p>
+
+          <p><strong>Not Responding</strong> typically means something external is preventing vCenter from communicating with the host. The host might be fine, but vCenter can't reach it. This is usually a network issue, crashed management service, or hardware problem.</p>
+
+          <p><strong>Disconnected</strong> means vCenter has deliberately stopped monitoring the host. This is either because someone manually disconnected it, there's a licensing problem, or vCenter tried to reconnect and failed.</p>
+
+          <p>Here's a quick reference:</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>State</th>
+                <th>Primary Cause</th>
+                <th>vCenter Behavior</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Not Responding</strong></td>
+                <td>Network failure, hostd/vpxa crash, or host hardware failure</td>
+                <td>vCenter stops receiving heartbeats but continues attempting to monitor</td>
+              </tr>
+              <tr>
+                <td><strong>Disconnected</strong></td>
+                <td>Manual action, expired license, or failed reconnection</td>
+                <td>vCenter explicitly stops monitoring and ignores all host services</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>Now let's get into the troubleshooting steps.</p>
+
+          <h2>Check 1: Verify Network Connectivity and Port Access</h2>
+          
+          <p>The most common reason for a "Not Responding" host is a communication breakdown. vCenter needs to talk to your ESXi host, and that requires both basic network connectivity and specific ports to be open.</p>
+
+          <p>Start simple—try pinging the ESXi host from your vCenter server:</p>
+
+          <pre><code class="language-bash">ping esxi-hostname.domain.com</code></pre>
+
+          <p>If the ping fails, you've got a network or routing problem. Check physical connections, switch configurations, and VLANs.</p>
+
+          <p>If ping works, the next step is verifying the management ports aren't blocked. vCenter uses:</p>
+
+          <ul>
+            <li><strong>TCP Port 443</strong> — Main management communication</li>
+            <li><strong>UDP Port 902</strong> — Heartbeat monitoring</li>
+          </ul>
+
+          <p>Here's something I've seen catch people off guard: if port 902 is blocked by a firewall, the host will appear connected for a brief moment, then immediately flip back to "Not Responding." That's because vCenter can establish the initial connection on 443, but can't receive heartbeats on 902.</p>
+
+          <h2>Check 2: Restart Management Agents (hostd and vpxa)</h2>
+          
+          <p>If the network is solid, the management services on the ESXi host itself might have crashed or hung. This happens more often than you'd think, especially after high load or storage latency spikes.</p>
+
+          <p>The good news? Restarting these services is safe and doesn't affect running VMs.</p>
+
+          <p>You can do this from the Direct Console User Interface (DCUI) if you have physical or remote console access:</p>
+
+          <ul>
+            <li>Press F2 to access the DCUI</li>
+            <li>Navigate to <strong>Troubleshooting Options</strong></li>
+            <li>Select <strong>Restart Management Agents</strong></li>
+          </ul>
+
+          <p>Or via SSH (if enabled):</p>
+
+          <pre><code class="language-bash">/etc/init.d/hostd restart && /etc/init.d/vpxa restart</code></pre>
+
+          <p>This restarts both the host daemon (hostd) and the vCenter agent (vpxa). Wait 2-3 minutes, then check vSphere Client to see if the host reconnects.</p>
+
+          <blockquote>
+            <p><strong>Pro tip:</strong> If you're restarting services via SSH, use the <code>&&</code> operator to chain the commands. This ensures both services restart even if you lose your SSH connection.</p>
+          </blockquote>
+
+          <h2>Check 3: Look for Resource Exhaustion or Purple Screen</h2>
+          
+          <p>Sometimes a host stops responding because it's encountered a critical kernel error—the infamous Purple Screen of Death (PSOD). This is ESXi's equivalent of a Windows blue screen.</p>
+
+          <p>If you have access to the physical console, iLO, iDRAC, or IPMI interface, check the screen. A PSOD is unmistakable—it's purple with diagnostic information and error codes.</p>
+
+          <p>If you see a PSOD, the host needs to be rebooted. Make sure to photograph or record the error codes first—you'll need them for root cause analysis.</p>
+
+          <p>If there's no PSOD but the console is sluggish or frozen, the hostd process might be overwhelmed. This usually happens due to:</p>
+
+          <ul>
+            <li>Extreme storage latency</li>
+            <li>Excessive logging filling up the boot partition</li>
+            <li>Memory pressure from too many VMs</li>
+          </ul>
+
+          <p>You might see messages like "hostd detected to be non-responsive" in the logs. If hostd is struggling, restarting it (Check #2) often resolves the issue temporarily, but you'll need to address the underlying cause.</p>
+
+          <h2>Check 4: Validate vCenter Managed IP Address</h2>
+          
+          <p>This one is subtle and catches a lot of people off guard. ESXi hosts send their heartbeats to a specific IP address configured in vCenter Server settings. If this IP is wrong or changed, your hosts will stop checking in.</p>
+
+          <p>Here's how to verify it:</p>
+
+          <ul>
+            <li>In vSphere Client, go to <strong>Administration</strong></li>
+            <li>Select <strong>vCenter Server Settings</strong></li>
+            <li>Click <strong>Runtime Settings</strong></li>
+            <li>Check the <strong>Managed IP Address</strong></li>
+          </ul>
+
+          <p>This should be the IP address that ESXi hosts can reach to send heartbeats. If it's set to an unreachable address (common after network changes or vCenter migrations), your hosts are essentially sending heartbeats into a black hole.</p>
+
+          <p>I've seen this happen after vCenter was moved to a different subnet without updating this setting. All hosts showed "Not Responding" but were perfectly healthy—they just couldn't reach vCenter on the old IP.</p>
+
+          <h2>Check 5: Verify Storage Connectivity</h2>
+          
+          <p>Storage problems, especially high latency or lost connectivity to critical datastores, can cause ESXi management agents to become unresponsive. If the boot datastore is having issues, hostd might not be able to function properly.</p>
+
+          <p>If your host is connected to a SAN (Fibre Channel or iSCSI), check:</p>
+
+          <ul>
+            <li>Physical cable connections (yes, cables get bumped)</li>
+            <li>HBA or network adapter status</li>
+            <li>Storage array health</li>
+            <li>Path status in ESXi</li>
+          </ul>
+
+          <p>You can check storage path status from the ESXi console or via SSH:</p>
+
+          <pre><code class="language-bash">esxcli storage core path list</code></pre>
+
+          <p>Look for paths marked as "dead" or devices showing as "offline." High storage latency (consistently over 50ms) can also cause management services to hang.</p>
+
+          <h2>Check 6: Review Licensing and Try Manual Reconnection</h2>
+          
+          <p>If your host is showing as "Disconnected" (rather than "Not Responding"), licensing is often the culprit. When an ESXi evaluation license expires or a subscription lapses, vCenter automatically disconnects the host.</p>
+
+          <p>Check your licensing status:</p>
+
+          <ul>
+            <li>Go to <strong>Administration</strong> → <strong>Licensing</strong></li>
+            <li>Look for any hosts showing expired or evaluation licenses</li>
+            <li>Assign valid licenses if needed</li>
+          </ul>
+
+          <p>If licensing looks good, try a manual reconnection:</p>
+
+          <ul>
+            <li>Right-click the disconnected host</li>
+            <li>Select <strong>Connection</strong> → <strong>Connect</strong></li>
+          </ul>
+
+          <p>If this fails, pay close attention to the error message. It will often tell you exactly what's wrong—certificate mismatch, version incompatibility, or authentication failure. That error message is your roadmap for the next troubleshooting step.</p>
+
+          <h2>Quick Reference: Useful Commands</h2>
+
+          <p>Here are the commands I use most often when troubleshooting disconnected hosts:</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Action</th>
+                <th>Command (via SSH)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Restart All Services</strong></td>
+                <td><code>services.sh restart</code></td>
+              </tr>
+              <tr>
+                <td><strong>Restart Host Daemon</strong></td>
+                <td><code>/etc/init.d/hostd restart</code></td>
+              </tr>
+              <tr>
+                <td><strong>Restart vCenter Agent</strong></td>
+                <td><code>/etc/init.d/vpxa restart</code></td>
+              </tr>
+              <tr>
+                <td><strong>Check Agent Status</strong></td>
+                <td><code>/etc/init.d/hostd status</code></td>
+              </tr>
+              <tr>
+                <td><strong>View Storage Paths</strong></td>
+                <td><code>esxcli storage core path list</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h2>When to Actually Call Support</h2>
+
+          <p>If you've worked through all six checks and the host is still disconnected, it's probably time to involve VMware support or escalate internally. Here are signs of serious problems:</p>
+
+          <ul>
+            <li>PSOD with hardware-related error codes</li>
+            <li>Multiple hosts disconnecting simultaneously (likely vCenter or network infrastructure issue)</li>
+            <li>Failed host hardware (memory errors, CPU failures visible in logs)</li>
+            <li>Corrupted system partitions on the boot device</li>
+          </ul>
+
+          <p>The troubleshooting steps above will resolve most common disconnection issues, but they can't fix failed hardware or major vCenter problems.</p>
+
+          <h2>Wrapping Up</h2>
+
+          <p>ESXi host disconnections are stressful, but they're rarely as serious as they first appear. In my experience, about 80% of disconnection issues fall into one of these categories:</p>
+
+          <ul>
+            <li>Network connectivity or firewall blocking</li>
+            <li>Crashed management agents</li>
+            <li>Storage latency causing service hangs</li>
+            <li>Licensing problems</li>
+          </ul>
+
+          <p>By working through these six checks systematically, you can identify and fix most problems in under 15 minutes—no support call needed. Just remember to stay calm, check the obvious stuff first, and pay attention to error messages. They're usually trying to tell you exactly what's wrong.</p>
+
+          <p>Got a disconnection issue that turned out to be something unusual? I'd be interested to hear about it.</p>
+
+          <!-- Related Product Box -->
+          <div class="post-related-box">
+            <p class="post-related-box-title">💼 Need Help With VMware?</p>
+            <p>Dealing with persistent ESXi or vCenter issues? I offer VMware consulting services and can help troubleshoot, optimize, or fix complex problems in your environment. Check out the <a href="/work-with-me.html">Work With Me</a> page to see how I can help.</p>
+          </div>
+          
+        </div>
+        
+        <!-- Post Navigation -->
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="2026-01-15-persistent-nginx-vmware-chargeback.html" class="post-nav-link">
+            ← Previous
+            <span>Making Persistent Nginx Changes in VMware Chargeback Docker Containers</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">
+        © 2026 UnixPulse. Made with ☕ and curiosity.
+      </p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
