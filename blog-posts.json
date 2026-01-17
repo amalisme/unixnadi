@@ -1,5 +1,14 @@
 [
   {
+    "title": "ESXi Host Disconnected: 6 Quick Checks Before Calling Support",
+    "slug": "2026-01-17-esxi-host-disconnected-troubleshooting.html",
+    "category": "VMware",
+    "date": "2026-01-17",
+    "dateDisplay": "January 17, 2026",
+    "readTime": "8 min read",
+    "excerpt": "Learn how to troubleshoot ESXi host disconnection issues in vCenter without calling support. Walk through 6 essential checks covering network connectivity, management agents, storage problems, and more to get your hosts back online fast."
+  },
+  {
     "title": "Making Persistent Nginx Changes in VMware Chargeback Docker Containers",
     "slug": "2026-01-15-persistent-nginx-vmware-chargeback",
     "category": "VMware/Docker",
