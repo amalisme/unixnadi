@@ -140,7 +140,7 @@
           
           <p>There's nothing quite like the sinking feeling you get when you open vSphere Client and see one or more of your ESXi hosts showing as grey and unresponsive. Whether it says "Not Responding" or "Disconnected," your first instinct might be to panic and immediately call VMware support.</p>
 
-          <p>But here's the thing—most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
+          <p>But here's the thing, most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
 
           <p>Before you spend hours on hold with support, let's walk through six critical checks that will solve most disconnection issues. Understanding what's actually happening is half the battle.</p>
 
@@ -165,13 +165,13 @@
             <tbody>
               <tr>
                 <td><strong>Not Responding</strong></td>
-                <td>Network failure, hostd/vpxa crash, or host hardware failure</td>
-                <td>vCenter stops receiving heartbeats but continues attempting to monitor</td>
+                <td>   Network failure, hostd/vpxa crash, or host hardware failure   </td>
+                <td>   vCenter stops receiving heartbeats but continues attempting to monitor   </td>
               </tr>
               <tr>
                 <td><strong>Disconnected</strong></td>
-                <td>Manual action, expired license, or failed reconnection</td>
-                <td>vCenter explicitly stops monitoring and ignores all host services</td>
+                <td>   Manual action, expired license, or failed reconnection   </td>
+                <td>   vCenter explicitly stops monitoring and ignores all host services   </td>
               </tr>
             </tbody>
           </table>
@@ -182,7 +182,7 @@
           
           <p>The most common reason for a "Not Responding" host is a communication breakdown. vCenter needs to talk to your ESXi host, and that requires both basic network connectivity and specific ports to be open.</p>
 
-          <p>Start simple—try pinging the ESXi host from your vCenter server:</p>
+          <p>Start simple. Try pinging the ESXi host from your vCenter server:</p>
 
           <pre><code class="language-bash">ping esxi-hostname.domain.com</code></pre>
 
@@ -191,8 +191,8 @@
           <p>If ping works, the next step is verifying the management ports aren't blocked. vCenter uses:</p>
 
           <ul>
-            <li><strong>TCP Port 443</strong> — Main management communication</li>
-            <li><strong>UDP Port 902</strong> — Heartbeat monitoring</li>
+            <li><strong>TCP Port 443</strong> - Main management communication</li>
+            <li><strong>UDP Port 902</strong> - Heartbeat monitoring</li>
           </ul>
 
           <p>Here's something I've seen catch people off guard: if port 902 is blocked by a firewall, the host will appear connected for a brief moment, then immediately flip back to "Not Responding." That's because vCenter can establish the initial connection on 443, but can't receive heartbeats on 902.</p>
@@ -223,11 +223,11 @@
 
           <h2>Check 3: Look for Resource Exhaustion or Purple Screen</h2>
           
-          <p>Sometimes a host stops responding because it's encountered a critical kernel error—the infamous Purple Screen of Death (PSOD). This is ESXi's equivalent of a Windows blue screen.</p>
+          <p>Sometimes a host stops responding because it's encountered a critical kernel error - the infamous Purple Screen of Death (PSOD). This is ESXi's equivalent of a Windows blue screen.</p>
 
-          <p>If you have access to the physical console, iLO, iDRAC, or IPMI interface, check the screen. A PSOD is unmistakable—it's purple with diagnostic information and error codes.</p>
+          <p>If you have access to the physical console, iLO, iDRAC, or IPMI interface, check the screen. A PSOD is unmistakable - it's purple with diagnostic information and error codes.</p>
 
-          <p>If you see a PSOD, the host needs to be rebooted. Make sure to photograph or record the error codes first—you'll need them for root cause analysis.</p>
+          <p>If you see a PSOD, the host needs to be rebooted. Make sure to photograph or record the error codes first - you'll need them for root cause analysis.</p>
 
           <p>If there's no PSOD but the console is sluggish or frozen, the hostd process might be overwhelmed. This usually happens due to:</p>
 
@@ -254,7 +254,7 @@
 
           <p>This should be the IP address that ESXi hosts can reach to send heartbeats. If it's set to an unreachable address (common after network changes or vCenter migrations), your hosts are essentially sending heartbeats into a black hole.</p>
 
-          <p>I've seen this happen after vCenter was moved to a different subnet without updating this setting. All hosts showed "Not Responding" but were perfectly healthy—they just couldn't reach vCenter on the old IP.</p>
+          <p>I've seen this happen after vCenter was moved to a different subnet without updating this setting. All hosts showed "Not Responding" but were perfectly healthy. They just couldn't reach vCenter on the old IP.</p>
 
           <h2>Check 5: Verify Storage Connectivity</h2>
           
@@ -294,7 +294,7 @@
             <li>Select <strong>Connection</strong> → <strong>Connect</strong></li>
           </ul>
 
-          <p>If this fails, pay close attention to the error message. It will often tell you exactly what's wrong—certificate mismatch, version incompatibility, or authentication failure. That error message is your roadmap for the next troubleshooting step.</p>
+          <p>If this fails, pay close attention to the error message. It will often tell you exactly what's wrong - certificate mismatch, version incompatibility, or authentication failure. That error message is your roadmap for the next troubleshooting step.</p>
 
           <h2>Quick Reference: Useful Commands</h2>
 
@@ -310,23 +310,23 @@
             <tbody>
               <tr>
                 <td><strong>Restart All Services</strong></td>
-                <td><code>services.sh restart</code></td>
+                <td><code>  services.sh restart</code></td>
               </tr>
               <tr>
                 <td><strong>Restart Host Daemon</strong></td>
-                <td><code>/etc/init.d/hostd restart</code></td>
+                <td><code>  /etc/init.d/hostd restart</code></td>
               </tr>
               <tr>
                 <td><strong>Restart vCenter Agent</strong></td>
-                <td><code>/etc/init.d/vpxa restart</code></td>
+                <td><code>  /etc/init.d/vpxa restart</code></td>
               </tr>
               <tr>
                 <td><strong>Check Agent Status</strong></td>
-                <td><code>/etc/init.d/hostd status</code></td>
+                <td><code>  /etc/init.d/hostd status</code></td>
               </tr>
               <tr>
                 <td><strong>View Storage Paths</strong></td>
-                <td><code>esxcli storage core path list</code></td>
+                <td><code>  esxcli storage core path list</code></td>
               </tr>
             </tbody>
           </table>
@@ -355,7 +355,7 @@
             <li>Licensing problems</li>
           </ul>
 
-          <p>By working through these six checks systematically, you can identify and fix most problems in under 15 minutes—no support call needed. Just remember to stay calm, check the obvious stuff first, and pay attention to error messages. They're usually trying to tell you exactly what's wrong.</p>
+          <p>By working through these six checks systematically, you can identify and fix most problems in under 15 minutes, no support call needed. Just remember to stay calm, check the obvious stuff first, and pay attention to error messages. They're usually trying to tell you exactly what's wrong.</p>
 
           <p>Got a disconnection issue that turned out to be something unusual? I'd be interested to hear about it.</p>
 
