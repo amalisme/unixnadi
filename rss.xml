@@ -6,7 +6,7 @@
     <link>https://unixpulse.com</link>
     <atom:link href="https://unixpulse.com/rss.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 17 Jan 2026 00:00:00 +0000</lastBuildDate>
     <managingEditor>hello@unixpulse.com (UnixPulse)</managingEditor>
     <webMaster>hello@unixpulse.com (UnixPulse)</webMaster>
     <ttl>60</ttl>
@@ -31,20 +31,6 @@
     
     <!-- Post 1 -->
     <item>
-      <title>Fixing the 'Collecting but Not Receiving Data' Warning in vROps NSX ALB Adapter</title>
-      <link>https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</link>
-      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</guid>
-      <pubDate>Fri, 10 Jan 2026 00:00:00 +0000</pubDate>
-      <category>VMware</category>
-      <description>How to fix the 'Collecting but Not Receiving Data' warning in VMware vRealize Operations NSX ALB adapter when connection tests pass but data isn't flowing.</description>
-      <content:encoded><![CDATA[
-        <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state. Here's what happened and how I fixed it.</p>
-        <p><a href="https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html">Read more →</a></p>
-      ]]></content:encoded>
-    </item>
-    
-    <!-- Post 2 -->
-    <item>
       <title>Getting Started with Linux: A Beginner's Journey</title>
       <link>https://unixpulse.com/blog/posts/getting-started-with-linux.html</link>
       <guid isPermaLink="true">https://unixpulse.com/blog/posts/getting-started-with-linux.html</guid>
@@ -57,7 +43,7 @@
       ]]></content:encoded>
     </item>
     
-    <!-- Post 3 -->
+    <!-- Post 2 -->
     <item>
       <title>Deploy a Static Website with GitHub + Cloudflare</title>
       <link>https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html</link>
@@ -71,7 +57,7 @@
       ]]></content:encoded>
     </item>
     
-    <!-- Post 4 -->
+    <!-- Post 3 -->
     <item>
       <title>VMware ESXi Basics: What I Wish I Knew Earlier</title>
       <link>https://unixpulse.com/blog/posts/vmware-esxi-basics.html</link>
@@ -82,6 +68,50 @@
       <content:encoded><![CDATA[
         <p>A practical introduction to VMware ESXi for those just starting with virtualization.</p>
         <p><a href="https://unixpulse.com/blog/posts/vmware-esxi-basics.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post 4 -->
+    <item>
+      <title>Fixing the 'Collecting but Not Receiving Data' Warning in vROps NSX ALB Adapter</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</guid>
+      <pubDate>Fri, 10 Jan 2026 00:00:00 +0000</pubDate>
+      <category>VMware</category>
+      <description>How to fix the 'Collecting but Not Receiving Data' warning in VMware vRealize Operations NSX ALB adapter when connection tests pass but data isn't flowing.</description>
+      <content:encoded><![CDATA[
+        <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state. Here's what happened and how I fixed it.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post 5 -->
+    <item>
+      <title>Making Persistent Nginx Changes in VMware Chargeback Docker Containers</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html</guid>
+      <pubDate>Fri, 15 Jan 2026 00:00:00 +0000</pubDate>
+      <category>VMware/Docker</category>
+      <description>Learn why your nginx config changes keep disappearing in VMware Chargeback and how to make them stick using Docker templates. A practical guide for PCI compliance and configuration persistence.</description>
+      <content:encoded><![CDATA[
+        <p>Yesterday I ran into one of those frustrating issues that makes you question your sanity. I was working on PCI compliance requirements for VMware Chargeback 8.10, and needed to modify the nginx configuration. Simple enough, right? I made my changes to /etc/nginx/nginx.conf, tested everything, confirmed it worked perfectly, and called it a day.</p>
+        <p>Then I rebooted the appliance. All my changes were gone. Completely wiped. It was like I'd never touched the file.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
+    <!-- Post 6 -->
+    <item>
+      <title>ESXi Host Disconnected: 6 Quick Checks Before Calling Support</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</guid>
+      <pubDate>Fri, 17 Jan 2026 00:00:00 +0000</pubDate>
+      <category>VMware</category>
+      <description>Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter. Learn the difference between Not Responding and Disconnected states, and fix common problems fast.</description>
+      <content:encoded><![CDATA[
+        <p>There's nothing quite like the sinking feeling you get when you open vSphere Client and see one or more of your ESXi hosts showing as grey and unresponsive. Whether it says "Not Responding" or "Disconnected," your first instinct might be to panic and immediately call VMware support.</p>
+        <p>But here's the thing—most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html">Read more →</a></p>
       ]]></content:encoded>
     </item>
     
