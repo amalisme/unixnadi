@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>How to Use Broadcom Token to Update vCenter Server via VAMI - UnixPulse</title>
+  <meta name="title" content="How to Use Broadcom Token to Update vCenter Server via VAMI - UnixPulse">
+  <meta name="description" content="vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token to download vCenter updates.">
+  <meta name="keywords" content="Broadcom, VMware, vCenter, VAMI, token, repository, update, upgrade">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html">
+  <meta property="og:title" content="How to Use Broadcom Token to Update vCenter Server via VAMI - UnixPulse">
+  <meta property="og:description" content="vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-01-20">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="VMware">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Use Broadcom Token to Update vCenter Server via VAMI - UnixPulse">
+  <meta name="twitter:description" content="vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token.">
+  
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Schema.org markup -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Update VMware vCenter 8.0 Update 3b to 3g via URL",
+    "description": "Step-by-step guide to update VMware vCenter Server from 8.0 Update 3b to 8.0 Update 3g using the VAMI URL method.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2026-01-20",
+    "dateModified": "2026-01-20",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html"}
+  }
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">VMware</span>
+          <h1>How to Update VMware vCenter 8.0 Update 3b to 3g via URL</h1>
+          <div class="post-meta">
+            <time datetime="2026-01-20">January 20, 2026</time>
+            <span class="reading-time">5 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>Keeping vCenter Server updated is one of those tasks that sounds simple but can go sideways if you skip the prep work. This guide walks through updating vCenter Server from 8.0 Update 3b to 8.0 Update 3g using the URL method in VAMI — the approach I use most often because it's straightforward and doesn't require mounting ISOs.</p>
+
+          <p>There are a few extra considerations. Let's make sure everything is in order before we begin.</p>
+
+          <h2>Pre-Requisites</h2>
+
+          <p>Before touching anything, work through these checks. Skipping them is how updates turn into outages.</p>
+
+          <h3>Verify Product Interoperability</h3>
+
+          <p>First, confirm that vCenter 8.0 Update 3g is compatible with your ESXi hosts, NSX version, vSAN, and any other VMware products in your environment. Use the <a href="https://interopmatrix.vmware.com/" target="_blank" rel="noopener">VMware Product Interoperability Matrix</a> to check compatibility before proceeding.</p>
+
+          <h3>Check the Upgrade Path</h3>
+
+          <p>VMware supports direct updates between certain versions, but not all. Verify that updating from 8.0 Update 3b directly to 8.0 Update 3g is a supported path. You can find this information in the <a href="https://docs.vmware.com/en/VMware-vSphere/index.html" target="_blank" rel="noopener">vSphere documentation</a> or release notes.</p>
+
+          <h3>Review vCenter Health Status</h3>
+
+          <p>Log into vSphere Client and check the overall health of your vCenter Server. Look for any warnings or errors that should be resolved before updating. A healthy vCenter going into an update dramatically reduces the chance of problems.</p>
+
+          <h3>Verify VAMI URL Connectivity</h3>
+
+          <p>Since we're using the URL method, make sure your vCenter appliance can reach the update repository. Log into VAMI at <code>https://your-vcenter:5480</code> and navigate to the Update section. If you see available updates listed, connectivity is good. If not, check your firewall rules and proxy settings—or see my guide on <a href="2026-01-20-broadcom-token-vcenter-update.html">configuring Broadcom token authentication for VAMI</a>.</p>
+
+          <div class="info-box">
+            <p>💡 <strong>Alternative Method:</strong> If your vCenter can't reach the internet, you can download the ISO from Broadcom's portal and use the CD-ROM method instead. The process is similar, but you'll mount the ISO to the vCenter VM first.</p>
+          </div>
+
+          <h2>Implementation Steps</h2>
+
+          <p>With the pre-requisites out of the way, let's walk through the actual update process.</p>
+
+          <h3>Step 1: Take a Snapshot of vCenter</h3>
+
+          <p>This is your safety net. Before making any changes, shut down the vCenter VM gracefully and take a snapshot at the hypervisor level. If anything goes wrong during the update, you can revert to this snapshot and be back to a working state in minutes.</p>
+
+          <p>Don't skip this step—I've seen too many updates fail where the only recovery option was a full restore because there was no snapshot.</p>
+
+          <h3>Step 2: Create a Manual Backup via VAMI</h3>
+
+          <p>In addition to the snapshot, create a file-based backup through VAMI. This gives you a second recovery option and is especially useful if you need to restore to different hardware.</p>
+
+          <ul>
+            <li>Log into VAMI at <code>https://your-vcenter:5480</code></li>
+            <li>Navigate to <strong>Backup</strong></li>
+            <li>Configure your backup location (FTP, FTPS, HTTP, HTTPS, SCP, or NFS)</li>
+            <li>Run a manual backup and wait for it to complete</li>
+          </ul>
+
+          <h3>Step 3: Check for Updates</h3>
+
+          <p>Now we're ready to start the actual update process.</p>
+
+          <ul>
+            <li>In VAMI, click on the <strong>Update</strong> tab</li>
+            <li>Click <strong>Check Updates</strong></li>
+            <li>Select <strong>Check URL</strong> (or Check CD-ROM if using the ISO method)</li>
+            <li>Wait for the available updates to load</li>
+          </ul>
+
+          <h3>Step 4: Select the Target Version</h3>
+
+          <p>From the list of available updates, select <strong>vCenter Server 8.0 Update 3g</strong>. Review the update details, including the build number and release notes link.</p>
+
+          <h3>Step 5: Stage and Install</h3>
+
+          <p>Click <strong>Stage and Install</strong> to begin the update process. You'll need to:</p>
+
+          <ul>
+            <li>Read and accept the End User License Agreement (EULA)</li>
+            <li>Wait for the pre-update checks to complete. The system will verify that the update can proceed successfully</li>
+          </ul>
+
+          <p>If any pre-checks fail, address the issues before continuing. Common pre-check failures include insufficient disk space, unsupported configurations, or service health problems.</p>
+
+          <h3>Step 6: Authenticate and Confirm</h3>
+
+          <p>When prompted, sign in using your vSphere SSO administrator credentials (typically <code>administrator@vsphere.local</code>). The system will ask you to confirm that you have a valid backup of vCenter Server.</p>
+
+          <div class="info-box">
+            <p>⚠️ <strong>Important:</strong> Make sure you actually have that backup before confirming. This isn't just a checkbox—if the update fails and you don't have a backup, recovery becomes much more complicated.</p>
+          </div>
+
+          <h3>Step 7: Wait for Completion</h3>
+
+          <p>Once you click <strong>Finish</strong>, the update process begins. This typically takes 30-60 minutes depending on your environment. During this time:</p>
+
+          <ul>
+            <li>vCenter services will be unavailable</li>
+            <li>The appliance may reboot one or more times</li>
+            <li>Don't interrupt the process or power off the VM</li>
+          </ul>
+
+          <p>You can monitor progress through the VAMI interface. The update is complete when you see the message <strong>"Installation succeeded"</strong>.</p>
+
+          <h3>Step 8: Post-Update Verification</h3>
+
+          <p>After the update completes:</p>
+
+          <ul>
+            <li>Log into vSphere Client and verify the new version in <strong>Help</strong> → <strong>About</strong></li>
+            <li>Check that all services are running in VAMI</li>
+            <li>Verify your ESXi hosts are still connected</li>
+            <li>Test basic operations like VM power on/off and vMotion</li>
+          </ul>
+
+          <p>Once everything looks good, you can delete the pre-update snapshot (keeping it too long can impact performance).</p>
+
+          <h2>Wrapping Up</h2>
+
+          <p>Updating vCenter via VAMI is pretty painless when you do the prep work. The key points to remember: verify compatibility first, always have a snapshot and backup, and don't rush through the pre-checks. If something fails, the error messages are usually helpful—read them carefully before troubleshooting.</p>
+
+          <p>If you're managing multiple vCenter instances, the process is the same for each one. Just make sure to check interoperability with any linked vCenters before updating.</p>
+
+          <!-- Related Article Box -->
+          <div class="post-related-box">
+            <p class="post-related-box-title">💼 Need Help With VMware Updates?</p>
+            <p>Planning a major vCenter upgrade or dealing with a complex VMware environment? I offer consulting services for VMware infrastructure. Check out the <a href="/work-with-me.html">Work With Me</a> page to see how I can help.</p>
+          </div>
+          
+        </div>
+        
+        <!-- Post Navigation -->
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="2026-01-20-broadcom-token-vcenter-update.html" class="post-nav-link">
+            ← Previous
+            <span>How to Use Broadcom Token to Update vCenter Server via VAMI</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
