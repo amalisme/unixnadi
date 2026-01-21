@@ -5,37 +5,26 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
   <!-- Primary Meta Tags -->
-  <title>UnixPulse - Notes on Linux, VMware & Web Dev</title>
-  <meta name="title" content="UnixPulse - Notes on Linux, VMware & Web Dev">
-  <meta name="description" content="A personal space for sharing Linux tutorials, VMware guides, web development notes, and tools. Simple, practical, and beginner-friendly.">
-  <meta name="keywords" content="Linux, VMware, web development, tutorials, static websites, GitHub Pages, Cloudflare, HTML, CSS">
-  <meta name="author" content="UnixPulse">
+  <title>Blog - UnixPulse</title>
+  <meta name="title" content="Blog - UnixPulse">
+  <meta name="description" content="Notes, tutorials, and guides on Linux, VMware, and web development. Practical tips from hands-on experience.">
   <meta name="robots" content="index, follow">
   
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://unixpulse.com/">
-  <meta property="og:title" content="UnixPulse - Notes on Linux, VMware & Web Dev">
-  <meta property="og:description" content="A personal space for sharing Linux tutorials, VMware guides, web development notes, and tools.">
+  <meta property="og:url" content="https://unixpulse.com/blog/">
+  <meta property="og:title" content="Blog - UnixPulse">
+  <meta property="og:description" content="Notes, tutorials, and guides on Linux, VMware, and web development.">
   <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
-  <meta property="og:locale" content="en_US">
-  <meta property="og:site_name" content="UnixPulse">
   
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:url" content="https://unixpulse.com/">
-  <meta name="twitter:title" content="UnixPulse - Notes on Linux, VMware & Web Dev">
-  <meta name="twitter:description" content="A personal space for sharing Linux tutorials, VMware guides, web development notes, and tools.">
-  <meta name="twitter:image" content="https://unixpulse.com/images/og-image.png">
+  <meta name="twitter:title" content="Blog - UnixPulse">
+  <meta name="twitter:description" content="Notes, tutorials, and guides on Linux, VMware, and web development.">
   
   <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="images/favicon.svg">
-  <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-  
-  <!-- Canonical URL -->
-  <link rel="canonical" href="https://unixpulse.com/">
-  
-  <!-- RSS Feed -->
+  <link rel="icon" type="image/svg+xml" href="../images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
   
   <!-- Fonts -->
@@ -44,22 +33,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Styles -->
-  <link rel="stylesheet" href="css/style.css">
-  
-  <!-- Schema.org markup -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "UnixPulse",
-    "description": "Notes on Linux, VMware & Web Dev",
-    "url": "https://unixpulse.com",
-    "author": {
-      "@type": "Person",
-      "name": "UnixPulse"
-    }
-  }
-  </script>
+  <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
   <!-- Header -->
@@ -77,12 +51,12 @@
       
       <nav class="nav" aria-label="Main navigation">
         <ul class="nav-list">
-          <li><a href="/" class="nav-link active">Home</a></li>
-          <li><a href="blog/" class="nav-link">Blog</a></li>
-          <li><a href="toolbox.html" class="nav-link">Toolbox</a></li>
-          <li><a href="projects.html" class="nav-link">Projects</a></li>
-          <li><a href="work-with-me.html" class="nav-link">Work With Me</a></li>
-          <li><a href="say-hello.html" class="nav-link">Say Hello</a></li>
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
         </ul>
         
         <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
@@ -118,89 +92,123 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="container">
-        <span class="hero-wave" aria-hidden="true">👋</span>
-        <h1>Hey there, welcome to UnixPulse</h1>
-        <p class="hero-tagline">
-          This is my little corner of the internet where I share notes on Linux, VMware, 
-          and building simple websites. Nothing fancy—just practical stuff I've learned along the way.
-        </p>
-        <div class="hero-cta">
-          <a href="blog/" class="btn btn-primary">Browse the Blog</a>
-          <a href="projects.html" class="btn btn-secondary">See What I've Built</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Latest Notes Section -->
     <section class="section">
       <div class="container">
         <header class="section-header">
-          <h2 class="section-title">
-            <span class="section-title-icon" aria-hidden="true">📝</span>
-            Latest Notes
-          </h2>
-          <p class="section-subtitle">Recent posts from the blog</p>
-        </header>
-
-        <div class="posts-grid" id="latest-posts-container">
-          <!-- Posts will be loaded here by blog-loader.js -->
-          <p>Loading latest posts...</p>
-        </div>
-        
-        <div class="text-center mt-xl">
-          <a href="blog/" class="btn btn-secondary">View All Posts</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Toolbox Section (Subtle) -->
-    <section class="section">
-      <div class="container">
-        <header class="section-header">
-          <h2 class="section-title">
-            <span class="section-title-icon" aria-hidden="true">🧰</span>
-            From the Toolbox
-          </h2>
-          <p class="section-subtitle">Things I've made that might help you too</p>
-        </header>
-        
-        <div class="card-grid">
-          <article class="product-card">
-            <img src="images/website-starter-kit-thumb.png" alt="Website Starter Kit preview" class="product-image" loading="lazy">
-            <div class="product-content">
-              <h3 class="product-title">Website Starter Kit</h3>
-              <p class="product-description">
-                A complete HTML template with guides for deploying your own website. 
-                Made this for folks who want something simple without the complexity of website builders.
-              </p>
-              <p class="product-price">$49</p>
-              <a href="https://unixpulse.gumroad.com/l/pdgubm" class="btn btn-primary" target="_blank" rel="noopener">
-                View on Gumroad
-              </a>
-            </div>
-          </article>
-        </div>
-        
-        <div class="text-center mt-xl">
-          <a href="toolbox.html" class="btn btn-secondary">Browse All Resources</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Subtle Services CTA -->
-    <section class="section">
-      <div class="container">
-        <div class="subtle-cta">
-          <span class="subtle-cta-icon" aria-hidden="true">💡</span>
-          <h3>Need a simple website for your business?</h3>
-          <p>
-            I help local businesses and small teams get online with fast, simple websites. 
-            No complicated CMS, no monthly fees—just clean HTML that works.
+          <h1>Blog</h1>
+          <p class="section-subtitle">
+            Notes, tutorials, and the occasional rambling on Linux, VMware, and web development.
           </p>
-          <a href="work-with-me.html" class="btn btn-secondary">Learn More</a>
+        </header>
+        
+        <div class="content-width">
+          <div class="blog-list">
+            
+            <!-- ========== 2026 ========== -->
+            <h2 class="mt-xl mb-lg">2026</h2>
+
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2026-01-20">Jan 20</time>
+              <a href="posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html" class="blog-post-title">
+                How to Update VMware vCenter 8.0 Update 3b to 3g via URL
+              </a>
+              <span class="blog-post-category">VMware</span>
+            </article>
+
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2026-01-20">Jan 20</time>
+              <a href="posts/2026-01-20-broadcom-token-vcenter-update.html" class="blog-post-title">
+                How to Use Broadcom Token to Update vCenter Server via VAMI
+              </a>
+              <span class="blog-post-category">VMware</span>
+            </article>
+
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2026-01-20">Jan 20</time>
+              <a href="posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html" class="blog-post-title">
+                How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager
+              </a>
+              <span class="blog-post-category">VMware</span>
+            </article>
+
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2026-01-17">Jan 17</time>
+              <a href="posts/2026-01-17-esxi-host-disconnected-troubleshooting.html" class="blog-post-title">
+                ESXi Host Disconnected: 6 Quick Checks Before Calling Support
+              </a>
+              <span class="blog-post-category">VMware</span>
+            </article>
+            
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2026-01-15">Jan 15</time>
+              <a href="posts/2026-01-15-persistent-nginx-vmware-chargeback.html" class="blog-post-title">
+                Making Persistent Nginx Changes in VMware Chargeback Docker Containers
+              </a>
+              <span class="blog-post-category">VMware/Docker</span>
+            </article>
+            
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2026-01-15">Jan 15</time>
+              <a href="posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html" class="blog-post-title">
+                Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter
+              </a>
+              <span class="blog-post-category">VMware</span>
+            </article>
+            
+            <!-- ========== 2025 ========== -->
+            <h2 class="mt-xl mb-lg">2025</h2>
+            
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2025-12-09">Dec 09</time>
+              <a href="posts/getting-started-with-linux.html" class="blog-post-title">
+                Getting Started with Linux: A Beginner's Journey
+              </a>
+              <span class="blog-post-category">Linux</span>
+            </article>
+            
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2025-12-05">Dec 05</time>
+              <a href="posts/deploy-website-github-cloudflare.html" class="blog-post-title">
+                Deploy a Static Website with GitHub + Cloudflare
+              </a>
+              <span class="blog-post-category">Web Dev</span>
+            </article>
+            
+            <article class="blog-post-item">
+              <time class="blog-post-date" datetime="2025-12-02">Dec 02</time>
+              <a href="posts/vmware-esxi-basics.html" class="blog-post-title">
+                VMware ESXi Basics: What I Wish I Knew Earlier
+              </a>
+              <span class="blog-post-category">VMware</span>
+            </article>
+            
+            <!-- ========== HOW TO ADD NEW POSTS ==========
+            
+            1. Copy the <article> block above
+            2. Update the datetime and displayed date
+            3. Update the href to point to your new post file
+            4. Update the title
+            5. Update the category
+            6. Add the post HTML file in the posts/ folder
+            
+            ============================================= -->
+            
+          </div>
+        </div>
+        
+        <!-- RSS Callout -->
+        <div class="subtle-cta mt-xl">
+          <span class="subtle-cta-icon" aria-hidden="true">📡</span>
+          <h3>Subscribe via RSS</h3>
+          <p>
+            Old school? Me too. Grab the RSS feed and follow along in your favorite reader.
+          </p>
+          <a href="/rss.xml" class="btn btn-secondary">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right: 8px;">
+              <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+            </svg>
+            Get RSS Feed
+          </a>
         </div>
       </div>
     </section>
@@ -213,8 +221,8 @@
         © 2026 UnixPulse. Made with ☕ and curiosity.
       </p>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="about.html" class="footer-link">About</a>
-        <a href="say-hello.html" class="footer-link">Contact</a>
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
         <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
@@ -225,8 +233,6 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script src="js/main.js"></script>
-  <script src="js/blog-loader.js"></script>
+  <script src="../js/main.js"></script>
 </body>
 </html>
