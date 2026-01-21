@@ -6,7 +6,7 @@
     <link>https://unixpulse.com</link>
     <atom:link href="https://unixpulse.com/rss.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
-    <lastBuildDate>Fri, 17 Jan 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 20 Jan 2026 00:00:00 +0800</lastBuildDate>
     <managingEditor>hello@unixpulse.com (UnixPulse)</managingEditor>
     <webMaster>hello@unixpulse.com (UnixPulse)</webMaster>
     <ttl>60</ttl>
@@ -29,7 +29,93 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
     
-    <!-- Post 1 -->
+    <!-- Post: vCenter Update 3b to 3g -->
+    <item>
+      <title>How to Update VMware vCenter 8.0 Update 3b to 3g via URL</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html</guid>
+      <pubDate>Mon, 20 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>Step-by-step guide to update VMware vCenter Server from 8.0 Update 3b to 8.0 Update 3g using the VAMI URL method. Includes pre-requisites, backup steps, and the full update process.</description>
+      <content:encoded><![CDATA[
+        <p>Keeping vCenter Server updated is one of those tasks that sounds simple but can go sideways if you skip the prep work. This guide walks through updating vCenter Server from 8.0 Update 3b to 8.0 Update 3g using the URL method in VAMI.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: Broadcom Token vCenter -->
+    <item>
+      <title>How to Use Broadcom Token to Update vCenter Server via VAMI</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html</guid>
+      <pubDate>Mon, 20 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token to download vCenter updates.</description>
+      <content:encoded><![CDATA[
+        <p>I was planning to update my vCenter to 8.0 Update 3g and while running through my pre-check activities, noticed that the VAMI couldn't connect to Broadcom's update repository. Here's how to fix it using your Broadcom token.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: Broadcom Token ESXi -->
+    <item>
+      <title>How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html</guid>
+      <pubDate>Mon, 20 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>Can't download ESXi updates from Broadcom's repository? Here's how to generate a token and configure vCenter Lifecycle Manager to connect to the new Broadcom depot URLs.</description>
+      <content:encoded><![CDATA[
+        <p>I ran into an issue recently while trying to update my ESXi hosts using vCenter Lifecycle Manager—the latest releases weren't showing up. Here's how to fix it using your Broadcom token.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: ESXi Host Disconnected -->
+    <item>
+      <title>ESXi Host Disconnected: 6 Quick Checks Before Calling Support</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</guid>
+      <pubDate>Fri, 17 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter. Learn the difference between Not Responding and Disconnected states, and fix common problems fast.</description>
+      <content:encoded><![CDATA[
+        <p>There's nothing quite like the sinking feeling you get when you open vSphere Client and see one or more of your ESXi hosts showing as grey and unresponsive. Whether it says "Not Responding" or "Disconnected," your first instinct might be to panic and immediately call VMware support.</p>
+        <p>But here's the thing—most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
+    <!-- Post: Persistent Nginx VMware Chargeback -->
+    <item>
+      <title>Making Persistent Nginx Changes in VMware Chargeback Docker Containers</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html</guid>
+      <pubDate>Thu, 15 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware/Docker</category>
+      <description>Learn why your nginx config changes keep disappearing in VMware Chargeback and how to make them stick using Docker templates. A practical guide for PCI compliance and configuration persistence.</description>
+      <content:encoded><![CDATA[
+        <p>Yesterday I ran into one of those frustrating issues that makes you question your sanity. I was working on PCI compliance requirements for VMware Chargeback 8.10, and needed to modify the nginx configuration. Simple enough, right? I made my changes to /etc/nginx/nginx.conf, tested everything, confirmed it worked perfectly, and called it a day.</p>
+        <p>Then I rebooted the appliance. All my changes were gone. Completely wiped. It was like I'd never touched the file.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: vROps NSX ALB Adapter -->
+    <item>
+      <title>Fixing the 'Collecting but Not Receiving Data' Warning in vROps NSX ALB Adapter</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</guid>
+      <pubDate>Fri, 10 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>How to fix the 'Collecting but Not Receiving Data' warning in VMware vRealize Operations NSX ALB adapter when connection tests pass but data isn't flowing.</description>
+      <content:encoded><![CDATA[
+        <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state. Here's what happened and how I fixed it.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
+    <!-- Post: Getting Started with Linux -->
     <item>
       <title>Getting Started with Linux: A Beginner's Journey</title>
       <link>https://unixpulse.com/blog/posts/getting-started-with-linux.html</link>
@@ -43,7 +129,7 @@
       ]]></content:encoded>
     </item>
     
-    <!-- Post 2 -->
+    <!-- Post: Deploy Website GitHub Cloudflare -->
     <item>
       <title>Deploy a Static Website with GitHub + Cloudflare</title>
       <link>https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html</link>
@@ -57,7 +143,7 @@
       ]]></content:encoded>
     </item>
     
-    <!-- Post 3 -->
+    <!-- Post: VMware ESXi Basics -->
     <item>
       <title>VMware ESXi Basics: What I Wish I Knew Earlier</title>
       <link>https://unixpulse.com/blog/posts/vmware-esxi-basics.html</link>
@@ -68,50 +154,6 @@
       <content:encoded><![CDATA[
         <p>A practical introduction to VMware ESXi for those just starting with virtualization.</p>
         <p><a href="https://unixpulse.com/blog/posts/vmware-esxi-basics.html">Read more →</a></p>
-      ]]></content:encoded>
-    </item>
-
-    <!-- Post 4 -->
-    <item>
-      <title>Fixing the 'Collecting but Not Receiving Data' Warning in vROps NSX ALB Adapter</title>
-      <link>https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</link>
-      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html</guid>
-      <pubDate>Fri, 10 Jan 2026 00:00:00 +0000</pubDate>
-      <category>VMware</category>
-      <description>How to fix the 'Collecting but Not Receiving Data' warning in VMware vRealize Operations NSX ALB adapter when connection tests pass but data isn't flowing.</description>
-      <content:encoded><![CDATA[
-        <p>Ran into an odd one recently with VMware vRealize Operations 8.10 and the NSX Advanced Load Balancer adapter. The adapter was stuck in a Warning state. Here's what happened and how I fixed it.</p>
-        <p><a href="https://unixpulse.com/blog/posts/2026-01-10-aria-ops-avi-adapter-not-working.html">Read more →</a></p>
-      ]]></content:encoded>
-    </item>
-
-    <!-- Post 5 -->
-    <item>
-      <title>Making Persistent Nginx Changes in VMware Chargeback Docker Containers</title>
-      <link>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback</link>
-      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html</guid>
-      <pubDate>Fri, 15 Jan 2026 00:00:00 +0000</pubDate>
-      <category>VMware/Docker</category>
-      <description>Learn why your nginx config changes keep disappearing in VMware Chargeback and how to make them stick using Docker templates. A practical guide for PCI compliance and configuration persistence.</description>
-      <content:encoded><![CDATA[
-        <p>Yesterday I ran into one of those frustrating issues that makes you question your sanity. I was working on PCI compliance requirements for VMware Chargeback 8.10, and needed to modify the nginx configuration. Simple enough, right? I made my changes to /etc/nginx/nginx.conf, tested everything, confirmed it worked perfectly, and called it a day.</p>
-        <p>Then I rebooted the appliance. All my changes were gone. Completely wiped. It was like I'd never touched the file.</p>
-        <p><a href="https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback">Read more →</a></p>
-      ]]></content:encoded>
-    </item>
-    
-    <!-- Post 6 -->
-    <item>
-      <title>ESXi Host Disconnected: 6 Quick Checks Before Calling Support</title>
-      <link>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</link>
-      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</guid>
-      <pubDate>Fri, 17 Jan 2026 00:00:00 +0000</pubDate>
-      <category>VMware</category>
-      <description>Step-by-step troubleshooting guide for ESXi host disconnection issues in vCenter. Learn the difference between Not Responding and Disconnected states, and fix common problems fast.</description>
-      <content:encoded><![CDATA[
-        <p>There's nothing quite like the sinking feeling you get when you open vSphere Client and see one or more of your ESXi hosts showing as grey and unresponsive. Whether it says "Not Responding" or "Disconnected," your first instinct might be to panic and immediately call VMware support.</p>
-        <p>But here's the thing—most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
-        <p><a href="https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html">Read more →</a></p>
       ]]></content:encoded>
     </item>
     
