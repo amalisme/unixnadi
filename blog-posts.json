@@ -1,5 +1,32 @@
 [
   {
+    "title": "How to Update VMware vCenter 8.0 Update 3b to 3g via URL",
+    "slug": "2026-01-20-vcenter-update-8-update-3b-to-3g",
+    "category": "VMware",
+    "date": "2026-01-20",
+    "dateDisplay": "January 20, 2026",
+    "readTime": "5 min read",
+    "excerpt": "Step-by-step guide to update VMware vCenter Server from 8.0 Update 3b to 8.0 Update 3g using the VAMI URL method. Includes pre-requisites, backup steps, and the full update process."
+  },
+  {
+    "title": "How to Use Broadcom Token to Update vCenter Server via VAMI",
+    "slug": "2026-01-20-broadcom-token-vcenter-update",
+    "category": "VMware",
+    "date": "2026-01-20",
+    "dateDisplay": "January 20, 2026",
+    "readTime": "3 min read",
+    "excerpt": "vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token to download vCenter updates."
+  },
+  {
+    "title": "How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager",
+    "slug": "2026-01-20-broadcom-token-esxi-lifecycle-manager",
+    "category": "VMware",
+    "date": "2026-01-20",
+    "dateDisplay": "January 20, 2026",
+    "readTime": "4 min read",
+    "excerpt": "Can't download ESXi updates from Broadcom's repository? Here's how to generate a token and configure vCenter Lifecycle Manager to connect to the new Broadcom depot URLs."
+  },
+  {
     "title": "ESXi Host Disconnected: 6 Quick Checks Before Calling Support",
     "slug": "2026-01-17-esxi-host-disconnected-troubleshooting",
     "category": "VMware",
