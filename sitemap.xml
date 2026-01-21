@@ -22,14 +22,14 @@
   <!-- Main Pages -->
   <url>
     <loc>https://unixpulse.com/</loc>
-    <lastmod>2026-01-10</lastmod>
+    <lastmod>2026-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   
   <url>
     <loc>https://unixpulse.com/blog/</loc>
-    <lastmod>2026-01-10</lastmod>
+    <lastmod>2026-01-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
@@ -70,6 +70,27 @@
   </url>
   
   <!-- Blog Posts -->
+  <url>
+    <loc>https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
+    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
   <url>
     <loc>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</loc>
     <lastmod>2026-01-17</lastmod>
