@@ -6,7 +6,7 @@
     <link>https://unixpulse.com</link>
     <atom:link href="https://unixpulse.com/rss.xml" rel="self" type="application/rss+xml"/>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Jan 2026 00:00:00 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 24 Jan 2026 00:00:00 +0800</lastBuildDate>
     <managingEditor>hello@unixpulse.com (UnixPulse)</managingEditor>
     <webMaster>hello@unixpulse.com (UnixPulse)</webMaster>
     <ttl>60</ttl>
@@ -29,6 +29,20 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
     
+    <!-- Post: Bloom HTML Template -->
+    <item>
+      <title>Introducing Bloom: A Beauty &amp; Wellness HTML Template</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-24-bloom-beauty-wellness-html-template.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-24-bloom-beauty-wellness-html-template.html</guid>
+      <pubDate>Fri, 24 Jan 2026 00:00:00 +0800</pubDate>
+      <category>Web Dev</category>
+      <description>Meet Bloom — a modern, lightweight HTML template for beauty salons, spas, and wellness centers. Pure vanilla HTML, CSS, and JavaScript with dark mode, full accessibility, and zero dependencies.</description>
+      <content:encoded><![CDATA[
+        <p>I've been working on something new: Bloom — a modern, lightweight HTML template designed specifically for beauty salons, spas, wellness centers, skincare brands, and hair studios. Built with pure vanilla HTML, CSS, and JavaScript. No frameworks, no dependencies.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-24-bloom-beauty-wellness-html-template.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
     <!-- Post: vCenter Update 3b to 3g -->
     <item>
       <title>How to Update VMware vCenter 8.0 Update 3b to 3g via URL</title>
