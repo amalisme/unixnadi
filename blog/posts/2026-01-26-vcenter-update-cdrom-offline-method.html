@@ -106,7 +106,7 @@
       <div class="container content-width">
         <div class="post-content">
           
-          <p>If your vCenter Server doesn't have internet access to Broadcom's update repository—or you simply prefer to have more control over the update process—the CD-ROM method is your best option. Instead of pulling updates directly from Broadcom's servers, you download the ISO file manually, upload it to a datastore, and mount it to the vCenter appliance.</p>
+          <p>If your vCenter Server doesn't have internet access to Broadcom's update repository or you simply prefer to have more control over the update process, the CD-ROM method is your best option. Instead of pulling updates directly from Broadcom's servers, you download the ISO file manually, upload it to a datastore, and mount it to the vCenter appliance.</p>
 
           <p>This offline approach is common in air-gapped environments or when you want to stage updates locally before applying them. Here's how to do it step by step.</p>
 
@@ -122,11 +122,11 @@
 
           <h3>Create a Fresh Snapshot</h3>
 
-          <p>Before making any changes, take a snapshot of the vCenter VM. This is your rollback plan if anything goes wrong during the update. Shut down the vCenter VM gracefully before taking the snapshot for a clean state.</p>
+          <p>Before making any changes, take a snapshot of the vCenter VM. This is your rollback plan if anything goes wrong during the update.</p>
 
           <h3>Attach the ISO to vCenter VM</h3>
 
-          <p>Edit the vCenter VM settings and connect the CD/DVD drive. Point it to the ISO file you uploaded to the datastore. Make sure the "Connected" and "Connect at power on" options are checked, then power on the VM.</p>
+          <p>Edit the vCenter VM settings and connect the CD/DVD drive. Point it to the ISO file you uploaded to the datastore. Make sure the "Connected" and "Connect at power on" options are checked.</p>
 
           <h2>Update Process</h2>
 
@@ -136,29 +136,29 @@
 
           <h3>Step 2: Start the Update</h3>
 
-          <p>Go to the <strong>Update</strong> tab and click <strong>Check Updates</strong>. Select <strong>Check CD-ROM</strong> from the options. The system will detect the mounted ISO and display the available update version.</p>
+          <p>Go to the <strong>Update</strong> tab and click <strong>Check Updates</strong>. Select <strong>Check CD-ROM + URL</strong> from the options. The system will detect the mounted ISO and display the available update version.</p>
 
           <h3>Step 3: Run Pre-Check</h3>
 
           <p>Before proceeding, click on the pre-check option. The system will analyze your current environment and show you the current version, target version, and any potential issues.</p>
 
-          <img src="/images/blog/vcenter-cdrom-update-precheck.webp" alt="vCenter VAMI pre-check screen showing current version, target version, and pre-check link" loading="lazy">
+          <img src="/images/vcenter-cdrom-update-precheck.webp" alt="vCenter VAMI pre-check screen showing current version, target version, and pre-check link" loading="lazy">
 
           <h3>Step 4: Review Warnings</h3>
 
           <p>After the pre-check completes, you may see warnings about your environment. In my case, the system returned three warnings with suggested resolutions.</p>
 
-          <img src="/images/blog/vcenter-cdrom-update-warning.webp" alt="vCenter VAMI showing three warnings with resolution recommendations" loading="lazy">
+          <img src="/images/vcenter-cdrom-update-warning.webp" alt="vCenter VAMI showing three warnings with resolution recommendations" loading="lazy">
 
-          <p>You have two options here: resolve the warnings before continuing, or proceed anyway if you've determined they're not critical for your environment. Review each warning carefully—some may be informational while others could impact your update.</p>
+          <p>You have two options here: resolve the warnings before continuing, or proceed anyway if you've determined they're not critical for your environment. Review each warning carefully. Some may be informational while others could impact your update.</p>
 
           <h3>Step 5: Stage the Update</h3>
 
           <p>Click <strong>Stage and Install</strong> to begin. A popup window will appear guiding you through the process.</p>
 
-          <p>First, you'll need to accept the End User License Agreement (EULA). After accepting, the system automatically runs the pre-check again. If you didn't resolve the warnings earlier, they'll appear again—but this time with an additional <strong>Ignore and Continue</strong> button.</p>
+          <p>First, you'll need to accept the End User License Agreement (EULA). After accepting, the system automatically runs the pre-check again. If you didn't resolve the warnings earlier, they'll appear again. But this time with an additional <strong>Ignore and Continue</strong> button.</p>
 
-          <img src="/images/blog/vcenter-cdrom-update-ignore-continue.webp" alt="vCenter VAMI warning screen with Ignore and Continue button" loading="lazy">
+          <img src="/images/vcenter-cdrom-update-ignore-continue.webp" alt="vCenter VAMI warning screen with Ignore and Continue button" loading="lazy">
 
           <p>If you've assessed the warnings and determined it's safe to proceed, click <strong>Ignore and Continue</strong>.</p>
 
@@ -166,15 +166,15 @@
 
           <p>The next step asks you to confirm that you have a backup. Tick the checkbox for <strong>"I have backed up vCenter Server and its associated databases"</strong>. The screen will also show you the estimated time for the update to complete.</p>
 
-          <img src="/images/blog/vcenter-cdrom-update-backup.webp" alt="vCenter VAMI backup confirmation screen showing estimated update time" loading="lazy">
+          <img src="/images/vcenter-cdrom-update-backup.webp" alt="vCenter VAMI backup confirmation screen showing estimated update time" loading="lazy">
 
           <p>Click <strong>Finish</strong> to start the update.</p>
 
           <h3>Step 7: Wait for Update to Complete</h3>
 
-          <p>The update process begins. During this time, vCenter will be completely unavailable—you won't be able to access the vSphere Client or perform any management tasks. This is normal.</p>
+          <p>The update process begins. During this time, vCenter will be completely unavailable. You won't be able to access the vSphere Client or perform any management tasks. This is normal.</p>
 
-          <img src="/images/blog/vcenter-cdrom-update-progress.webp" alt="vCenter VAMI showing update progress" loading="lazy">
+          <img src="/images/vcenter-cdrom-update-progress.webp" alt="vCenter VAMI showing update progress" loading="lazy">
 
           <p>Don't interrupt the process. Don't power off the VM. Just wait for it to complete. The time varies depending on your environment, but the estimate shown earlier should be fairly accurate.</p>
 
@@ -186,7 +186,7 @@
 
           <p>Log back into VAMI at <code>https://&lt;your-vcenter&gt;:5480</code> and check the version number displayed. Also review the health status to ensure all services are running properly.</p>
 
-          <img src="/images/blog/vcenter-cdrom-update-verify.webp" alt="vCenter VAMI showing updated version and health status" loading="lazy">
+          <img src="/images/vcenter-cdrom-update-verify.webp" alt="vCenter VAMI showing updated version and health status" loading="lazy">
 
           <h3>Verify in vSphere Client</h3>
 
@@ -194,7 +194,7 @@
 
           <h3>Test Basic Operations</h3>
 
-          <p>Don't just assume everything works—test it. Perform some basic administrative tasks to confirm vCenter is functioning normally:</p>
+          <p>Don't just assume everything works, test it. Perform some basic administrative tasks to confirm vCenter is functioning normally:</p>
 
           <ul>
             <li>vMotion a VM between hosts</li>
@@ -215,7 +215,7 @@
 
           <p>The CD-ROM method takes a bit more preparation than the online URL method, but it gives you complete control over the update process. It's especially useful when your vCenter can't reach Broadcom's repository, or when you need to update multiple vCenter instances using the same ISO.</p>
 
-          <p>The key steps to remember: download the ISO, upload to datastore, snapshot before updating, attach the ISO, and verify everything works after the update completes. And don't forget to delete that snapshot after a week of stable operation.</p>
+          <p>The key steps to remember: download the ISO, upload to datastore, snapshot/manual backup before updating, attach the ISO, and verify everything works after the update completes. And don't forget to delete that snapshot after a week of stable operation.</p>
 
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Related Articles</p>
