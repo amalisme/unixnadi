@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>How to Update VMware vCenter Using the CD-ROM (Offline) Method - UnixPulse</title>
+  <meta name="title" content="How to Update VMware vCenter Using the CD-ROM (Offline) Method - UnixPulse">
+  <meta name="description" content="Step-by-step guide to update VMware vCenter Server using the offline CD-ROM method. Download the ISO, upload to datastore, and update without internet access to Broadcom's repository.">
+  <meta name="keywords" content="VMware, vCenter, update, upgrade, VAMI, CD-ROM, ISO, offline, Broadcom">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html">
+  <meta property="og:title" content="How to Update VMware vCenter Using the CD-ROM (Offline) Method - UnixPulse">
+  <meta property="og:description" content="Step-by-step guide to update VMware vCenter Server using the offline CD-ROM method. No internet access to Broadcom's repository required.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-01-26">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="VMware">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Update VMware vCenter Using the CD-ROM (Offline) Method - UnixPulse">
+  <meta name="twitter:description" content="Step-by-step guide to update VMware vCenter Server using the offline CD-ROM method. No internet access to Broadcom's repository required.">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Update VMware vCenter Using the CD-ROM (Offline) Method",
+    "description": "Step-by-step guide to update VMware vCenter Server using the offline CD-ROM method. Download the ISO, upload to datastore, and update without internet access to Broadcom's repository.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2026-01-26",
+    "dateModified": "2026-01-26",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html"}
+  }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">VMware</span>
+          <h1>How to Update VMware vCenter Using the CD-ROM (Offline) Method</h1>
+          <div class="post-meta">
+            <time datetime="2026-01-26">January 26, 2026</time>
+            <span class="reading-time">6 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>If your vCenter Server doesn't have internet access to Broadcom's update repository—or you simply prefer to have more control over the update process—the CD-ROM method is your best option. Instead of pulling updates directly from Broadcom's servers, you download the ISO file manually, upload it to a datastore, and mount it to the vCenter appliance.</p>
+
+          <p>This offline approach is common in air-gapped environments or when you want to stage updates locally before applying them. Here's how to do it step by step.</p>
+
+          <h2>Pre-Requisites</h2>
+
+          <h3>Download the ISO from Broadcom Portal</h3>
+
+          <p>First, log into the <a href="https://support.broadcom.com/" target="_blank" rel="noopener">Broadcom Support Portal</a> and download the vCenter Server update ISO for your target version. Make sure you're downloading the correct ISO that matches your upgrade path.</p>
+
+          <h3>Upload the ISO to a Datastore</h3>
+
+          <p>Once downloaded, upload the ISO file to a datastore accessible by the ESXi host where your vCenter VM is running. You can do this through the vSphere Client or directly via the ESXi Host Client if vCenter is temporarily unavailable.</p>
+
+          <h3>Create a Fresh Snapshot</h3>
+
+          <p>Before making any changes, take a snapshot of the vCenter VM. This is your rollback plan if anything goes wrong during the update. Shut down the vCenter VM gracefully before taking the snapshot for a clean state.</p>
+
+          <h3>Attach the ISO to vCenter VM</h3>
+
+          <p>Edit the vCenter VM settings and connect the CD/DVD drive. Point it to the ISO file you uploaded to the datastore. Make sure the "Connected" and "Connect at power on" options are checked, then power on the VM.</p>
+
+          <h2>Update Process</h2>
+
+          <h3>Step 1: Access VAMI</h3>
+
+          <p>Open your browser and navigate to the vCenter VAMI interface at <code>https://&lt;your-vcenter&gt;:5480</code>. Log in using the <strong>root</strong> account.</p>
+
+          <h3>Step 2: Start the Update</h3>
+
+          <p>Go to the <strong>Update</strong> tab and click <strong>Check Updates</strong>. Select <strong>Check CD-ROM</strong> from the options. The system will detect the mounted ISO and display the available update version.</p>
+
+          <h3>Step 3: Run Pre-Check</h3>
+
+          <p>Before proceeding, click on the pre-check option. The system will analyze your current environment and show you the current version, target version, and any potential issues.</p>
+
+          <img src="/images/blog/vcenter-cdrom-update-precheck.webp" alt="vCenter VAMI pre-check screen showing current version, target version, and pre-check link" loading="lazy">
+
+          <h3>Step 4: Review Warnings</h3>
+
+          <p>After the pre-check completes, you may see warnings about your environment. In my case, the system returned three warnings with suggested resolutions.</p>
+
+          <img src="/images/blog/vcenter-cdrom-update-warning.webp" alt="vCenter VAMI showing three warnings with resolution recommendations" loading="lazy">
+
+          <p>You have two options here: resolve the warnings before continuing, or proceed anyway if you've determined they're not critical for your environment. Review each warning carefully—some may be informational while others could impact your update.</p>
+
+          <h3>Step 5: Stage the Update</h3>
+
+          <p>Click <strong>Stage and Install</strong> to begin. A popup window will appear guiding you through the process.</p>
+
+          <p>First, you'll need to accept the End User License Agreement (EULA). After accepting, the system automatically runs the pre-check again. If you didn't resolve the warnings earlier, they'll appear again—but this time with an additional <strong>Ignore and Continue</strong> button.</p>
+
+          <img src="/images/blog/vcenter-cdrom-update-ignore-continue.webp" alt="vCenter VAMI warning screen with Ignore and Continue button" loading="lazy">
+
+          <p>If you've assessed the warnings and determined it's safe to proceed, click <strong>Ignore and Continue</strong>.</p>
+
+          <h3>Step 6: Confirm Backup</h3>
+
+          <p>The next step asks you to confirm that you have a backup. Tick the checkbox for <strong>"I have backed up vCenter Server and its associated databases"</strong>. The screen will also show you the estimated time for the update to complete.</p>
+
+          <img src="/images/blog/vcenter-cdrom-update-backup.webp" alt="vCenter VAMI backup confirmation screen showing estimated update time" loading="lazy">
+
+          <p>Click <strong>Finish</strong> to start the update.</p>
+
+          <h3>Step 7: Wait for Update to Complete</h3>
+
+          <p>The update process begins. During this time, vCenter will be completely unavailable—you won't be able to access the vSphere Client or perform any management tasks. This is normal.</p>
+
+          <img src="/images/blog/vcenter-cdrom-update-progress.webp" alt="vCenter VAMI showing update progress" loading="lazy">
+
+          <p>Don't interrupt the process. Don't power off the VM. Just wait for it to complete. The time varies depending on your environment, but the estimate shown earlier should be fairly accurate.</p>
+
+          <h2>Post-Update Verification</h2>
+
+          <p>Once the update finishes, wait 2-5 minutes for all services to fully start before attempting to log in.</p>
+
+          <h3>Verify in VAMI</h3>
+
+          <p>Log back into VAMI at <code>https://&lt;your-vcenter&gt;:5480</code> and check the version number displayed. Also review the health status to ensure all services are running properly.</p>
+
+          <img src="/images/blog/vcenter-cdrom-update-verify.webp" alt="vCenter VAMI showing updated version and health status" loading="lazy">
+
+          <h3>Verify in vSphere Client</h3>
+
+          <p>Log into the vSphere Client and navigate to <strong>Help</strong> → <strong>About</strong> to confirm the vCenter and vSphere versions match your target update.</p>
+
+          <h3>Test Basic Operations</h3>
+
+          <p>Don't just assume everything works—test it. Perform some basic administrative tasks to confirm vCenter is functioning normally:</p>
+
+          <ul>
+            <li>vMotion a VM between hosts</li>
+            <li>Create a new snapshot on any VM or appliance</li>
+            <li>Browse datastores</li>
+            <li>Check that all ESXi hosts are connected and healthy</li>
+          </ul>
+
+          <h3>Monitor and Clean Up</h3>
+
+          <p>Keep an eye on your vCenter for about a week after the update. Watch for any unexpected behavior, performance issues, or errors in the logs. If everything looks stable after a week, you can safely delete the pre-update snapshot you created earlier.</p>
+
+          <div class="info-box">
+            <p>⚠️ <strong>Don't forget:</strong> Keeping snapshots for extended periods can impact VM performance and consume significant storage. Delete the snapshot once you're confident the update is successful.</p>
+          </div>
+
+          <h2>Wrapping Up</h2>
+
+          <p>The CD-ROM method takes a bit more preparation than the online URL method, but it gives you complete control over the update process. It's especially useful when your vCenter can't reach Broadcom's repository, or when you need to update multiple vCenter instances using the same ISO.</p>
+
+          <p>The key steps to remember: download the ISO, upload to datastore, snapshot before updating, attach the ISO, and verify everything works after the update completes. And don't forget to delete that snapshot after a week of stable operation.</p>
+
+          <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <p>Looking for other vCenter update methods?</p>
+            <ul>
+              <li><a href="2026-01-20-vcenter-update-8-update-3b-to-3g.html">How to Update VMware vCenter 8.0 Update 3b to 3g via URL</a></li>
+              <li><a href="2026-01-20-broadcom-token-vcenter-update.html">How to Use Broadcom Token to Update vCenter Server via VAMI</a></li>
+            </ul>
+          </div>
+          
+        </div>
+        
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="2026-01-24-bloom-beauty-wellness-html-template.html" class="post-nav-link">
+            ← Previous
+            <span>Introducing Bloom: A Beauty & Wellness HTML Template</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
