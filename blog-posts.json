@@ -1,5 +1,14 @@
 [
   {
+    "title": "How to Update VMware vCenter Using the CD-ROM (Offline) Method",
+    "slug": "2026-01-26-vcenter-update-cdrom-offline-method",
+    "category": "VMware",
+    "date": "2026-01-26",
+    "dateDisplay": "January 26, 2026",
+    "readTime": "6 min read",
+    "excerpt": "Step-by-step guide to update VMware vCenter Server using the offline CD-ROM method. Download the ISO, upload to datastore, and update without internet access to Broadcom's repository."
+  },
+  {
     "title": "Introducing Bloom: A Beauty & Wellness HTML Template",
     "slug": "2026-01-24-bloom-beauty-wellness-html-template",
     "category": "Web Dev",
