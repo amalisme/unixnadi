@@ -1,5 +1,14 @@
 [
   {
+    "title": "Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade",
+    "slug": "2026-01-29-vrni-upgrade-6-9-to-6-14-offline",
+    "category": "VMware",
+    "date": "2026-01-29",
+    "dateDisplay": "January 29, 2026",
+    "readTime": "8 min read",
+    "excerpt": "Step-by-step guide to upgrade vRealize Network Insight (vRNI) from version 6.9.0 to 6.14.1 using the single-click offline upgrade method. Includes upgrade path, pre-requisites, and verification steps."
+  },
+  {
     "title": "How to Update VMware vCenter Using the CD-ROM (Offline) Method",
     "slug": "2026-01-26-vcenter-update-cdrom-offline-method",
     "category": "VMware",
