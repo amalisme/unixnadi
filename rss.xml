@@ -29,6 +29,34 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
     
+    <!-- Post: vRNI Upgrade 6.9 to 6.14 -->
+    <item>
+      <title>Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html</guid>
+      <pubDate>Wed, 29 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>Step-by-step guide to upgrade vRealize Network Insight (vRNI) from version 6.9.0 to 6.14.1 using the single-click offline upgrade method. Includes upgrade path, pre-requisites, and verification steps.</description>
+      <content:encoded><![CDATA[
+        <p>I had a sudden request from a customer to upgrade their vRealize Network Insight deployment from version 6.9.0 to 6.14.1. Here's the complete walkthrough using the Single-Click Offline Upgrade method, including the required upgrade path through versions 6.11.0 and 6.13.0.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: vCenter CD-ROM Offline Update -->
+    <item>
+      <title>How to Update VMware vCenter Using the CD-ROM (Offline) Method</title>
+      <link>https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html</guid>
+      <pubDate>Sun, 26 Jan 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>Step-by-step guide to update VMware vCenter Server using the offline CD-ROM method. Download the ISO, upload to datastore, and update without internet access to Broadcom's repository.</description>
+      <content:encoded><![CDATA[
+        <p>If your vCenter Server doesn't have internet access to Broadcom's update repository—or you simply prefer to have more control over the update process—the CD-ROM method is your best option. Here's how to do it step by step.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
     <!-- Post: Bloom HTML Template -->
     <item>
       <title>Introducing Bloom: A Beauty &amp; Wellness HTML Template</title>
