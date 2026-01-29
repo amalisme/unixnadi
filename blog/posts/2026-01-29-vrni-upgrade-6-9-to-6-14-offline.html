@@ -3,12 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
   <title>Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade - UnixPulse</title>
   <meta name="title" content="Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade - UnixPulse">
   <meta name="description" content="Step-by-step guide to upgrade vRealize Network Insight (vRNI) from version 6.9.0 to 6.14.1 using the single-click offline upgrade method. Includes upgrade path, pre-requisites, and verification steps.">
   <meta name="keywords" content="VMware, vRealize Network Insight, vRNI, upgrade, offline, Aria Operations for Networks, Broadcom">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
+
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html">
   <meta property="og:title" content="Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade - UnixPulse">
@@ -17,16 +21,26 @@
   <meta property="article:published_time" content="2026-01-29">
   <meta property="article:author" content="UnixPulse">
   <meta property="article:section" content="VMware">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade - UnixPulse">
   <meta name="twitter:description" content="Step-by-step guide to upgrade vRealize Network Insight (vRNI) from version 6.9.0 to 6.14.1 using the single-click offline upgrade method.">
+  
+  <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
+  
+  <!-- Schema.org markup -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -42,6 +56,7 @@
   </script>
 </head>
 <body>
+  <!-- Header -->
   <header class="header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="UnixPulse Home">
@@ -86,7 +101,8 @@
           </div>
         </div>
       </header>
-      
+
+      <!-- Post Content -->
       <div class="container content-width">
         <div class="post-content">
           
@@ -144,7 +160,7 @@
 
           <h3>Change UI Timeout</h3>
 
-          <p>The KB <a href="https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-operations-for-networks/6-10/vrealize-network-insight-installation-6-10/upgrading-vrealize-network-insight/single-click-upgrade.html" target="_blank" rel="noopener">here</a>suggests changing the UI timeout to 2 hours, but I set it to 4 hours. Better safe than sorry. You don't want the session timing out in the middle of an upgrade.</p>
+          <p>The KB <a href="https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-operations-for-networks/6-10/vrealize-network-insight-installation-6-10/upgrading-vrealize-network-insight/single-click-upgrade.html" target="_blank" rel="noopener">here</a> suggests changing the UI timeout to 2 hours, but I set it to 4 hours. Better safe than sorry. You don't want the session timing out in the middle of an upgrade.</p>
 
           <h3>Verify Platform and Collector Status</h3>
 
@@ -172,17 +188,17 @@
 
           <p>Go to <strong>Settings</strong> → <strong>Infrastructure and Support</strong>. Under the Product section, you'll see the Software Version, Online Update toggle, and Offline Update option. Click on <strong>Click Here</strong> beside Offline Upgrade.</p>
 
-          <img src="/images/blog/vrni-upgrade-offline-click.webp" alt="vRNI Settings page showing Infrastructure and Support section with Offline Upgrade option" loading="lazy">
+          <img src="/images/vrni-upgrade-offline-click.webp" alt="vRNI Settings page showing Infrastructure and Support section with Offline Upgrade option" loading="lazy">
 
           <h3>Step 2: Upload the ISO</h3>
 
           <p>Browse and select the ISO file for version 6.11.0. The upload will take some time depending on your connection speed.</p>
 
-          <img src="/images/blog/vrni-upgrade-browse-iso.webp" alt="vRNI file browser dialog for selecting upgrade ISO" loading="lazy">
+          <img src="/images/vrni-upgrade-browse-iso.webp" alt="vRNI file browser dialog for selecting upgrade ISO" loading="lazy">
 
           <p>Wait for the upload to complete. You'll see a progress indicator.</p>
 
-          <img src="/images/blog/vrni-upgrade-upload-progress.webp" alt="vRNI showing ISO upload progress" loading="lazy">
+          <img src="/images/vrni-upgrade-upload-progress.webp" alt="vRNI showing ISO upload progress" loading="lazy">
 
           <h3>Step 3: Start the Upgrade</h3>
 
@@ -198,29 +214,29 @@
 
           <p>A new popup shows the pre-check status. Review any warnings or issues, then click <strong>Install Now</strong> to proceed.</p>
 
-          <img src="/images/blog/vrni-upgrade-precheck.webp" alt="vRNI pre-check status screen with Install Now button" loading="lazy">
+          <img src="/images/vrni-upgrade-precheck.webp" alt="vRNI pre-check status screen with Install Now button" loading="lazy">
 
           <h3>Step 5: Upgrade in Progress</h3>
 
           <p>And here's the main event—the upgrade begins. This is why we changed the UI timeout earlier. You don't want the upgrade to be interrupted, and I didn't want to find out what happens if the session times out mid-upgrade.</p>
 
-          <img src="/images/blog/vrni-upgrade-in-progress.webp" alt="vRNI showing upgrade in progress" loading="lazy">
+          <img src="/images/vrni-upgrade-in-progress.webp" alt="vRNI showing upgrade in progress" loading="lazy">
 
           <p>You can monitor the progress as the system upgrades various services.</p>
 
-          <img src="/images/blog/vrni-upgrade-services.webp" alt="vRNI showing services being upgraded" loading="lazy">
+          <img src="/images/vrni-upgrade-services.webp" alt="vRNI showing services being upgraded" loading="lazy">
 
           <h3>Step 6: Upgrade Complete</h3>
 
           <p>Once the upgrade finishes, you'll see a completion message. Click <strong>Done</strong>.</p>
 
-          <img src="/images/blog/vrni-upgrade-complete.webp" alt="vRNI upgrade complete dialog with Done button" loading="lazy">
+          <img src="/images/vrni-upgrade-complete.webp" alt="vRNI upgrade complete dialog with Done button" loading="lazy">
 
           <h3>Step 7: Verify the Upgrade</h3>
 
           <p>After clicking Done, you'll be redirected to the login page—now with the new interface.</p>
 
-          <img src="/images/blog/vrni-upgrade-login-new.webp" alt="vRNI new login interface after upgrade" loading="lazy">
+          <img src="/images/vrni-upgrade-login-new.webp" alt="vRNI new login interface after upgrade" loading="lazy">
 
           <p>Log in and verify the installed version. Compare the values you recorded earlier (VM count, firewall rules, security groups, etc.) to ensure everything came through correctly.</p>
 
@@ -237,7 +253,7 @@
 
           <p>After completing all three upgrade cycles, here's my customer's final version:</p>
 
-          <img src="/images/blog/vrni-upgrade-final-version.webp" alt="vRNI showing final upgraded version 6.14.1" loading="lazy">
+          <img src="/images/vrni-upgrade-final-version.webp" alt="vRNI showing final upgraded version 6.14.1" loading="lazy">
 
           <h2>Wrapping Up</h2>
 
@@ -259,7 +275,8 @@
           </div>
           
         </div>
-        
+
+        <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
           <a href="2026-01-26-vcenter-update-cdrom-offline-method.html" class="post-nav-link">
             ← Previous
@@ -270,6 +287,7 @@
     </article>
   </main>
 
+  <!--Footer-->
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
