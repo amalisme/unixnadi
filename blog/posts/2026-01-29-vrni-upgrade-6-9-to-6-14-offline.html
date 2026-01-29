@@ -92,7 +92,7 @@
           
           <p>I had a sudden request from a customer yesterday to upgrade their vRealize Network Insight deployment. They were running version 6.9.0, which is way out of support life. The plan was to upgrade to the latest release (6.14.1) before eventually moving to version 9.0.1.0.</p>
 
-          <p>This product has gone through several name changes over the years—from vRealize Network Insight (vRNI) to Aria Operations for Networks, and now VCF Operations for Networks. Regardless of what it's called, the upgrade process remains similar.</p>
+          <p>This product has gone through several name changes over the years from vRealize Network Insight (vRNI) to Aria Operations for Networks, and now VCF Operations for Networks. Regardless of what it's called, the upgrade process remains similar.</p>
 
           <p>Here's the complete walkthrough of how I performed this upgrade using the Single-Click Offline Upgrade method.</p>
 
@@ -104,7 +104,7 @@
 
           <h3>Determine the Upgrade Path</h3>
 
-          <p>Here's where it gets interesting. You can't jump directly from 6.9.0 to 6.14.1—VMware doesn't support that upgrade path. After checking the documentation, I found the required upgrade path:</p>
+          <p>Here's where it gets interesting. You can't jump directly from 6.9.0 to 6.14.1. VMware doesn't support that upgrade path. After checking the documentation, I found the required upgrade path:</p>
 
           <ul>
             <li><strong>6.9.0 → 6.11.0</strong> (first hop)</li>
@@ -144,7 +144,7 @@
 
           <h3>Change UI Timeout</h3>
 
-          <p>The KB suggests changing the UI timeout to 2 hours, but I set it to 4 hours. Better safe than sorry—you don't want the session timing out in the middle of an upgrade.</p>
+          <p>The KB <a href="https://techdocs.broadcom.com/us/en/vmware-cis/aria/aria-operations-for-networks/6-10/vrealize-network-insight-installation-6-10/upgrading-vrealize-network-insight/single-click-upgrade.html" target="_blank" rel="noopener">here</a>suggests changing the UI timeout to 2 hours, but I set it to 4 hours. Better safe than sorry. You don't want the session timing out in the middle of an upgrade.</p>
 
           <h3>Verify Platform and Collector Status</h3>
 
