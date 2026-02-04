@@ -1,5 +1,32 @@
 [
   {
+    "title": "VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline",
+    "slug": "2026-02-05-aria-ops-cluster-node-offline",
+    "category": "VMware",
+    "date": "2026-02-05",
+    "dateDisplay": "February 5, 2026",
+    "readTime": "6 min read",
+    "excerpt": "How to fix the Aria Operations cluster when the Primary Replica node fails to go offline and cluster status is stuck on 'Going Offline'. Step-by-step CLI solution."
+  },
+  {
+    "title": "VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root",
+    "slug": "2026-02-05-aria-ops-fsck-standard-root",
+    "category": "VMware",
+    "date": "2026-02-05",
+    "dateDisplay": "February 5, 2026",
+    "readTime": "5 min read",
+    "excerpt": "How to fix the 'Failed to Start File System Check on /dev/disk/by-label/root' error in VMware Aria Operations 8.10. Step-by-step guide to run manual filesystem check on standard filesystems."
+  },
+  {
+    "title": "VMware Aria Operations 8.10: Failed to Start File System Check on /dev/data/db",
+    "slug": "2026-02-05-aria-ops-fsck-lvm-db",
+    "category": "VMware",
+    "date": "2026-02-05",
+    "dateDisplay": "February 5, 2026",
+    "readTime": "7 min read",
+    "excerpt": "How to fix the 'Failed to Start File System Check on /dev/data/db' error in VMware Aria Operations 8.10. Step-by-step guide to run manual filesystem check on LVM filesystems."
+  },
+  {
     "title": "Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade",
     "slug": "2026-01-29-vrni-upgrade-6-9-to-6-14-offline",
     "category": "VMware",
