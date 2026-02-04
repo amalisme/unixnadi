@@ -234,6 +234,14 @@ vRealize Operations API (api) is running (12811).
 ui Role Enabled-true
 remote collector Role Enabled-false</code></pre>
 
+          <h2>The Moment of Truth</h2>
+
+          <p>After the cluster was properly Offline, I was able to Bring Cluster Online without any issues. Everything is working as expected—all adapter instances started collecting data, and I have observed no issues since this incident.</p>
+
+          <img src="/images/aria-ops-cluster-online-success.webp" alt="Aria Operations Admin UI showing Cluster Status Online successfully" loading="lazy">
+
+          <p>Writing these articles reminded me that I still need to delete the snapshots for these three appliances!</p>
+
           <h2>Why Set Slice to Offline First?</h2>
 
           <p>You might be wondering: why do we need to set <code>Slice Online</code> to <code>false</code> before stopping the cluster?</p>
