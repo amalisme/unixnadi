@@ -105,7 +105,7 @@
 
           <p>Continuing with the troubleshooting from Part 1, after successfully powering on the Primary Replica node, I attempted to power on the Data node. It failed with this error:</p>
 
-          <img src="/images/blog/aria-ops-fsck-root-error.webp" alt="Data node showing Failed to Start File System Check on /dev/disk/by-label/root error" loading="lazy">
+          <img src="/images/aria-ops-fsck-root-error.webp" alt="Data node showing Failed to Start File System Check on /dev/disk/by-label/root error" loading="lazy">
 
           <h2>Understanding the Difference</h2>
 
@@ -132,7 +132,7 @@
 
           <pre><code class="language-bash">rw init=/bin/bash fsck.mode=force fsck.repair=yes</code></pre>
 
-          <img src="/images/blog/aria-ops-fsck-grub-modify.webp" alt="GRUB menu showing modified boot parameters with fsck options" loading="lazy">
+          <img src="/images/aria-ops-fsck-grub-modify.webp" alt="GRUB menu showing modified boot parameters with fsck options" loading="lazy">
 
           <div class="info-box">
             <p>💡 <strong>Note:</strong> I had to add <code>fsck.mode=force fsck.repair=yes</code> because I was unable to enter single user mode on the first attempt. These additional parameters force the filesystem check to run and automatically repair issues.</p>
@@ -150,7 +150,7 @@ e2fsck -y /dev/sda2
 # Check / (root) filesystem
 e2fsck -y /dev/sda4</code></pre>
 
-          <img src="/images/blog/aria-ops-fsck-e2fsck-standard-output.webp" alt="Terminal output showing e2fsck running on standard filesystems /dev/sda2 and /dev/sda4" loading="lazy">
+          <img src="/images/aria-ops-fsck-e2fsck-standard-output.webp" alt="Terminal output showing e2fsck running on standard filesystems /dev/sda2 and /dev/sda4" loading="lazy">
 
           <h3>Step 4: Reboot</h3>
 
@@ -175,7 +175,7 @@ e2fsck -y /dev/sda4</code></pre>
             <li>High Availability Status: <strong>Activated</strong></li>
           </ul>
 
-          <img src="/images/blog/aria-ops-fsck-waiting-analytics.webp" alt="Aria Operations Admin UI showing Waiting for Analytics status and Cluster Going Offline" loading="lazy">
+          <img src="/images/aria-ops-fsck-waiting-analytics.webp" alt="Aria Operations Admin UI showing Waiting for Analytics status and Cluster Going Offline" loading="lazy">
 
           <p>This was extremely weird. I had just performed a complete power off and power on sequence. How could the Cluster Status be "Going Offline"?</p>
 
