@@ -29,6 +29,48 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
     
+    <!-- Post: Aria Ops Cluster Node Offline -->
+    <item>
+      <title>VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html</guid>
+      <pubDate>Wed, 05 Feb 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>How to fix the Aria Operations cluster when the Primary Replica node fails to go offline and cluster status is stuck on 'Going Offline'. Step-by-step CLI solution.</description>
+      <content:encoded><![CDATA[
+        <p>Part 3 of 3: After fixing filesystem issues, the cluster was stuck in "Going Offline" state. Here's how to force the cluster offline via CLI using vrops-status and sed commands.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: Aria Ops Fsck Standard Root -->
+    <item>
+      <title>VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html</guid>
+      <pubDate>Wed, 05 Feb 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>How to fix the 'Failed to Start File System Check on /dev/disk/by-label/root' error in VMware Aria Operations 8.10. Manual filesystem check on standard filesystems.</description>
+      <content:encoded><![CDATA[
+        <p>Part 2 of 3: After fixing the LVM filesystem issue, the Data node failed to boot with a root filesystem error. Here's how to run e2fsck on standard filesystems.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: Aria Ops Fsck LVM DB -->
+    <item>
+      <title>VMware Aria Operations 8.10: Failed to Start File System Check on /dev/data/db</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-lvm-db.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-lvm-db.html</guid>
+      <pubDate>Wed, 05 Feb 2026 00:00:00 +0800</pubDate>
+      <category>VMware</category>
+      <description>How to fix the 'Failed to Start File System Check on /dev/data/db' error in VMware Aria Operations 8.10. Step-by-step guide to run manual filesystem check on LVM filesystems.</description>
+      <content:encoded><![CDATA[
+        <p>Part 1 of 3: After a storage vMotion, Aria Operations stopped collecting data. The Primary Replica failed to boot with an LVM filesystem error. Here's how to fix it.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-lvm-db.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
     <!-- Post: vRNI Upgrade 6.9 to 6.14 -->
     <item>
       <title>Steps to Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade</title>
