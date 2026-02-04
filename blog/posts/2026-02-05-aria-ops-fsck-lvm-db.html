@@ -117,14 +117,14 @@
 
           <ul>
             <li>1 Primary node</li>
-            <li>2 Primary Replica nodes</li>
+            <li>1 Primary Replica nodes</li>
             <li>1 Data node</li>
             <li>Cluster is Online and High Availability is Activated</li>
           </ul>
 
           <h2>Initial Symptoms</h2>
 
-          <p>To troubleshoot, I logged into the Admin UI at <code>https://&lt;Aria Ops FQDN&gt;/admin</code>. Upon login, I could see that the cluster was already in haywire mode. The State, Objects in Process, and Objects Being Collected were showing in progress and ultimately displaying errors.</p>
+          <p>To troubleshoot, I logged into the Admin UI at <code>https://&lt;Aria Ops FQDN&gt;/admin</code>. Once I loged into the admin UI, I could see that the cluster was already in haywire mode. The State, Objects in Process, and Objects Being Collected were showing in progress and ultimately displaying errors.</p>
 
           <img src="/images/aria-ops-fsck-cluster-error-1.webp" alt="Aria Operations Admin UI showing cluster in error state" loading="lazy">
 
@@ -150,7 +150,7 @@
             <li>Data node</li>
           </ol>
 
-          <p>The Primary node powered on without any issues. However, here came the first challenge—the Primary Replica node failed to power on with this error:</p>
+          <p>The Primary node powered on without any issues. However, here came the first challenge. The Primary Replica node failed to power on with this error:</p>
 
           <img src="/images/aria-ops-fsck-db-boot-error.webp" alt="Primary Replica node showing Failed to Start File System Check on /dev/data/db error" loading="lazy">
 
@@ -160,7 +160,7 @@
 
           <h3>Step 1: Identify the Filesystem Type</h3>
 
-          <p>First, take note that <code>/storage/db</code> is an LVM type filesystem, not a standard partition filesystem. The same applies to <code>/storage/log</code> and <code>/storage/core</code>—they are all LVM filesystems.</p>
+          <p>First, take note that <code>/storage/db</code> is an LVM type filesystem, not a standard partition filesystem. The same applies to <code>/storage/log</code> and <code>/storage/core</code>— they are all LVM filesystems.</p>
 
           <h3>Step 2: Enter Single User Mode</h3>
 
@@ -230,6 +230,8 @@ lvchange -ay /dev/data/log</code></pre>
 e2fsck -y /dev/mapper/data-db
 e2fsck -y /dev/mapper/data-log</code></pre>
 
+          <p>And here is the output:</p>
+
           <img src="/images/aria-ops-fsck-e2fsck-lvm-output.webp" alt="Terminal output showing e2fsck running on LVM filesystems" loading="lazy">
 
           <h3>Step 7: Reboot</h3>
@@ -244,7 +246,7 @@ e2fsck -y /dev/mapper/data-log</code></pre>
 
           <p>After following these steps, I was able to power on the Primary Replica node successfully.</p>
 
-          <p>However, I faced the same problem with the Data node—but with a different filesystem. Unlike the Primary Replica which uses LVM filesystems, the Data node required a filesystem check on standard filesystems.</p>
+          <p>However, I faced the same problem with the Data node, but with a different type of filesystem. Unlike the Primary Replica which uses LVM filesystems, the Data node required a filesystem check on standard filesystems.</p>
 
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Continue Reading</p>
