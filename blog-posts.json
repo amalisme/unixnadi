@@ -1,5 +1,14 @@
 [
   {
+    "title": "AIX Filesystem Management: How to Check and Resize Mount Points",
+    "slug": "2026-02-17-aix-filesystem-management-resize",
+    "category": "AIX",
+    "date": "2026-02-17",
+    "dateDisplay": "February 17, 2026",
+    "readTime": "5 min read",
+    "excerpt": "A practical guide to managing filesystems in IBM AIX. Learn how to check filesystem size, increase or reduce mount points, and understand LVM commands like chfs, lsvg, and lslv."
+  },
+  {
     "title": "VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline",
     "slug": "2026-02-05-aria-ops-cluster-node-offline",
     "category": "VMware",
