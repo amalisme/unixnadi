@@ -28,6 +28,19 @@
          Date format: Day, DD Mon YYYY HH:MM:SS +0000
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
+    <!-- Post: AIX Filesystem Management -->
+    <item>
+      <title>AIX Filesystem Management: How to Check and Resize Mount Points</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html</guid>
+      <pubDate>Mon, 17 Feb 2026 00:00:00 +0800</pubDate>
+      <category>AIX</category>
+      <description>A practical guide to managing filesystems in IBM AIX. Learn how to check filesystem size, increase or reduce mount points, and understand LVM commands like chfs, lsvg, and lslv.</description>
+      <content:encoded><![CDATA[
+        <p>Sharing my notes on AIX filesystem management from 12 years of experience. This is how I usually handle checking and resizing mount points using commands like df, chfs, lsvg, and lslv.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
     
     <!-- Post: Aria Ops Cluster Node Offline -->
     <item>
