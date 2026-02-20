@@ -1,5 +1,23 @@
 [
   {
+    "title": "Oracle Linux 8: Reset Failed Login Attempts Using Faillock",
+    "slug": "2026-02-20-oracle-linux-reset-failed-login-faillock",
+    "category": "Linux",
+    "date": "2026-02-20",
+    "dateDisplay": "February 20, 2026",
+    "readTime": "3 min read",
+    "excerpt": "How to unlock a user account after failed login attempts in Oracle Linux 8 using the faillock command. Quick guide to check and reset the failed login counter."
+  },
+  {
+    "title": "Oracle Linux 8: How to Reset Root Password",
+    "slug": "2026-02-20-oracle-linux-reset-root-password",
+    "category": "Linux",
+    "date": "2026-02-20",
+    "dateDisplay": "February 20, 2026",
+    "readTime": "5 min read",
+    "excerpt": "Step-by-step guide to reset a forgotten root password in Oracle Linux 8 using single user mode and GRUB bootloader. Includes SELinux relabeling steps."
+  },
+  {
     "title": "AIX Filesystem Management: How to Check and Resize Mount Points",
     "slug": "2026-02-17-aix-filesystem-management-resize",
     "category": "AIX",
