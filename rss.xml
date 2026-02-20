@@ -41,6 +41,48 @@
         <p><a href="https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html">Read more →</a></p>
       ]]></content:encoded>
     </item>
+
+    <!-- Post: Oracle Linux Faillock -->
+    <item>
+      <title>Oracle Linux 8: Reset Failed Login Attempts Using Faillock</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-20-oracle-linux-reset-failed-login-faillock.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-20-oracle-linux-reset-failed-login-faillock.html</guid>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0800</pubDate>
+      <category>Linux</category>
+      <description>How to unlock a user account after failed login attempts in Oracle Linux 8 using the faillock command. Quick guide to check and reset the failed login counter.</description>
+      <content:encoded><![CDATA[
+        <p>Here's a quick guide on how to reset the failed login attempts counter for a user in Oracle Linux using the faillock tool.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-20-oracle-linux-reset-failed-login-faillock.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: Oracle Linux Reset Root Password -->
+    <item>
+      <title>Oracle Linux 8: How to Reset Root Password</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-20-oracle-linux-reset-root-password.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-20-oracle-linux-reset-root-password.html</guid>
+      <pubDate>Fri, 20 Feb 2026 00:00:00 +0800</pubDate>
+      <category>Linux</category>
+      <description>Step-by-step guide to reset a forgotten root password in Oracle Linux 8 using single user mode and GRUB bootloader. Includes SELinux relabeling steps.</description>
+      <content:encoded><![CDATA[
+        <p>How to reset the root password in Oracle Linux 8 by entering single user mode via the GRUB bootloader. Includes explanations for mount, chroot, and SELinux relabeling.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-20-oracle-linux-reset-root-password.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+
+    <!-- Post: AIX Filesystem Management -->
+    <item>
+      <title>AIX Filesystem Management: How to Check and Resize Mount Points</title>
+      <link>https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html</guid>
+      <pubDate>Mon, 17 Feb 2026 00:00:00 +0800</pubDate>
+      <category>AIX</category>
+      <description>A practical guide to managing filesystems in IBM AIX. Learn how to check filesystem size, increase or reduce mount points, and understand LVM commands like chfs, lsvg, and lslv.</description>
+      <content:encoded><![CDATA[
+        <p>Sharing my notes on AIX filesystem management from 12 years of experience. This is how I usually handle checking and resizing mount points using commands like df, chfs, lsvg, and lslv.</p>
+        <p><a href="https://unixpulse.com/blog/posts/2026-02-17-aix-filesystem-management-resize.html">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
     
     <!-- Post: Aria Ops Cluster Node Offline -->
     <item>
