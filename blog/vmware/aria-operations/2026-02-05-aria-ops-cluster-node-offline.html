@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline - UnixPulse</title>
+  <meta name="title" content="VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline - UnixPulse">
+  <meta name="description" content="How to fix the Aria Operations cluster when the Primary Replica node fails to go offline and cluster status is stuck on 'Going Offline'. Step-by-step CLI solution.">
+  <meta name="keywords" content="VMware, Aria Operations, vROps, cluster, offline, Primary Replica, troubleshooting, vrops-status">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html">
+  <meta property="og:title" content="VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline - UnixPulse">
+  <meta property="og:description" content="How to fix the Aria Operations cluster when the Primary Replica node fails to go offline and cluster status is stuck.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-02-05">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="VMware">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline - UnixPulse">
+  <meta name="twitter:description" content="How to fix the Aria Operations cluster when the Primary Replica node fails to go offline and cluster status is stuck.">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline",
+    "description": "How to fix the Aria Operations cluster when the Primary Replica node fails to go offline and cluster status is stuck on 'Going Offline'. Step-by-step CLI solution.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2026-02-05",
+    "dateModified": "2026-02-05",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html"}
+  }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">VMware</span>
+          <h1>VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</h1>
+          <div class="post-meta">
+            <time datetime="2026-02-05">February 5, 2026</time>
+            <span class="reading-time">6 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>This is the final part of my Aria Operations troubleshooting series. In <a href="2026-02-05-aria-ops-fsck-lvm-db.html">Part 1</a> and <a href="2026-02-05-aria-ops-fsck-standard-root.html">Part 2</a>, I fixed filesystem check failures on both LVM and standard filesystems. Now we'll tackle the third issue: the cluster being stuck in a "Going Offline" state.</p>
+
+          <div class="info-box">
+            <p>📝 <strong>This is Part 3 of a 3-part series:</strong></p>
+            <ul>
+              <li><strong>Part 1:</strong> <a href="2026-02-05-aria-ops-fsck-lvm-db.html">Failed to Start File System Check on /dev/data/db</a></li>
+              <li><strong>Part 2:</strong> <a href="2026-02-05-aria-ops-fsck-standard-root.html">Failed to Start File System Check on /dev/disk/by-label/root</a></li>
+              <li><strong>Part 3:</strong> Node Primary Replica Failed to Go Offline (this article)</li>
+            </ul>
+          </div>
+
+          <h2>The Problem</h2>
+
+          <p>After successfully powering on all three nodes (Primary, Primary Replica, and Data node), I logged into the Admin UI and found something unexpected:</p>
+
+          <ul>
+            <li>Cluster Status: <strong>Going Offline</strong></li>
+            <li>Availability Status: <strong>Activated</strong></li>
+            <li>Primary Replica's State: <strong>Running</strong></li>
+            <li>Primary Replica's Status: <strong>Waiting for Analytics</strong></li>
+          </ul>
+
+          <p>After letting the Data node run for a while, the Cluster Status eventually changed to <strong>Failed</strong>.</p>
+
+          <img src="/images/aria-ops-cluster-failed.webp" alt="Aria Operations Admin UI showing Cluster Status Failed" loading="lazy">
+
+          <h2>What I Tried First</h2>
+
+          <p>Before finding the solution, I tried several things that didn't work:</p>
+
+          <ul>
+            <li>Clicked on <strong>Force Take Cluster Offline</strong> — failed</li>
+            <li>Rebooted all three nodes twice following the proper sequence — still greeted with the same status</li>
+          </ul>
+
+          <p>After some googling, I found <a href="https://knowledge.broadcom.com/external/article/375791/aria-operations-cluster-failed-to-go-off.html" target="_blank" rel="noopener">Broadcom KB 375791</a> which provided the solution.</p>
+
+          <h2>The Fix: Force Cluster Offline via CLI</h2>
+
+          <h3>Step 1: SSH into the Primary Replica Node</h3>
+
+          <p>Enable the SSH toggle button in the Admin UI and log in as root to the Primary Replica node.</p>
+
+          <h3>Step 2: Verify Node Slice Status</h3>
+
+          <p>Use the <code>vrops-status</code> command to check if the node slice is Online or Offline:</p>
+
+          <pre><code class="language-bash">vrops-status</code></pre>
+
+          <p>Here's the output I received:</p>
+
+          <pre><code class="language-text">root@localhost [ ~ ]# vrops-status
+Slice Online-true
+admin Role Enabled-true
+        vRealize Operations vPostgres Replication Database (vpostgres-repl) is running (1762).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Gemfire Locator (gemfire) is running (2181).
+data Role Enabled-true
+        vRealize Operations vPostgres Database (vpostgres) is running (3307).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Analytics (analytics) is running (3495).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Collector (collector) is not running.
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations API (api) is not running.
+ui Role Enabled-true
+remote collector Role Enabled-false</code></pre>
+
+          <p>The key line here is <code>Slice Online-true</code>. The node slice is Online, but we need to set it to Offline first before we can properly take the cluster down.</p>
+
+          <h3>Step 3: Set Node Slice to Offline</h3>
+
+          <p>Run this command to change the slice status from Online to Offline:</p>
+
+          <pre><code class="language-bash">sed -i -e 's/sliceonline = true/sliceonline = false/' /usr/lib/vmware-vcopssuite/utilities/sliceConfiguration/data/roleState.properties</code></pre>
+
+          <p>The command returns no output, which is normal.</p>
+
+          <h3>Step 4: Verify the Change</h3>
+
+          <p>Run <code>vrops-status</code> again to verify the slice is now Offline:</p>
+
+          <pre><code class="language-bash">vrops-status</code></pre>
+
+          <p>You should now see:</p>
+
+          <pre><code class="language-text">root@localhost [ ~ ]# vrops-status
+Slice Online-false
+Offline Reason-failed to properly bring down cluster. force take cluster down - tm30235
+admin Role Enabled-true
+        vRealize Operations vPostgres Replication Database (vpostgres-repl) is not running.
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Gemfire Locator (gemfire) is not running.
+data Role Enabled-true
+        vRealize Operations vPostgres Database (vpostgres) is not running.
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Analytics (analytics) is not running.
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Collector (collector) is not running.
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations API (api) is not running.
+ui Role Enabled-true
+remote collector Role Enabled-false</code></pre>
+
+          <p>Notice that <code>Slice Online-false</code> now appears, along with an "Offline Reason" message.</p>
+
+          <h3>Step 5: Stop the Main Services</h3>
+
+          <p>Use this command to fully stop the main services:</p>
+
+          <pre><code class="language-bash">service vmware-vcops stop</code></pre>
+
+          <p>The command returns no output, which is expected.</p>
+
+          <h3>Step 6: Verify in Admin UI</h3>
+
+          <p>Go back to the Admin UI. You should now see:</p>
+
+          <ul>
+            <li>Primary Replica: <strong>Not Running</strong> and in an <strong>Offline</strong> state</li>
+            <li>Cluster Status: <strong>Offline</strong></li>
+          </ul>
+
+          <img src="/images/aria-ops-cluster-offline-success.webp" alt="Aria Operations Admin UI showing Cluster Status Offline successfully" loading="lazy">
+
+          <p>Running <code>vrops-status</code> one more time shows the Slice is set to Online again:</p>
+
+          <pre><code class="language-text">root@localhost [ ~ ]# vrops-status
+Slice Online-true
+admin Role Enabled-true
+        vRealize Operations vPostgres Replication Database (vpostgres-repl) is running (14200).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Gemfire Locator (gemfire) is running (11355).
+data Role Enabled-true
+        vRealize Operations vPostgres Database (vpostgres) is running (12138).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Analytics (analytics) is running (12325).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations Collector (collector) is running (12530).
+        Setting timezone to:  Asia/Kuala_Lumpur
+vRealize Operations API (api) is running (12811).
+ui Role Enabled-true
+remote collector Role Enabled-false</code></pre>
+
+          <h2>The Moment of Truth</h2>
+
+          <p>After the cluster was properly Offline, I was able to Bring Cluster Online without any issues. Everything is working as expected - all adapter instances started collecting data, and I have observed no issues since this incident.</p>
+
+          <img src="/images/aria-ops-cluster-online-success.webp" alt="Aria Operations Admin UI showing Cluster Status Online successfully" loading="lazy">
+
+          <p>Writing these articles reminded me that I still need to delete the snapshots for these three appliances!</p>
+
+          <h2>Why Set Slice to Offline First?</h2>
+
+          <p>You might be wondering: why do we need to set <code>Slice Online</code> to <code>false</code> before stopping the cluster?</p>
+
+          <p>Honestly, I'm not entirely sure about the technical reason behind this. The KB doesn't explain it in detail. If you know the answer or have insights from Broadcom support, I'd love to hear about it. Feel free to reach out!</p>
+
+          <h2>Summary</h2>
+
+          <p>This three-part series covered a complex Aria Operations recovery scenario that started with a simple storage vMotion and ended with multiple filesystem and cluster issues. Here's the recap:</p>
+
+          <ul>
+            <li><strong>Part 1:</strong> Fixed LVM filesystem check failure on Primary Replica using <code>lvchange</code> and <code>e2fsck</code></li>
+            <li><strong>Part 2:</strong> Fixed standard filesystem check failure on Data node using <code>e2fsck</code> with forced repair</li>
+            <li><strong>Part 3:</strong> Fixed cluster stuck in "Going Offline" state by manually setting slice offline via CLI</li>
+          </ul>
+
+          <p>I hope this series helps you if you're facing similar issues with your Aria Operations deployment.</p>
+
+          <div class="post-related-box">
+            <p class="post-related-box-title">💼 Need Help With VMware?</p>
+            <p>Dealing with complex Aria Operations or vRealize issues? I offer VMware consulting services and can help troubleshoot, recover, or optimize your environment. Check out the <a href="/work-with-me.html">Work With Me</a> page to see how I can help.</p>
+          </div>
+          
+        </div>
+        
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="2026-02-05-aria-ops-fsck-standard-root.html" class="post-nav-link">
+            ← Previous
+            <span>VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root</span>
+          </a>
+          <a href="2026-02-17-aix-filesystem-management-resize.html" class="post-nav-link" style="text-align: right;">
+            Next →
+            <span>AIX Filesystem Management: How to Check and Resize Mount Points</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
