@@ -1,0 +1,24 @@
+# UnixPulse Redirects
+# Generated for Cloudflare Pages (_redirects file at repo root)
+# Old /blog/posts/ URLs → new category path URLs
+
+/blog/posts/2026-02-20-oracle-linux-reset-failed-login-faillock.html  /blog/linux/2026-02-20-oracle-linux-reset-failed-login-faillock.html  301
+/blog/posts/2026-02-20-oracle-linux-reset-root-password.html  /blog/linux/2026-02-20-oracle-linux-reset-root-password.html  301
+/blog/posts/2026-02-17-aix-filesystem-management-resize.html  /blog/aix/2026-02-17-aix-filesystem-management-resize.html  301
+/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html  /blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline.html  301
+/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html  /blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root.html  301
+/blog/posts/2026-02-05-aria-ops-fsck-lvm-db.html  /blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-lvm-db.html  301
+/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html  /blog/vmware/aria-operations-for-networks/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html  301
+/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html  /blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method.html  301
+/blog/posts/2026-01-24-bloom-beauty-wellness-html-template.html  /blog/web-dev/2026-01-24-bloom-beauty-wellness-html-template.html  301
+/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html  /blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g.html  301
+/blog/posts/2026-01-20-broadcom-token-vcenter-update.html  /blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update.html  301
+/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html  /blog/vmware/esxi/2026-01-20-broadcom-token-esxi-lifecycle-manager.html  301
+/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html  /blog/vmware/esxi/2026-01-17-esxi-host-disconnected-troubleshooting.html  301
+/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html  /blog/vmware/chargeback/2026-01-15-persistent-nginx-vmware-chargeback.html  301
+/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html  /blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html  301
+/blog/posts/getting-started-with-linux.html  /blog/linux/2025-12-09-getting-started-with-linux.html  301
+/blog/posts/deploy-website-github-cloudflare.html  /blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html  301
+
+# Clean trailing slash
+/blog  /blog/  301
