@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK81HF7D25');
+  </script>
+
+  <!-- Primary Meta Tags -->
+  <title>Deploy a Static Website with GitHub + Cloudflare - UnixPulse</title>
+  <meta name="title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
+  <meta name="description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html">
+  <meta property="og:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
+  <meta property="og:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2025-12-05">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="Web Dev">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
+  <meta name="twitter:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Schema.org: Article -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Deploy a Static Website with GitHub + Cloudflare",
+    "description": "Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2025-12-05",
+    "dateModified": "2025-12-05",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html"}
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
+    {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
+    {"@type":"ListItem","position":3,"name":"Web Dev","item":"https://unixpulse.com/blog/web-dev/"},
+    {"@type":"ListItem","position":4,"name":"Deploy a Static Website with GitHub + Cloudflare","item":"https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html"}
+    ]
+  }
+  </script>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- Breadcrumb -->
+      <div class="container content-width">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="https://unixpulse.com/">Home</a></li>
+          <li class="breadcrumb-item"><a href="https://unixpulse.com/blog/">Blog</a></li>
+          <li class="breadcrumb-item"><a href="https://unixpulse.com/blog/web-dev/">Web Dev</a></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Deploy a Static Website with GitHub + Cloudflare</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">Web Dev</span>
+          <h1>Deploy a Static Website with GitHub + Cloudflare</h1>
+          <div class="post-meta">
+            <time datetime="2025-12-05">December 5, 2025</time>
+            <span class="reading-time">8 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+
+          <p>This is how I host UnixPulse — and several other static sites — completely free using GitHub and Cloudflare Pages. If you have a static website (pure HTML, CSS, JS), this setup gives you fast global delivery, automatic HTTPS, and continuous deployment from Git with zero monthly costs.</p>
+
+          <h2>What You'll Need</h2>
+          <ul>
+            <li>A GitHub account (free)</li>
+            <li>A Cloudflare account (free)</li>
+            <li>Your static website files ready to deploy</li>
+            <li>A custom domain (optional, but recommended)</li>
+          </ul>
+
+          <h2>Step 1: Push Your Site to GitHub</h2>
+          <p>Create a new GitHub repository and push your website files:</p>
+          <pre><code class="language-bash">git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/yourusername/your-site.git
+git push -u origin main</code></pre>
+          <p>Keep your repository public or private — Cloudflare Pages works with both.</p>
+
+          <h2>Step 2: Connect to Cloudflare Pages</h2>
+          <p>Log into your Cloudflare dashboard and go to <strong>Workers & Pages</strong> → <strong>Create application</strong> → <strong>Pages</strong> → <strong>Connect to Git</strong>.</p>
+          <p>Authorize Cloudflare to access your GitHub account, then select your repository.</p>
+
+          <h2>Step 3: Configure the Build</h2>
+          <p>For a pure static site with no build tool, the configuration is minimal:</p>
+          <ul>
+            <li><strong>Framework preset:</strong> None</li>
+            <li><strong>Build command:</strong> leave empty</li>
+            <li><strong>Build output directory:</strong> <code>/</code> (or whichever subfolder contains your index.html)</li>
+          </ul>
+          <p>Click <strong>Save and Deploy</strong>. Cloudflare will pull your files and deploy them to its edge network. Your site will be live at a <code>*.pages.dev</code> URL within a minute or two.</p>
+
+          <h2>Step 4: Add a Custom Domain</h2>
+          <p>In Cloudflare Pages, go to your project → <strong>Custom domains</strong> → <strong>Set up a custom domain</strong>. Enter your domain name.</p>
+          <p>If your domain is already on Cloudflare DNS (recommended), the CNAME record is added automatically. If it's on another registrar, Cloudflare will give you the DNS record to add manually.</p>
+          <p>HTTPS is automatic — Cloudflare provisions and renews the certificate for you.</p>
+
+          <h2>Step 5: Automatic Deployments</h2>
+          <p>Every time you push to your main branch, Cloudflare Pages automatically rebuilds and redeploys. For a static site, this takes about 30 seconds.</p>
+          <pre><code class="language-bash">git add .
+git commit -m "Update blog post"
+git push</code></pre>
+          <p>That's all it takes to publish a change. No FTP, no build servers, no manual uploads.</p>
+
+          <h2>Why Not GitHub Pages?</h2>
+          <p>GitHub Pages also works well for static sites, but Cloudflare Pages has better global performance (more edge locations), better analytics, and more flexible redirect/header rules. For a site where you're also managing DNS through Cloudflare, keeping everything in one place also simplifies the setup.</p>
+
+          <div class="post-related-box">
+            <p class="post-related-box-title">🌐 Want a ready-made template?</p>
+            <p>If you need a starting point, the <a href="https://unixpulse.gumroad.com/l/pdgubm" target="_blank" rel="noopener">Website Starter Kit</a> includes everything you need — a complete HTML template plus a step-by-step guide to deploying it exactly like this.</p>
+          </div>
+        </div>
+
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="/blog/linux/2025-12-09-getting-started-with-linux.html" class="post-nav-link">
+            ← Previous
+            <span>Getting Started with Linux: A Beginner's Journey</span>
+          </a>
+
+        </nav>
+      </div>
+
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
