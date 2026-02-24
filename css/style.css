@@ -1205,3 +1205,53 @@ strong {
 .token.variable {
   color: var(--color-terracotta-soft);
 }
+
+/* ================================================================
+   AD UNITS — UnixPulse
+   Append this entire block to the bottom of css/style.css
+   ================================================================ */
+
+.ad-unit {
+  overflow: hidden;
+  text-align: center;
+}
+
+/* In-content: appears after intro paragraphs */
+.ad-unit--in-content {
+  margin: var(--space-2xl) 0;
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-sand-dark);
+  border-bottom: 1px solid var(--color-sand-dark);
+}
+
+/* Mid-content: appears halfway through article */
+.ad-unit--mid-content {
+  margin: var(--space-2xl) 0;
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-sand-dark);
+  border-bottom: 1px solid var(--color-sand-dark);
+}
+
+/* End of post: appears before post navigation */
+.ad-unit--end-content {
+  margin: var(--space-2xl) 0 var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-top: 1px solid var(--color-sand-dark);
+}
+
+/* Category pages: appears between page header and post grid */
+.ad-unit--category {
+  margin: 0 0 var(--space-xl);
+  padding: var(--space-lg) 0;
+  border-bottom: 1px solid var(--color-sand-dark);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .ad-unit--in-content,
+  .ad-unit--mid-content,
+  .ad-unit--end-content,
+  .ad-unit--category {
+    border-color: var(--border);
+  }
+}
