@@ -3,24 +3,30 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
   <title>Blog — UnixPulse</title>
   <meta name="description" content="Notes on Linux, VMware, AIX, HP-UX, and Web Dev. Practical guides and troubleshooting tips from the field.">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
   <meta property="og:title" content="Blog — UnixPulse">
-  <meta property="og:description" content="Notes on Linux, VMware, AIX, HP-UX, and Web Dev.">
+  <meta property="og:description" content="Notes on Linux, VMware, AIX, HP-UX, and Web Dev. Practical guides and troubleshooting tips from the field.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://unixpulse.com/blog/">
 
-  <!-- Canonical -->
+  <!-- Canonical & Feeds -->
   <link rel="canonical" href="https://unixpulse.com/blog/">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
 
   <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
@@ -31,23 +37,27 @@
     gtag('config', 'G-XK81HF7D25');
   </script>
 
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5557027774085981"
+       crossorigin="anonymous"></script>
+
   <style>
     /* ── Blog Index Specific Styles ── */
 
     .blog-header {
       padding: var(--space-3xl) 0 var(--space-xl);
-      border-bottom: 1px solid var(--color-sand-dark);
+      border-bottom: 1px solid var(--border-color);
       margin-bottom: var(--space-xl);
     }
 
     .blog-header h1 {
-      font-family: 'Fraunces', serif;
-      color: var(--color-ocean-deep);
+      font-family: var(--font-display);
+      color: var(--text-heading);
       margin-bottom: var(--space-sm);
     }
 
     .blog-header p {
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
       font-size: 1.0625rem;
     }
 
@@ -61,7 +71,7 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.06em;
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
       margin-bottom: var(--space-md);
     }
 
@@ -78,10 +88,10 @@
       gap: 6px;
       padding: 6px 14px;
       border-radius: var(--radius-xl);
-      border: 1.5px solid var(--color-sand-dark);
-      background: var(--color-white);
-      color: var(--color-slate);
-      font-family: 'Source Sans 3', sans-serif;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      font-family: var(--font-body);
       font-size: 0.875rem;
       font-weight: 500;
       cursor: pointer;
@@ -90,14 +100,14 @@
     }
 
     .filter-btn:hover {
-      border-color: var(--color-ocean);
-      color: var(--color-ocean);
-      background: var(--color-cream);
+      border-color: var(--accent-primary);
+      color: var(--accent-primary);
+      background: var(--bg-secondary);
     }
 
     .filter-btn.active {
-      background: var(--color-ocean);
-      border-color: var(--color-ocean);
+      background: var(--accent-primary);
+      border-color: var(--accent-primary);
       color: #fff;
     }
 
@@ -113,7 +123,7 @@
       gap: var(--space-sm);
       margin-top: var(--space-sm);
       padding: var(--space-sm) var(--space-md);
-      background: var(--color-sand);
+      background: var(--bg-secondary);
       border-radius: var(--radius-md);
       align-items: center;
     }
@@ -127,15 +137,13 @@
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
       margin-right: var(--space-xs);
     }
 
     .filter-btn.sub {
       padding: 4px 12px;
       font-size: 0.8125rem;
-      border-color: var(--color-sand-dark);
-      background: var(--color-white);
     }
 
     .filter-btn.sub.active {
@@ -153,9 +161,9 @@
     }
 
     .post-card {
-      background: var(--color-white);
+      background: var(--bg-card);
       border-radius: var(--radius-lg);
-      border: 1px solid var(--color-sand-dark);
+      border: 1px solid var(--border-color);
       padding: var(--space-xl);
       transition: box-shadow var(--transition-base), transform var(--transition-base);
       display: flex;
@@ -188,28 +196,34 @@
     .post-category-badge:hover { opacity: 0.8; }
 
     /* Badge colours by category */
-    .badge-linux    { background: #e8f5e9; color: #2e7d32; }
-    .badge-vmware   { background: #e3f2fd; color: #1565c0; }
-    .badge-aix      { background: #fce4ec; color: #c62828; }
-    .badge-hp-ux    { background: #f3e5f5; color: #6a1b9a; }
-    .badge-web-dev  { background: #fff8e1; color: #f57f17; }
+    .badge-linux   { background: #e8f5e9; color: #2e7d32; }
+    .badge-vmware  { background: #e3f2fd; color: #1565c0; }
+    .badge-aix     { background: #fce4ec; color: #c62828; }
+    .badge-hp-ux   { background: #f3e5f5; color: #6a1b9a; }
+    .badge-web-dev { background: #fff8e1; color: #f57f17; }
+
+    [data-theme="dark"] .badge-linux   { background: #1b3a1e; color: #81c784; }
+    [data-theme="dark"] .badge-vmware  { background: #0d2137; color: #64b5f6; }
+    [data-theme="dark"] .badge-aix     { background: #3b0d12; color: #ef9a9a; }
+    [data-theme="dark"] .badge-hp-ux   { background: #2a0d35; color: #ce93d8; }
+    [data-theme="dark"] .badge-web-dev { background: #332600; color: #ffcc02; }
 
     .post-date {
       font-size: 0.8125rem;
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
     }
 
     .post-read-time {
       font-size: 0.8125rem;
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
       margin-left: auto;
     }
 
     .post-card h2 {
-      font-family: 'Fraunces', serif;
+      font-family: var(--font-display);
       font-size: 1.1875rem;
       font-weight: 600;
-      color: var(--color-ocean-deep);
+      color: var(--text-heading);
       margin-bottom: var(--space-sm);
       line-height: 1.4;
     }
@@ -220,10 +234,10 @@
       transition: color var(--transition-fast);
     }
 
-    .post-card h2 a:hover { color: var(--color-ocean); }
+    .post-card h2 a:hover { color: var(--accent-primary); }
 
     .post-excerpt {
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
       font-size: 0.9375rem;
       line-height: 1.6;
       flex: 1;
@@ -234,7 +248,7 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      border-top: 1px solid var(--color-sand-dark);
+      border-top: 1px solid var(--border-color);
       padding-top: var(--space-md);
       margin-top: auto;
     }
@@ -242,7 +256,7 @@
     .read-more-link {
       font-size: 0.875rem;
       font-weight: 600;
-      color: var(--color-ocean);
+      color: var(--accent-primary);
       text-decoration: none;
       display: inline-flex;
       align-items: center;
@@ -257,7 +271,7 @@
       grid-column: 1 / -1;
       text-align: center;
       padding: var(--space-3xl);
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
     }
 
     .no-posts p { margin-bottom: var(--space-md); }
@@ -265,68 +279,56 @@
     /* Results count */
     .results-summary {
       font-size: 0.875rem;
-      color: var(--color-slate-light);
+      color: var(--text-secondary);
       margin-bottom: var(--space-lg);
     }
 
     .results-summary strong {
-      color: var(--color-slate);
+      color: var(--text-primary);
     }
 
-    /* Hidden post cards */
     .post-card.hidden {
       display: none;
-    }
-
-    /* Dark mode adjustments */
-    @media (prefers-color-scheme: dark) {
-      .blog-header { border-color: var(--border); }
-      .filter-btn { background: var(--bg-card); border-color: var(--border); color: var(--text-primary); }
-      .filter-btn:hover { border-color: var(--color-turquoise); color: var(--color-turquoise); background: var(--bg-secondary); }
-      .filter-btn.active { background: var(--color-ocean); border-color: var(--color-ocean); color: #fff; }
-      .subcategory-row { background: var(--bg-secondary); }
-      .filter-btn.sub { background: var(--bg-card); border-color: var(--border); color: var(--text-primary); }
-      .post-card { background: var(--bg-card); border-color: var(--border); }
-      .post-card-footer { border-color: var(--border); }
-      .badge-linux  { background: #1b3a1e; color: #81c784; }
-      .badge-vmware { background: #0d2137; color: #64b5f6; }
-      .badge-aix    { background: #3b0d12; color: #ef9a9a; }
-      .badge-hp-ux  { background: #2a0d35; color: #ce93d8; }
-      .badge-web-dev{ background: #332600; color: #ffcc02; }
     }
   </style>
 </head>
 <body>
 
-  <!-- ── Header / Nav ── -->
-  <header class="site-header">
-    <div class="container">
+  <!-- Header -->
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
       <nav class="nav" aria-label="Main navigation">
-        <a href="/" class="nav-logo" aria-label="UnixPulse home">
-          <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
-            <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
-              <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
-            </text>
-          </svg>
-        </a>
-        <ul class="nav-links">
-          <li><a href="/">Home</a></li>
-          <li><a href="/blog/" class="active" aria-current="page">Blog</a></li>
-          <li><a href="/toolbox.html">Toolbox</a></li>
-          <li><a href="/projects.html">Projects</a></li>
-          <li><a href="/work-with-me.html">Work With Me</a></li>
-          <li><a href="/say-hello.html">Say Hello</a></li>
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
         </ul>
-        <button class="theme-toggle" aria-label="Toggle dark mode" id="themeToggle">🌙</button>
-        <button class="mobile-menu-btn" aria-label="Open menu" aria-expanded="false" id="mobileMenuBtn">☰</button>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
       </nav>
     </div>
   </header>
 
-  <!-- ── Main ── -->
-  <main id="main-content">
+  <!-- Main -->
+  <main>
     <div class="container">
 
       <!-- Page Header -->
@@ -360,7 +362,7 @@
           </button>
         </div>
 
-        <!-- VMware subcategory row (shown when VMware is selected) -->
+        <!-- VMware subcategory row -->
         <div class="subcategory-row" id="vmwareSubcats" role="group" aria-label="VMware subcategories">
           <span class="subcategory-label">Subcategory:</span>
           <button class="filter-btn sub active" data-sub="all">All VMware</button>
@@ -383,22 +385,24 @@
     </div>
   </main>
 
-  <!-- ── Footer ── -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="footer-content">
-        <p>© 2026 UnixPulse. Made with ☕ and curiosity.</p>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="/about.html">About</a>
-          <a href="/say-hello.html">Contact</a>
-          <a href="/rss.xml">RSS</a>
-        </nav>
-      </div>
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
     </div>
   </footer>
 
+  <script src="/js/main.js"></script>
+
   <script>
-  // ── Load posts from blog-posts.json and render ──
   (async function () {
 
     const grid       = document.getElementById('postGrid');
@@ -411,7 +415,6 @@
     let activeFilter = 'all';
     let activeSub    = 'all';
 
-    // Badge colour map
     const badgeClass = {
       'linux'  : 'badge-linux',
       'vmware' : 'badge-vmware',
@@ -420,7 +423,6 @@
       'web-dev': 'badge-web-dev'
     };
 
-    // Category display labels
     const catLabel = {
       'linux'  : 'Linux',
       'vmware' : 'VMware',
@@ -429,32 +431,28 @@
       'web-dev': 'Web Dev'
     };
 
-    // Subcategory display labels
     const subLabel = {
-      'vcenter'                    : 'vCenter',
-      'esxi'                       : 'ESXi',
-      'aria-operations'            : 'Aria Operations',
+      'vcenter'                     : 'vCenter',
+      'esxi'                        : 'ESXi',
+      'aria-operations'             : 'Aria Operations',
       'aria-operations-for-networks': 'Aria Ops for Networks',
-      'chargeback'                 : 'Chargeback'
+      'chargeback'                  : 'Chargeback'
     };
 
-    // Resolve post URL from slug + categoryPath
     function postUrl(post) {
       return `/blog/${post.categoryPath}/${post.slug}.html`;
     }
 
-    // Resolve category page URL
     function categoryUrl(path) {
       return `/blog/${path}/`;
     }
 
-    // Build a single post card HTML string
     function buildCard(post) {
-      const catPath  = post.categoryPath;                     // e.g. "vmware/vcenter"
-      const topCat   = catPath.split('/')[0];                 // e.g. "vmware"
-      const subCat   = catPath.split('/')[1] || '';           // e.g. "vcenter"
-      const badgeCls = badgeClass[topCat] || 'badge-linux';
-      const badgeTxt = subCat ? `${catLabel[topCat]} › ${subLabel[subCat]}` : catLabel[topCat];
+      const catPath   = post.categoryPath;
+      const topCat    = catPath.split('/')[0];
+      const subCat    = catPath.split('/')[1] || '';
+      const badgeCls  = badgeClass[topCat] || 'badge-linux';
+      const badgeTxt  = subCat ? `${catLabel[topCat]} › ${subLabel[subCat]}` : catLabel[topCat];
       const badgeHref = categoryUrl(catPath);
 
       return `
@@ -475,22 +473,20 @@
         </article>`;
     }
 
-    // Count posts per category for badge counts
     function updateCounts(posts) {
       const counts = { all: posts.length, linux: 0, vmware: 0, aix: 0, 'hp-ux': 0, 'web-dev': 0 };
       posts.forEach(p => {
         const top = p.categoryPath.split('/')[0];
         if (counts[top] !== undefined) counts[top]++;
       });
-      document.getElementById('countAll').textContent     = `(${counts.all})`;
-      document.getElementById('countLinux').textContent   = `(${counts['linux']})`;
-      document.getElementById('countVmware').textContent  = `(${counts['vmware']})`;
-      document.getElementById('countAix').textContent     = `(${counts['aix']})`;
-      document.getElementById('countHpux').textContent    = `(${counts['hp-ux']})`;
-      document.getElementById('countWebdev').textContent  = `(${counts['web-dev']})`;
+      document.getElementById('countAll').textContent    = `(${counts.all})`;
+      document.getElementById('countLinux').textContent  = `(${counts['linux']})`;
+      document.getElementById('countVmware').textContent = `(${counts['vmware']})`;
+      document.getElementById('countAix').textContent    = `(${counts['aix']})`;
+      document.getElementById('countHpux').textContent   = `(${counts['hp-ux']})`;
+      document.getElementById('countWebdev').textContent = `(${counts['web-dev']})`;
     }
 
-    // Filter & show/hide cards
     function applyFilter() {
       const cards = grid.querySelectorAll('.post-card');
       let visible = 0;
@@ -498,16 +494,12 @@
       cards.forEach(card => {
         const cat = card.dataset.category;
         const sub = card.dataset.subcategory;
+        let show  = false;
 
-        let show = false;
         if (activeFilter === 'all') {
           show = true;
         } else if (activeFilter === 'vmware') {
-          if (activeSub === 'all') {
-            show = cat === 'vmware';
-          } else {
-            show = cat === 'vmware' && sub === activeSub;
-          }
+          show = activeSub === 'all' ? cat === 'vmware' : cat === 'vmware' && sub === activeSub;
         } else {
           show = cat === activeFilter;
         }
@@ -516,7 +508,6 @@
         if (show) visible++;
       });
 
-      // Empty state
       let emptyEl = grid.querySelector('.no-posts');
       if (visible === 0) {
         if (!emptyEl) {
@@ -529,7 +520,6 @@
         if (emptyEl) emptyEl.remove();
       }
 
-      // Results summary
       const filterName = activeFilter === 'all' ? 'all categories' :
                          activeFilter === 'vmware' && activeSub !== 'all'
                            ? `VMware › ${subLabel[activeSub]}`
@@ -537,7 +527,6 @@
       summary.innerHTML = `Showing <strong>${visible}</strong> post${visible !== 1 ? 's' : ''} in <strong>${filterName}</strong>`;
     }
 
-    // Main filter button click
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
@@ -545,10 +534,8 @@
         activeFilter = btn.dataset.filter;
         activeSub    = 'all';
 
-        // Show/hide VMware subcategory row
         if (activeFilter === 'vmware') {
           subRow.classList.add('visible');
-          // Reset sub buttons
           subBtns.forEach(b => b.classList.remove('active'));
           subBtns[0].classList.add('active');
         } else {
@@ -559,7 +546,6 @@
       });
     });
 
-    // Subcategory button click
     subBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         subBtns.forEach(b => b.classList.remove('active'));
@@ -569,16 +555,14 @@
       });
     });
 
-    // Fetch posts JSON (path relative to blog/index.html)
     try {
-      const res = await fetch('../blog-posts.json');
+      const res = await fetch('/blog-posts.json');
       posts = await res.json();
     } catch (e) {
       grid.innerHTML = '<div class="no-posts"><p>Could not load posts. Please try refreshing.</p></div>';
       return;
     }
 
-    // Render all cards
     grid.innerHTML = posts.map(buildCard).join('');
     updateCounts(posts);
     applyFilter();
