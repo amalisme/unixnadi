@@ -1207,7 +1207,6 @@ strong {
 /* ================================================================
    AD UNITS — UnixPulse
    ================================================================ */
-<!--
 .ad-unit {
   overflow: hidden;
   text-align: center;
@@ -1251,4 +1250,4 @@ strong {
   .ad-unit--category {
     border-color: var(--border-color);
   }
-} -->
+}
