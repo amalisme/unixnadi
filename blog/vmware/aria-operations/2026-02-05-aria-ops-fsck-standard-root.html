@@ -3,30 +3,57 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
   <title>VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root - UnixPulse</title>
   <meta name="title" content="VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root - UnixPulse">
   <meta name="description" content="How to fix the 'Failed to Start File System Check on /dev/disk/by-label/root' error in VMware Aria Operations 8.10. Step-by-step guide to run manual filesystem check on standard filesystems.">
   <meta name="keywords" content="VMware, Aria Operations, vROps, filesystem check, fsck, e2fsck, root, boot, troubleshooting">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html">
+  <meta property="og:url" content="https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root.html">
   <meta property="og:title" content="VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root - UnixPulse">
   <meta property="og:description" content="How to fix the 'Failed to Start File System Check on /dev/disk/by-label/root' error in VMware Aria Operations 8.10.">
   <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
   <meta property="article:published_time" content="2026-02-05">
   <meta property="article:author" content="UnixPulse">
-  <meta property="article:section" content="VMware">
+  <meta property="article:section" content="Aria Operations">
+
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root - UnixPulse">
   <meta name="twitter:description" content="How to fix the 'Failed to Start File System Check on /dev/disk/by-label/root' error in VMware Aria Operations 8.10.">
+
+  <!-- Canonical & Feeds -->
+  <link rel="canonical" href="https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root.html">
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
-  <link rel="canonical" href="https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK81HF7D25');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5557027774085981"
+       crossorigin="anonymous"></script>
+
+  <!-- Schema.org: BlogPosting -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -37,11 +64,28 @@
     "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
     "datePublished": "2026-02-05",
     "dateModified": "2026-02-05",
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html"}
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root.html"}
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://unixpulse.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://unixpulse.com/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "VMware", "item": "https://unixpulse.com/blog/vmware/"},
+      {"@type": "ListItem", "position": 4, "name": "Aria Operations", "item": "https://unixpulse.com/blog/vmware/aria-operations/"},
+      {"@type": "ListItem", "position": 5, "name": "VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root", "item": "https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root.html"}
+    ]
   }
   </script>
 </head>
 <body>
+
+  <!-- Header -->
   <header class="header">
     <div class="container header-inner">
       <a href="/" class="logo" aria-label="UnixPulse Home">
@@ -63,22 +107,57 @@
           <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
         </ul>
         <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
-          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
         </button>
         <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
-          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
         </button>
       </nav>
     </div>
   </header>
 
   <main>
+
+    <!-- Breadcrumb -->
+    <div class="container content-width">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+          <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
+          <li class="breadcrumb-item"><a href="/blog/vmware/aria-operations/">Aria Operations</a></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root</li>
+        </ol>
+      </nav>
+    </div>
+
     <article>
+
+      <!-- Post Header -->
       <header class="post-header">
         <div class="container content-width">
-          <span class="post-category">VMware</span>
+          <span class="post-category">Aria Operations</span>
           <h1>VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root</h1>
           <div class="post-meta">
             <time datetime="2026-02-05">February 5, 2026</time>
@@ -86,18 +165,18 @@
           </div>
         </div>
       </header>
-      
+
       <div class="container content-width">
         <div class="post-content">
-          
-          <p>This is Part 2 of my Aria Operations troubleshooting series. In <a href="2026-02-05-aria-ops-fsck-lvm-db.html">Part 1</a>, I covered how to fix the filesystem check failure on LVM filesystems for the Primary Replica node. Now we'll tackle the same type of issue, but on standard filesystems for the Data node.</p>
+
+          <p>This is Part 2 of my Aria Operations troubleshooting series. In <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-lvm-db.html">Part 1</a>, I covered how to fix the filesystem check failure on LVM filesystems for the Primary Replica node. Now we'll tackle the same type of issue, but on standard filesystems for the Data node.</p>
 
           <div class="info-box">
             <p>📝 <strong>This is Part 2 of a 3-part series:</strong></p>
             <ul>
-              <li><strong>Part 1:</strong> <a href="2026-02-05-aria-ops-fsck-lvm-db.html">Failed to Start File System Check on /dev/data/db</a></li>
+              <li><strong>Part 1:</strong> <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-lvm-db.html">Failed to Start File System Check on /dev/data/db</a></li>
               <li><strong>Part 2:</strong> Failed to Start File System Check on /dev/disk/by-label/root (this article)</li>
-              <li><strong>Part 3:</strong> <a href="2026-02-05-aria-ops-cluster-node-offline.html">Node Primary Replica Failed to Go Offline</a></li>
+              <li><strong>Part 3:</strong> <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline.html">Node Primary Replica Failed to Go Offline</a></li>
             </ul>
           </div>
 
@@ -181,25 +260,28 @@ e2fsck -y /dev/sda4</code></pre>
 
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Continue Reading</p>
-            <p>Read <a href="2026-02-05-aria-ops-cluster-node-offline.html">Part 3: Node Primary Replica Failed to Go Offline</a> to see how I resolved this final cluster issue.</p>
+            <p>Read <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline.html">Part 3: Node Primary Replica Failed to Go Offline</a> to see how I resolved this final cluster issue.</p>
           </div>
-          
+
         </div>
-        
+
+        <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
-          <a href="2026-02-05-aria-ops-fsck-lvm-db.html" class="post-nav-link">
+          <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-lvm-db.html" class="post-nav-link">
             ← Previous
             <span>VMware Aria Operations 8.10: Failed to Start File System Check on /dev/data/db</span>
           </a>
-          <a href="2026-02-05-aria-ops-cluster-node-offline.html" class="post-nav-link" style="text-align: right;">
+          <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline.html" class="post-nav-link" style="text-align: right;">
             Next →
             <span>VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</span>
           </a>
         </nav>
+
       </div>
     </article>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
@@ -207,12 +289,15 @@ e2fsck -y /dev/sda4</code></pre>
         <a href="/about.html" class="footer-link">About</a>
         <a href="/say-hello.html" class="footer-link">Contact</a>
         <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
-          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
+          </svg>
           RSS
         </a>
       </nav>
     </div>
   </footer>
+
   <script src="/js/main.js"></script>
 </body>
 </html>
