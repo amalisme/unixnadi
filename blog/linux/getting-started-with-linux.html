@@ -73,8 +73,35 @@
     }
   }
   </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+    {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
+    {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
+    {"@type":"ListItem","position":3,"name":"Linux","item":"https://unixpulse.com/blog/linux/"},
+    {"@type":"ListItem","position":4,"name":"Getting Started with Linux: A Beginner's Journey","item":"https://unixpulse.com/blog/linux/2025-12-09-getting-started-with-linux.html"}
+    ]
+  }
+  </script>
+  
 </head>
 <body>
+  <!-- Breadcrumb -->
+  <div class="container content-width">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <ol class="breadcrumb-list">
+      <li class="breadcrumb-item"><a href="/">Home</a></li>
+      <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+      <li class="breadcrumb-item"><a href="/blog/linux/">Linux</a></li>
+      <li class="breadcrumb-item breadcrumb-current" aria-current="page">Getting Started with Linux: A Beginner's Journey</li>
+      </ol>
+    </nav>
+  </div>
+  
   <!-- Header -->
   <header class="header">
     <div class="container header-inner">
