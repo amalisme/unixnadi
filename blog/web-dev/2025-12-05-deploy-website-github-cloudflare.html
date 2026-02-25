@@ -4,19 +4,11 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XK81HF7D25');
-  </script>
-
   <!-- Primary Meta Tags -->
   <title>Deploy a Static Website with GitHub + Cloudflare - UnixPulse</title>
   <meta name="title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
   <meta name="description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
+  <meta name="keywords" content="GitHub, Cloudflare Pages, static website, free hosting, deploy, continuous deployment, custom domain">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
 
@@ -35,9 +27,9 @@
   <meta name="twitter:title" content="Deploy a Static Website with GitHub + Cloudflare - UnixPulse">
   <meta name="twitter:description" content="Step-by-step guide to hosting your website for free using GitHub Pages and Cloudflare.">
 
-  <!-- Favicon -->
-  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <!-- Canonical & Feeds -->
   <link rel="canonical" href="https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
 
   <!-- Fonts -->
@@ -48,7 +40,20 @@
   <!-- Styles -->
   <link rel="stylesheet" href="/css/style.css">
 
-  <!-- Schema.org: Article -->
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK81HF7D25');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5557027774085981"
+       crossorigin="anonymous"></script>
+
+  <!-- Schema.org: BlogPosting -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -69,10 +74,10 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
-    {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
-    {"@type":"ListItem","position":3,"name":"Web Dev","item":"https://unixpulse.com/blog/web-dev/"},
-    {"@type":"ListItem","position":4,"name":"Deploy a Static Website with GitHub + Cloudflare","item":"https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html"}
+      {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://unixpulse.com/"},
+      {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://unixpulse.com/blog/"},
+      {"@type": "ListItem", "position": 3, "name": "Web Dev", "item": "https://unixpulse.com/blog/web-dev/"},
+      {"@type": "ListItem", "position": 4, "name": "Deploy a Static Website with GitHub + Cloudflare", "item": "https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare.html"}
     ]
   }
   </script>
@@ -113,19 +118,20 @@
   </header>
 
   <main>
-    <article>
 
-      <!-- Breadcrumb -->
-      <div class="container content-width">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-          <li class="breadcrumb-item"><a href="https://unixpulse.com/">Home</a></li>
-          <li class="breadcrumb-item"><a href="https://unixpulse.com/blog/">Blog</a></li>
-          <li class="breadcrumb-item"><a href="https://unixpulse.com/blog/web-dev/">Web Dev</a></li>
+    <!-- Breadcrumb -->
+    <div class="container content-width">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+          <li class="breadcrumb-item"><a href="/blog/web-dev/">Web Dev</a></li>
           <li class="breadcrumb-item breadcrumb-current" aria-current="page">Deploy a Static Website with GitHub + Cloudflare</li>
-          </ol>
-        </nav>
-      </div>
+        </ol>
+      </nav>
+    </div>
+
+    <article>
 
       <!-- Post Header -->
       <header class="post-header">
@@ -194,20 +200,26 @@ git push</code></pre>
             <p class="post-related-box-title">🌐 Want a ready-made template?</p>
             <p>If you need a starting point, the <a href="https://unixpulse.gumroad.com/l/pdgubm" target="_blank" rel="noopener">Website Starter Kit</a> includes everything you need — a complete HTML template plus a step-by-step guide to deploying it exactly like this.</p>
           </div>
+
         </div>
 
+        <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
           <a href="/blog/linux/2025-12-09-getting-started-with-linux.html" class="post-nav-link">
             ← Previous
             <span>Getting Started with Linux: A Beginner's Journey</span>
           </a>
-
+          <a href="/blog/web-dev/2026-01-24-bloom-beauty-wellness-html-template.html" class="post-nav-link" style="text-align: right;">
+            Next →
+            <span>Introducing Bloom: A Beauty & Wellness HTML Template</span>
+          </a>
         </nav>
-      </div>
 
+      </div>
     </article>
   </main>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container footer-inner">
       <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
@@ -221,6 +233,7 @@ git push</code></pre>
       </nav>
     </div>
   </footer>
+
   <script src="/js/main.js"></script>
 </body>
 </html>
