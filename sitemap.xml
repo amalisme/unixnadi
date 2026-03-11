@@ -70,107 +70,200 @@
   </url>
   
   <!-- Blog Posts -->
+  <!-- Category Index Pages -->
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline</loc>
-    <lastmod>2026-02-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <loc>https://unixpulse.com/blog/linux/</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root</loc>
+    <loc>https://unixpulse.com/blog/vmware/</loc>
     <lastmod>2026-02-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-lvm-db</loc>
+    <loc>https://unixpulse.com/blog/vmware/vcenter/</loc>
+    <lastmod>2026-01-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/esxi/</loc>
+    <lastmod>2026-01-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations/</loc>
     <lastmod>2026-02-05</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline</loc>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations-for-networks/</loc>
     <lastmod>2026-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/chargeback/</loc>
+    <lastmod>2026-01-15</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/aix/</loc>
+    <lastmod>2026-02-17</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/web-dev/</loc>
+    <lastmod>2026-01-24</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Blog Posts — Linux -->
+  <url>
+    <loc>https://unixpulse.com/blog/linux/2025-12-09-getting-started-with-linux</loc>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method</loc>
+    <loc>https://unixpulse.com/blog/linux/2026-02-20-oracle-linux-reset-failed-login-faillock</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/linux/2026-02-20-oracle-linux-reset-root-password</loc>
+    <lastmod>2026-02-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog Posts — VMware vCenter -->
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method</loc>
     <lastmod>2026-01-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
+  <!-- Blog Posts — VMware ESXi -->
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-24-bloom-beauty-wellness-html-template</loc>
-    <lastmod>2026-01-24</lastmod>
+    <loc>https://unixpulse.com/blog/vmware/esxi/2025-12-02-vmware-esxi-basics</loc>
+    <lastmod>2025-12-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager</loc>
-    <lastmod>2026-01-20</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  
-  <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting</loc>
+    <loc>https://unixpulse.com/blog/vmware/esxi/2026-01-17-esxi-host-disconnected-troubleshooting</loc>
     <lastmod>2026-01-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback</loc>
+    <loc>https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager</loc>
+    <lastmod>2026-01-20</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog Posts — VMware Aria Operations -->
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix</loc>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-lvm-db</loc>
+    <lastmod>2026-02-05</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog Posts — VMware Aria Ops for Networks -->
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/aria-operations-for-networks/2026-01-29-vrni-upgrade-6-9-to-6-14-offline</loc>
+    <lastmod>2026-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- Blog Posts — VMware Chargeback -->
+  <url>
+    <loc>https://unixpulse.com/blog/vmware/chargeback/2026-01-15-persistent-nginx-vmware-chargeback</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
+  <!-- Blog Posts — AIX -->
   <url>
-    <loc>https://unixpulse.com/blog/posts/getting-started-with-linux</loc>
-    <lastmod>2025-01-09</lastmod>
+    <loc>https://unixpulse.com/blog/aix/2026-02-17-aix-filesystem-management-resize</loc>
+    <lastmod>2026-02-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
+  <!-- Blog Posts — Web Dev -->
   <url>
-    <loc>https://unixpulse.com/blog/posts/deploy-website-github-cloudflare</loc>
-    <lastmod>2025-01-05</lastmod>
+    <loc>https://unixpulse.com/blog/web-dev/2025-12-05-deploy-website-github-cloudflare</loc>
+    <lastmod>2025-12-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
-  
+
   <url>
-    <loc>https://unixpulse.com/blog/posts/vmware-esxi-basics</loc>
-    <lastmod>2025-01-02</lastmod>
+    <loc>https://unixpulse.com/blog/web-dev/2026-01-24-bloom-beauty-wellness-html-template</loc>
+    <lastmod>2026-01-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
