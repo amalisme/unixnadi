@@ -35,35 +35,35 @@
   </url>
   
   <url>
-    <loc>https://unixpulse.com/toolbox.html</loc>
+    <loc>https://unixpulse.com/toolbox</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/work-with-me.html</loc>
+    <loc>https://unixpulse.com/work-with-me</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/projects.html</loc>
+    <loc>https://unixpulse.com/projects</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/about.html</loc>
+    <loc>https://unixpulse.com/about</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/say-hello.html</loc>
+    <loc>https://unixpulse.com/say-hello</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
@@ -71,105 +71,105 @@
   
   <!-- Blog Posts -->
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-cluster-node-offline</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-standard-root</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-lvm-db.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-02-05-aria-ops-fsck-lvm-db</loc>
     <lastmod>2026-02-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-29-vrni-upgrade-6-9-to-6-14-offline</loc>
     <lastmod>2026-01-29</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-26-vcenter-update-cdrom-offline-method</loc>
     <lastmod>2026-01-26</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-24-bloom-beauty-wellness-html-template.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-24-bloom-beauty-wellness-html-template</loc>
     <lastmod>2026-01-24</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-20-vcenter-update-8-update-3b-to-3g</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-vcenter-update</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-20-broadcom-token-esxi-lifecycle-manager</loc>
     <lastmod>2026-01-20</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-17-esxi-host-disconnected-troubleshooting</loc>
     <lastmod>2026-01-17</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-15-persistent-nginx-vmware-chargeback</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix.html</loc>
+    <loc>https://unixpulse.com/blog/posts/2026-01-15-vrops-nsx-alb-adapter-warning-fix</loc>
     <lastmod>2026-01-15</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/getting-started-with-linux.html</loc>
+    <loc>https://unixpulse.com/blog/posts/getting-started-with-linux</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/deploy-website-github-cloudflare.html</loc>
+    <loc>https://unixpulse.com/blog/posts/deploy-website-github-cloudflare</loc>
     <lastmod>2025-01-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/blog/posts/vmware-esxi-basics.html</loc>
+    <loc>https://unixpulse.com/blog/posts/vmware-esxi-basics</loc>
     <lastmod>2025-01-02</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.6</priority>
@@ -177,21 +177,21 @@
   
   <!-- Service Pages -->
   <url>
-    <loc>https://unixpulse.com/services/websites.html</loc>
+    <loc>https://unixpulse.com/services/websites</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/services/vmware-consulting.html</loc>
+    <loc>https://unixpulse.com/services/vmware-consulting</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   
   <url>
-    <loc>https://unixpulse.com/services/pwa-conversion.html</loc>
+    <loc>https://unixpulse.com/services/pwa-conversion</loc>
     <lastmod>2025-01-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
