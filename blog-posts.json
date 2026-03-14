@@ -125,7 +125,7 @@
     "slug": "2026-01-20-broadcom-token-esxi-lifecycle-manager",
     "category": "VMware",
     "subcategory": "ESXi",
-    "categoryPath": "vmware/esxi",
+    "categoryPath": "vmware/vcenter",
     "date": "2026-01-20",
     "dateDisplay": "January 20, 2026",
     "readTime": "4 min read",
