@@ -28,6 +28,21 @@
          Date format: Day, DD Mon YYYY HH:MM:SS +0000
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
+
+    <!-- Post: vSphere Tagging -->
+    <item>
+      <title>VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations</title>
+      <link>https://unixpulse.com/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide</guid>
+      <pubDate>Sat, 14 Mar 2026 00:00:00 +0000</pubDate>
+      <category>VMware</category>
+      <description>Learn how vSphere tagging works, why it matters in large environments, and how to extend VM tags into VMware Aria Operations for dynamic monitoring groups.</description>
+      <content:encoded><![CDATA[
+        <p>If you manage more than a few dozen virtual machines in VMware vSphere, you will quickly realize that organizing workloads becomes difficult. Folders and naming conventions alone are rarely enough to manage large environments efficiently.</p>
+        <p><a href="https://unixpulse.com/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
     <!-- Post: AIX Filesystem Management -->
     <item>
       <title>AIX Filesystem Management: How to Check and Resize Mount Points</title>
