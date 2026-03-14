@@ -1,5 +1,17 @@
 [
   {
+    "title": "VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations",
+    "slug": "2026-03-14-vsphere-vm-tagging-guide",
+    "category": "VMware",
+    "subcategory": "vSphere",
+    "categoryPath": "vmware/vsphere",
+    "date": "2026-03-14",
+    "dateDisplay": "March 14, 2026",
+    "readTime": "7 min read",
+    "excerpt": "Learn how vSphere tagging works, why it matters in large environments, and how to extend VM tags into VMware Aria Operations for dynamic monitoring groups."
+  }
+  
+  {
     "title": "Oracle Linux 8: Reset Failed Login Attempts Using Faillock",
     "slug": "2026-02-20-oracle-linux-reset-failed-login-faillock",
     "category": "Linux",
