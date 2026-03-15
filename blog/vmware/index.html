@@ -5,18 +5,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <!-- Primary Meta Tags -->
-  <title>VMware › vCenter — UnixPulse</title>
-  <meta name="description" content="VMware vCenter Server guides — updates, configuration, troubleshooting, and best practices.">
+  <title>VMware — UnixPulse</title>
+  <meta name="description" content="VMware guides covering vCenter, ESXi, Aria Operations, and more. Practical notes from the field.">
   <meta name="robots" content="index, follow">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="VMware › vCenter — UnixPulse">
-  <meta property="og:description" content="VMware vCenter Server guides — updates, configuration, troubleshooting, and best practices.">
+  <meta property="og:title" content="VMware — UnixPulse">
+  <meta property="og:description" content="VMware guides covering vCenter, ESXi, Aria Operations, and more. Practical notes from the field.">
   <meta property="og:type" content="website">
-  <meta property="og:url" content="https://unixpulse.com/blog/vmware/vcenter/">
+  <meta property="og:url" content="https://unixpulse.com/blog/vmware/">
 
   <!-- Canonical & Feeds -->
-  <link rel="canonical" href="https://unixpulse.com/blog/vmware/vcenter/">
+  <link rel="canonical" href="https://unixpulse.com/blog/vmware/">
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
 
@@ -26,10 +26,9 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-    {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
-    {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
-    {"@type":"ListItem","position":3,"name":"VMware","item":"https://unixpulse.com/blog/vmware/"},
-    {"@type":"ListItem","position":4,"name":"vCenter","item":"https://unixpulse.com/blog/vmware/vcenter/"}
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
+      {"@type":"ListItem","position":3,"name":"VMware","item":"https://unixpulse.com/blog/vmware/"}
     ]
   }
   </script>
@@ -97,14 +96,13 @@
         <ol class="breadcrumb-list">
           <li class="breadcrumb-item"><a href="/">Home</a></li>
           <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
-          <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
-          <li class="breadcrumb-item breadcrumb-current" aria-current="page">vCenter</li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware</li>
         </ol>
       </nav>
 
       <div class="cat-header" style="padding: var(--space-3xl) 0 var(--space-xl); border-bottom: 1px solid var(--border-color); margin-bottom: var(--space-xl);">
-        <h1>☁️ vCenter</h1>
-        <p style="color: var(--text-secondary);">VMware vCenter Server guides — updates, configuration, troubleshooting, and best practices.</p>
+        <h1>☁️ VMware</h1>
+        <p style="color: var(--text-secondary);">VMware guides covering vCenter, ESXi, Aria Operations, and more. Practical notes from the field.</p>
       </div>
 
       <a href="/blog/" style="display:inline-flex; align-items:center; gap:6px; font-size:0.875rem; color:var(--text-secondary); text-decoration:none; margin-bottom:var(--space-xl); transition:color var(--transition-fast);"
@@ -136,7 +134,7 @@
   <script>
   (async function() {
     const grid = document.getElementById('postGrid');
-    const thisPath = 'vmware/vcenter';
+    const thisPath = 'vmware';
 
     let posts;
     try {
@@ -147,13 +145,9 @@
       return;
     }
 
-    const filtered = posts.filter(p => {
-      if (thisPath.includes('/')) {
-        return p.categoryPath === thisPath;
-      } else {
-        return p.categoryPath === thisPath || p.categoryPath.startsWith(thisPath + '/');
-      }
-    });
+    const filtered = posts.filter(p =>
+      p.categoryPath === thisPath || p.categoryPath.startsWith(thisPath + '/')
+    );
 
     if (filtered.length === 0) {
       grid.innerHTML = '<p style="color:var(--text-secondary)">No posts here yet — check back soon.</p>';
