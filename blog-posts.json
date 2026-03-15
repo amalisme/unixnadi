@@ -7,7 +7,7 @@
     "categoryPath": "vmware/vsphere",
     "date": "2026-03-14",
     "dateDisplay": "March 14, 2026",
-    "readTime": "7 min read",
+    "readTime": "5 min read",
     "excerpt": "Learn how vSphere tagging works, why it matters in large environments, and how to extend VM tags into VMware Aria Operations for dynamic monitoring groups."
   },
   {
