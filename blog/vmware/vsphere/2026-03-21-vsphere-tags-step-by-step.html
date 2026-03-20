@@ -192,7 +192,7 @@
           <p>Log in to your vSphere Client, click <strong>Menu</strong> at the top left, then select <strong>Tags &amp; Custom Attributes</strong>.</p>
 
           <figure class="post-image">
-            <img src="/images/blog/vsphere-tags-menu.png" alt="vSphere Client menu showing Tags and Custom Attributes option" loading="lazy">
+            <img src="/images/vsphere-tags-menu.png" alt="vSphere Client menu showing Tags and Custom Attributes option" loading="lazy">
             <figcaption>Navigating to Tags &amp; Custom Attributes from the vSphere Client menu</figcaption>
           </figure>
 
@@ -207,7 +207,7 @@
           <p>Click <strong>CREATE</strong>.</p>
 
           <figure class="post-image">
-            <img src="/images/blog/vsphere-tags-new-category.png" alt="New Tag Category dialog in vSphere Client with Replication settings" loading="lazy">
+            <img src="/images/vsphere-tags-new-category.png" alt="New Tag Category dialog in vSphere Client with Replication settings" loading="lazy">
             <figcaption>Creating the Replication tag category with single-value cardinality</figcaption>
           </figure>
 
@@ -222,6 +222,11 @@
           </ul>
 
           <p>Click <strong>CREATE</strong>.</p>
+
+          <figure class="post-image">
+            <img src="/images/vsphere-tags-new-tag.png" alt="New Tag dialog in vSphere Client with Replication settings" loading="lazy">
+            <figcaption>Creating the Replication Tag with single-value cardinality</figcaption>
+          </figure>
 
           <div class="info-box">
             <p>💡 <strong>Note:</strong> If you skipped Step 1, you can create a new category directly from this dialog using the <strong>Create New Category</strong> link. Both paths lead to the same result.</p>
@@ -243,16 +248,21 @@
           <p>Navigate to the VM you want to tag. In the Summary tab, search for this tile, and you'll notice the Tags section is empty.</p>
 
           <figure class="post-image">
-            <img src="/images/blog/vsphere-tags-vm-no-tag.png" alt="VM Summary tab showing no tags assigned" loading="lazy">
+            <img src="/images/vsphere-tags-vm-no-tag.png" alt="VM Summary tab showing no tags assigned" loading="lazy">
             <figcaption>A VM with no tags assigned yet</figcaption>
           </figure>
 
           <p>Click <strong>ASSIGN</strong>, tick the <strong>VCDA-Replicated</strong> tag, and click <strong>ASSIGN</strong> again to confirm.</p>
 
+          <figure class="post-image">
+            <img src="/images/vsphere-tags-assigning-vm-tag.png" alt="A popup of created tags and categories in vSphere" loading="lazy">
+            <figcaption>The popup shows list of created Tags and Categories within vSphere</figcaption>
+          </figure>
+          
           <p>That's it. The tag now appears on the VM's Summary page.</p>
 
           <figure class="post-image">
-            <img src="/images/blog/vsphere-tags-vm-tagged.png" alt="VM Summary tab showing VCDA-Replicated tag assigned" loading="lazy">
+            <img src="/images/vsphere-tags-vm-tagged.png" alt="VM Summary tab showing VCDA-Replicated tag assigned" loading="lazy">
             <figcaption>The VM now shows the VCDA-Replicated tag</figcaption>
           </figure>
 
@@ -262,6 +272,11 @@
 
           <p>In my case, I only have three replicated VMs on this vSphere instance, so the list is short. That said, I have another environment with over 100 VMs where I need to apply the same tagging; and doing that by hand through the UI would take forever. In the next post, I'll show how to use PowerCLI to bulk-assign tags, which is much faster once you have more than a handful of machines.</p>
 
+          <figure class="post-image">
+            <img src="/images/tagged-objects.png" alt="A list showing objects with VCDA-Replicated tag assigned" loading="lazy">
+            <figcaption>The list of objects shows the VCDA-Replicated tag</figcaption>
+          </figure>
+          
           <h2>A Few Things Worth Keeping in Mind</h2>
 
           <p>Tags are easy to create, which makes it tempting to go overboard. A few principles that help keep things clean:</p>
