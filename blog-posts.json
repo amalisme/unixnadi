@@ -1,5 +1,16 @@
 [
   {
+    "title": "VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)",
+    "slug": "2026-03-21-vsphere-tags-step-by-step",
+    "category": "VMware",
+    "subcategory": "vSphere",
+    "categoryPath": "vmware/vsphere",
+    "date": "2026-03-21",
+    "dateDisplay": "March 21, 2026",
+    "readTime": "5 min read",
+    "excerpt": "Step-by-step guide to creating tag categories, assigning tags to VMs, and browsing tagged virtual machines in vSphere Client."
+  },
+  {
     "title": "Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux",
     "slug": "2026-03-20-oracle-linux-verify-cves-patched",
     "category": "Linux",
@@ -7,7 +18,7 @@
     "categoryPath": "linux",
     "date": "2026-03-20",
     "dateDisplay": "March 20, 2026",
-    "readTime": "7 min read",
+    "readTime": "6 min read",
     "excerpt": "Security team asking if CVEs are patched? Here's how to use dnf and rpm to check what's been fixed — and what's still missing — on Oracle Linux."
   },
   {
