@@ -176,7 +176,8 @@
 
           <pre><code>ELSA-2025-20113 Critical/Sec.  NetworkManager-1:1.40.16-18.0.3.el8_10.x86_64
 ELSA-2025-0288  Moderate/Sec.  NetworkManager-1:1.40.16-18.0.1.el8_10.x86_64
-ELSA-2021-1679  Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
+ELSA-2021-1679  Low/Sec.       bash-4.4.19-14.el8.x86_64
+ELSA-2020-2338  Important/Sec. bind-export-libs-32:9.11.13-5.el8_2.x86_64</code></pre>
 
           <p>The severity column tells you how serious each advisory was — Critical, Important, Moderate, or Low. This command is most useful when you need to <em>prove</em> that patches have been applied, such as during an audit or a compliance review.</p>
 
@@ -190,7 +191,8 @@ ELSA-2021-1679  Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
 
           <pre><code>CVE-2024-3661    Moderate/Sec.  NetworkManager-1:1.40.16-18.0.1.el8_10.x86_64
 CVE-2023-50387   Important/Sec. bind-export-libs-32:9.11.36-11.el8_9.1.x86_64
-CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
+CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64
+CVE-2023-4408    Important/Sec. bind-export-libs-32:9.11.36-11.el8_9.1.x86_64</code></pre>
 
           <p>If a CVE appears here, it means the patch for it has already been applied. This is the most direct answer to "has this CVE been fixed?". I find it more useful than the advisory-based view because security teams almost always think in CVE IDs, not ELSA numbers.</p>
 
@@ -200,8 +202,24 @@ CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
 
           <pre><code class="language-bash">sudo dnf updateinfo list installed cves | sort -nr | more</code></pre>
 
-          <p>This brings the newest CVEs (e.g., CVE-2026-xxxxx) to the top. It doesn't change the underlying data. It just makes it easier to scan, especially when you're looking for something specific from a recent security report.</p>
+          <p>This is the sorted CVEs:</p>
+          
+          <pre><code>CVE-2026-25749   Moderate/Sec.  vim-minimal-2:8.0.1763-22.0.1.el8_10.x86_64
+CVE-2026-25646   Important/Sec. libpng-2:1.6.34-10.el8_10.x86_64
+CVE-2026-23097   Moderate/Sec.  python3-perf-4.18.0-553.109.1.el8_10.x86_64
+CVE-2026-23097   Moderate/Sec.  perf-4.18.0-553.109.1.el8_10.x86_64
+CVE-2026-23074   Important/Sec. python3-perf-4.18.0-553.107.1.el8_10.x86_64
+CVE-2026-23074   Important/Sec. perf-4.18.0-553.107.1.el8_10.x86_64
+.
+.
+.
+CVE-2025-71085   Important/Sec. python3-perf-4.18.0-553.111.1.el8_10.x86_64
+CVE-2025-71085   Important/Sec. perf-4.18.0-553.111.1.el8_10.x86_64
+CVE-2025-6965    Important/Sec. sqlite-libs-3.26.0-20.el8_10.x86_64
+CVE-2025-6965    Important/Sec. sqlite-3.26.0-20.el8_10.x86_64</code></pre>
 
+          <p>This brings the newest CVEs (e.g., CVE-2026-xxxxx) to the top. It doesn't change the underlying data. It just makes it easier to scan, especially when you're looking for something specific from a recent security report.</p>
+          
           <!-- Ad: Mid-Content (after a natural section break, roughly halfway) 
           <div class="ad-unit ad-unit--mid-content">
             <ins class="adsbygoogle" style="display:block"
@@ -217,6 +235,11 @@ CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
 
           <pre><code class="language-bash">sudo dnf updateinfo list installed cves | grep -i CVE-2025-68285</code></pre>
 
+          <p>This is the list of CVE-2025-68285 from my VM:</p>
+
+          <pre><code>CVE-2025-68285   Important/Sec. perf-4.18.0-553.92.1.el8_10.x86_64
+CVE-2025-68285   Important/Sec. python3-perf-4.18.0-553.92.1.el8_10.x86_64</code></pre>
+          
           <p>If it shows up, it's patched. If nothing is returned, either the patch hasn't been applied yet, or that CVE simply doesn't affect this system.</p>
 
           <div class="info-box">
@@ -229,6 +252,14 @@ CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
 
           <pre><code class="language-bash">sudo dnf updateinfo list installed ELSA-2025-0288</code></pre>
 
+          <p>And here is the output:</p>
+
+          <pre><code>ELSA-2025-0288 Moderate/Sec. NetworkManager-1:1.40.16-18.0.1.el8_10.x86_64
+ELSA-2025-0288 Moderate/Sec. NetworkManager-initscripts-updown-1:1.40.16-18.0.1.el8_10.noarch
+ELSA-2025-0288 Moderate/Sec. NetworkManager-libnm-1:1.40.16-18.0.1.el8_10.x86_64
+ELSA-2025-0288 Moderate/Sec. NetworkManager-team-1:1.40.16-18.0.1.el8_10.x86_64
+ELSA-2025-0288 Moderate/Sec. NetworkManager-tui-1:1.40.16-18.0.1.el8_10.x86_64</code></pre>
+
           <p>If the advisory appears in the output, the patch has been installed. This is useful when a vendor or auditor references an ELSA number in their report.</p>
 
           <h2>Deep-Dive: Checking a Specific Package Changelog</h2>
@@ -240,8 +271,24 @@ CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
           <p>You'll see entries like:</p>
 
           <pre><code>- Fix CVE-2025-69419: Arbitrary code execution due to out-of-bounds write in PKCS#12 processing
-- Fix CVE-2024-5535
-- Fix CVE-2023-5678: Generating excessively long X9.42 DH keys...</code></pre>
+  Fix CVE-2025-9230
+  Fix CVE-2024-5535
+  (a proper fix for CVE-2020-25659)
+- Fix CVE-2023-5678: Generating excessively long X9.42 DH keys or checking
+- Fix CVE-2023-3446: Excessive time spent checking DH keys and parameters
+- Fix CVE-2023-3817: Excessive time spent checking DH q parameter value
+  Resolves: CVE-2022-4304
+  Resolves: CVE-2022-4450
+  Resolves: CVE-2023-0215
+  Resolves: CVE-2023-0286
+.
+.
+.
+- fix CVE-2006-2937 - mishandled error on ASN.1 parsing (#207276)
+- fix CVE-2006-2940 - parasitic public keys DoS (#207274)
+- fix CVE-2006-3738 - buffer overflow in SSL_get_shared_ciphers (#206940)
+- fix CVE-2006-4343 - sslv2 client DoS (#206940)
+- fix CVE-2006-4339 - prevent attack on PKCS#1 v1.5 signatures (#205180)</code></pre>
 
           <p>This is particularly useful when you need to validate a specific package, or when a security team questions whether the metadata reflects the full picture. The changelog doesn't lie — it's part of the RPM itself.</p>
 
