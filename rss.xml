@@ -29,6 +29,20 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
 
+    <!-- Post: vSphere Create New Tagging -->
+    <item>
+      <title>VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)</title>
+      <link>https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step</guid>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 +0000</pubDate>
+      <category>VMware</category>
+      <description>Step-by-step guide to creating tag categories, assigning tags to VMs, and browsing tagged virtual machines in vSphere Client.</description>
+      <content:encoded><![CDATA[
+        <p>Step-by-step guide to creating tag categories, assigning tags to VMs, and browsing tagged virtual machines in vSphere Client.</p>
+        <p><a href="https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
     <!-- Post: Oracle Linux CVEs -->
     <item>
       <title>Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</title>
