@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>How to Verify If CVEs Are Patched on Oracle Linux - UnixPulse</title>
+  <meta name="description" content="Learn how to use dnf and rpm to check whether CVEs have been patched on Oracle Linux — and how to tell if the system is still vulnerable.">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched">
+  <meta property="og:title" content="How to Verify If CVEs Are Patched on Oracle Linux - UnixPulse">
+  <meta property="og:description" content="Learn how to use dnf and rpm to check whether CVEs have been patched on Oracle Linux — and how to tell if the system is still vulnerable.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-03-20">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="Linux">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Verify If CVEs Are Patched on Oracle Linux - UnixPulse">
+  <meta name="twitter:description" content="Learn how to use dnf and rpm to check whether CVEs have been patched on Oracle Linux — and how to tell if the system is still vulnerable.">
+
+  <!-- Canonical & Feeds -->
+  <link rel="canonical" href="https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Schema.org: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "How to Verify If CVEs Are Patched on Oracle Linux",
+    "description": "Learn how to use dnf and rpm to check whether CVEs have been patched on Oracle Linux; and how to tell if the system is still vulnerable.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2026-03-20",
+    "dateModified": "2026-03-20",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched"}
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
+      {"@type":"ListItem","position":3,"name":"Linux","item":"https://unixpulse.com/blog/linux/"},
+      {"@type":"ListItem","position":4,"name":"How to Verify If CVEs Are Patched on Oracle Linux","item":"https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched"}
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK81HF7D25');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5557027774085981"
+       crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- Breadcrumb -->
+      <div class="container content-width">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+            <li class="breadcrumb-item"><a href="/blog/linux/">Linux</a></li>
+            <li class="breadcrumb-item breadcrumb-current" aria-current="page">How to Verify If CVEs Are Patched on Oracle Linux</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">Linux</span>
+          <h1>How to Verify If CVEs Are Patched on Oracle Linux</h1>
+          <div class="post-meta">
+            <time datetime="2026-03-20">March 20, 2026</time>
+            <span class="reading-time">7 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+
+          <p>Security teams have a habit of sending you a list of CVE IDs and asking, "Are these patched?" It sounds like a simple question, but if you've never dug into Oracle Linux's security tooling before, knowing <em>where to look</em> — and how to interpret what you're seeing — isn't always obvious.</p>
+
+          <p>The good news is that Oracle Linux gives you everything you need through <code>dnf</code> and <code>rpm</code>. No extra agents, no third-party scanners required. This post walks through the commands I actually use when I need to verify CVE status, with notes on what each command tells you — and what it doesn't.</p>
+
+          <!-- Ad: In-Content (after intro — keep here) 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle" style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto" data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
+          <h2>Before You Start: Refresh the Metadata</h2>
+
+          <p>Before running any security checks, it's worth making sure your local repo metadata isn't stale. This takes a few seconds and ensures you're working with current data:</p>
+
+          <pre><code class="language-bash">sudo dnf makecache</code></pre>
+
+          <p>It's a small habit that prevents you from drawing wrong conclusions from outdated cache. Now, on to the actual checks.</p>
+
+          <h2>What's Already Been Patched</h2>
+
+          <p>The first thing I usually want to know is what security patches are already installed on the system. This command lists all applied security advisories:</p>
+
+          <pre><code class="language-bash">sudo dnf updateinfo list installed security</code></pre>
+
+          <p>The output lists Oracle Linux Security Advisories (ELSA) that have already been applied, each tied to one or more packages. You'll see something like this:</p>
+
+          <pre><code>ELSA-2025-20113 Critical/Sec.  NetworkManager-1:1.40.16-18.0.3.el8_10.x86_64
+ELSA-2025-0288  Moderate/Sec.  NetworkManager-1:1.40.16-18.0.1.el8_10.x86_64
+ELSA-2021-1679  Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
+
+          <p>The severity column tells you how serious each advisory was — Critical, Important, Moderate, or Low. This command is most useful when you need to <em>prove</em> that patches have been applied, such as during an audit or a compliance review.</p>
+
+          <h2>Viewing All Patched CVEs</h2>
+
+          <p>If the security team gives you specific CVE IDs (which is more common), this command maps them directly to installed packages:</p>
+
+          <pre><code class="language-bash">sudo dnf updateinfo list installed cves | more</code></pre>
+
+          <p>The output looks like this:</p>
+
+          <pre><code>CVE-2024-3661    Moderate/Sec.  NetworkManager-1:1.40.16-18.0.1.el8_10.x86_64
+CVE-2023-50387   Important/Sec. bind-export-libs-32:9.11.36-11.el8_9.1.x86_64
+CVE-2019-18276   Low/Sec.       bash-4.4.19-14.el8.x86_64</code></pre>
+
+          <p>If a CVE appears here, it means the patch for it has already been applied. This is the most direct answer to "has this CVE been fixed?". I find it more useful than the advisory-based view because security teams almost always think in CVE IDs, not ELSA numbers.</p>
+
+          <h2>Sorting for Easier Review</h2>
+
+          <p>When you're dealing with a long list and want to focus on recent vulnerabilities first, pipe the output through <code>sort</code>:</p>
+
+          <pre><code class="language-bash">sudo dnf updateinfo list installed cves | sort -nr | more</code></pre>
+
+          <p>This brings the newest CVEs (e.g., CVE-2026-xxxxx) to the top. It doesn't change the underlying data. It just makes it easier to scan, especially when you're looking for something specific from a recent security report.</p>
+
+          <!-- Ad: Mid-Content (after a natural section break, roughly halfway) 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle" style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto" data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
+          <h2>Checking a Specific CVE</h2>
+
+          <p>To check a single CVE, filter the output with <code>grep</code>:</p>
+
+          <pre><code class="language-bash">sudo dnf updateinfo list installed cves | grep -i CVE-2025-68285</code></pre>
+
+          <p>If it shows up, it's patched. If nothing is returned, either the patch hasn't been applied yet, or that CVE simply doesn't affect this system.</p>
+
+          <div class="info-box">
+            <p>⚠️ <strong>Common mistake:</strong> Don't try to pass a CVE ID directly to <code>dnf updateinfo</code> like this: <code>sudo dnf updateinfo list installed CVE-2025-68285</code>. That syntax doesn't work — <code>dnf updateinfo</code> doesn't accept CVE IDs directly. You need to use <code>grep</code> to filter the full list.</p>
+          </div>
+
+          <h2>Checking by Advisory ID (ELSA)</h2>
+
+          <p>Sometimes security teams provide an advisory ID instead of a CVE. In that case, you can query it directly without needing <code>grep</code>:</p>
+
+          <pre><code class="language-bash">sudo dnf updateinfo list installed ELSA-2025-0288</code></pre>
+
+          <p>If the advisory appears in the output, the patch has been installed. This is useful when a vendor or auditor references an ELSA number in their report.</p>
+
+          <h2>Deep-Dive: Checking a Specific Package Changelog</h2>
+
+          <p>Sometimes you want more certainty than <code>dnf</code> metadata alone can provide, especially if you're auditing a specific package or suspect the metadata might be incomplete. The package changelog gives you a historical record of every CVE fix that's been applied:</p>
+
+          <pre><code class="language-bash">sudo rpm -q --changelog openssl | grep -i cve</code></pre>
+
+          <p>You'll see entries like:</p>
+
+          <pre><code>- Fix CVE-2025-69419: Arbitrary code execution due to out-of-bounds write in PKCS#12 processing
+- Fix CVE-2024-5535
+- Fix CVE-2023-5678: Generating excessively long X9.42 DH keys...</code></pre>
+
+          <p>This is particularly useful when you need to validate a specific package, or when a security team questions whether the metadata reflects the full picture. The changelog doesn't lie — it's part of the RPM itself.</p>
+
+          <h2>The Part Most People Miss</h2>
+
+          <p>Here's the thing: all the commands above only show what has <em>already been patched</em>. They don't tell you if the system is still vulnerable.</p>
+
+          <p>To check for missing patches (eg: CVEs that haven't been applied yet) you need to look at available (not installed) updates:</p>
+
+          <pre><code class="language-bash">sudo dnf updateinfo list security | grep CVE-XXXX-XXXXX</code></pre>
+
+          <p>Notice the difference: <code>list security</code> without <code>installed</code> shows what's available but not yet applied. If a CVE appears there, the system is still exposed.</p>
+
+          <p>To properly answer a security request, you really should check both sides:</p>
+
+          <ul>
+            <li>Search the <strong>installed</strong> CVE list to confirm if it's been patched</li>
+            <li>Search the <strong>available</strong> security updates to confirm if it's still pending</li>
+          </ul>
+
+          <p>From those two checks, the answer becomes clear:</p>
+
+          <ul>
+            <li>Found in <code>installed</code> → it's patched ✓</li>
+            <li>Found in <code>security</code> (available) → still vulnerable, patch not applied ✗</li>
+            <li>Not found in either → likely not applicable to this system</li>
+          </ul>
+
+          <h2>Quick Reference</h2>
+
+          <p>Here's a summary of all the commands covered in this post:</p>
+
+          <pre><code class="language-bash"># Refresh metadata first
+sudo dnf makecache
+
+# List all applied security advisories (ELSA)
+sudo dnf updateinfo list installed security
+
+# List all patched CVEs
+sudo dnf updateinfo list installed cves | more
+
+# Sort CVEs newest-first
+sudo dnf updateinfo list installed cves | sort -nr | more
+
+# Check a specific CVE
+sudo dnf updateinfo list installed cves | grep -i CVE-2025-68285
+
+# Check by advisory ID
+sudo dnf updateinfo list installed ELSA-2025-0288
+
+# Deep check via package changelog
+sudo rpm -q --changelog openssl | grep -i cve
+
+# Check if a CVE is still unpatched (available but not installed)
+sudo dnf updateinfo list security | grep CVE-XXXX-XXXXX</code></pre>
+
+          <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/linux/">More Linux notes →</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Ad: End of Post (between post-content and post-nav) 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle" style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto" data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
+
+        <!-- Post Navigation -->
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide" class="post-nav-link">
+            ← Previous
+            <span>VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations</span>
+          </a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about" class="footer-link">About</a>
+        <a href="/say-hello" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+
+</body>
+</html>
