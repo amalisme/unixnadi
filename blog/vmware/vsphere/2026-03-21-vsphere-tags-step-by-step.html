@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Primary Meta Tags -->
+  <title>VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step) - UnixPulse</title>
+  <meta name="description" content="Learn how to create tag categories, assign tags to virtual machines, and browse tagged VMs in vSphere Client; step by step with screenshots.">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step">
+  <meta property="og:title" content="VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step) - UnixPulse">
+  <meta property="og:description" content="Learn how to create tag categories, assign tags to virtual machines, and browse tagged VMs in vSphere Client; step by step with screenshots.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-03-21">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="vSphere">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step) - UnixPulse">
+  <meta name="twitter:description" content="Learn how to create tag categories, assign tags to virtual machines, and browse tagged VMs in vSphere Client; step by step with screenshots.">
+
+  <!-- Canonical & Feeds -->
+  <link rel="canonical" href="https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/style.css">
+
+  <!-- Schema.org: BlogPosting -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)",
+    "description": "Learn how to create tag categories, assign tags to virtual machines, and browse tagged VMs in vSphere Client; step by step with screenshots.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2026-03-21",
+    "dateModified": "2026-03-21",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step"}
+  }
+  </script>
+
+  <!-- Schema.org: BreadcrumbList -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://unixpulse.com/"},
+      {"@type":"ListItem","position":2,"name":"Blog","item":"https://unixpulse.com/blog/"},
+      {"@type":"ListItem","position":3,"name":"VMware","item":"https://unixpulse.com/blog/vmware/"},
+      {"@type":"ListItem","position":4,"name":"vSphere","item":"https://unixpulse.com/blog/vmware/vsphere/"},
+      {"@type":"ListItem","position":5,"name":"VMware vSphere Tags: A Beginner's Guide to Organizing Virtual Machines","item":"https://unixpulse.com/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step"}
+    ]
+  }
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XK81HF7D25"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-XK81HF7D25');
+  </script>
+
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5557027774085981"
+       crossorigin="anonymous"></script>
+</head>
+<body>
+
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+
+      <!-- Breadcrumb — Pattern B (VMware subcategory, depth 5) -->
+      <div class="container content-width">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <ol class="breadcrumb-list">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+            <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
+            <li class="breadcrumb-item"><a href="/blog/vmware/vsphere/">vSphere</a></li>
+            <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Post Header -->
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">VMware › vSphere</span>
+          <h1>VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)</h1>
+          <div class="post-meta">
+            <time datetime="2026-03-21">March 21, 2026</time>
+            <span class="reading-time">6 min read</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Post Content -->
+      <div class="container content-width">
+        <div class="post-content">
+
+          <p>Tags in VMware vSphere are labels you attach to virtual machines so you can organize, search, and manage them more efficiently. Instead of cramming every detail into a VM name, you keep names clean and let tags describe what each machine actually does. It's a small change in how you think about VMs, but it pays off quickly especially once you start using automation or need to generate reports.</p>
+
+          <p>I covered the <a href="/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide">concepts behind vSphere tags</a> in a previous post if you want some background. This post is the hands-on walkthrough: creating a category, creating a tag, and assigning it to virtual machines in vSphere Client.</p>
+
+          <div class="info-box">
+            <p>📋 <strong>TL;DR:</strong> Tags live inside categories. You create the category first, then the tag, then assign it to a VM. The section below has a quick refresher on the key concepts before we get into the steps.</p>
+          </div>
+
+          <h2>Quick Recap: How Tags Work in vSphere</h2>
+
+          <p>Before creating anything, it helps to understand the structure. A <strong>category</strong> is the group; a <strong>tag</strong> is the label inside that group. You always create the category first.</p>
+
+          <p>Here's a simple example of how you might design your tag structure:</p>
+
+          <ul>
+            <li><strong>Category: Environment</strong> — Tags: Production, UAT, Dev</li>
+            <li><strong>Category: Department</strong> — Tags: Finance, HR, IT</li>
+            <li><strong>Category: Application Role</strong> — Tags: Web, App, DB</li>
+          </ul>
+
+          <p>When creating a category, you have to choose its <strong>cardinality</strong>. That is, how many tags from that category a single VM is allowed to have:</p>
+
+          <ul>
+            <li><strong>One tag (single value)</strong> - A VM can only hold one tag from this category. Use this for mutually exclusive properties like Environment (a VM can't be both Production and Dev).</li>
+            <li><strong>Multiple values</strong> - A VM can hold several tags from the same category. Use this when a VM might serve more than one role (for example, running both Web and App tiers).</li>
+          </ul>
+
+          <p>Getting cardinality wrong is one of those things you only regret after the fact, so think it through before you create the category.</p>
+
+          <!-- Ad: In-Content (after intro — keep here) 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle" style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto" data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
+          <h2>Step 1: Create a Tag Category</h2>
+
+          <p>In this example, I want to tag virtual machines that have replication configured. Specifically, VMs replicated using VMware Cloud Director Availability (VCDA). The first thing I need is a category to put that tag in.</p>
+
+          <p>Log in to your vSphere Client, click <strong>Menu</strong> at the top left, then select <strong>Tags &amp; Custom Attributes</strong>.</p>
+
+          <figure class="post-image">
+            <img src="/images/blog/vsphere-tags-menu.png" alt="vSphere Client menu showing Tags and Custom Attributes option" loading="lazy">
+            <figcaption>Navigating to Tags &amp; Custom Attributes from the vSphere Client menu</figcaption>
+          </figure>
+
+          <p>Click <strong>Tag Categories</strong>, then <strong>New Category</strong> and fill in the details:</p>
+
+          <ul>
+            <li><strong>Name:</strong> Replication</li>
+            <li><strong>Cardinality (Tags per Object):</strong> One tag</li>
+            <li><strong>Object Types:</strong> Virtual machine</li>
+          </ul>
+
+          <p>Click <strong>CREATE</strong>.</p>
+
+          <figure class="post-image">
+            <img src="/images/blog/vsphere-tags-new-category.png" alt="New Tag Category dialog in vSphere Client with Replication settings" loading="lazy">
+            <figcaption>Creating the Replication tag category with single-value cardinality</figcaption>
+          </figure>
+
+          <h2>Step 2: Create a Tag</h2>
+
+          <p>Now go to the <strong>Tags</strong> tab and click <strong>New Tag</strong>. Fill in the details:</p>
+
+          <ul>
+            <li><strong>Name:</strong> VCDA-Replicated</li>
+            <li><strong>Description:</strong> (optional — add a note if it helps your team)</li>
+            <li><strong>Category:</strong> Replication</li>
+          </ul>
+
+          <p>Click <strong>CREATE</strong>.</p>
+
+          <div class="info-box">
+            <p>💡 <strong>Note:</strong> If you skipped Step 1, you can create a new category directly from this dialog using the <strong>Create New Category</strong> link. Both paths lead to the same result.</p>
+          </div>
+
+          <p>You now have a tag called <strong>VCDA-Replicated</strong> sitting inside the <strong>Replication</strong> category. Next, assign it to your VMs.</p>
+
+          <!-- Ad: Mid-Content (after a natural section break, roughly halfway) 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle" style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto" data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
+          <h2>Step 3: Assign the Tag to a Virtual Machine</h2>
+
+          <p>Navigate to the VM you want to tag. In the Summary tab, search for this tile, and you'll notice the Tags section is empty.</p>
+
+          <figure class="post-image">
+            <img src="/images/blog/vsphere-tags-vm-no-tag.png" alt="VM Summary tab showing no tags assigned" loading="lazy">
+            <figcaption>A VM with no tags assigned yet</figcaption>
+          </figure>
+
+          <p>Click <strong>ASSIGN</strong>, tick the <strong>VCDA-Replicated</strong> tag, and click <strong>ASSIGN</strong> again to confirm.</p>
+
+          <p>That's it. The tag now appears on the VM's Summary page.</p>
+
+          <figure class="post-image">
+            <img src="/images/blog/vsphere-tags-vm-tagged.png" alt="VM Summary tab showing VCDA-Replicated tag assigned" loading="lazy">
+            <figcaption>The VM now shows the VCDA-Replicated tag</figcaption>
+          </figure>
+
+          <h2>Viewing All VMs with a Tag</h2>
+
+          <p>One of the most useful things about tags is being able to list all objects that share one. Go back to <strong>Menu → Tags &amp; Custom Attributes → Tags</strong>, find your tag, and click on it. You'll see a list of every VM assigned to it.</p>
+
+          <p>In my case, I only have three replicated VMs on this vSphere instance, so the list is short. That said, I have another environment with over 100 VMs where I need to apply the same tagging; and doing that by hand through the UI would take forever. In the next post, I'll show how to use PowerCLI to bulk-assign tags, which is much faster once you have more than a handful of machines.</p>
+
+          <h2>A Few Things Worth Keeping in Mind</h2>
+
+          <p>Tags are easy to create, which makes it tempting to go overboard. A few principles that help keep things clean:</p>
+
+          <ul>
+            <li><strong>Design before you create.</strong> Sketch out your categories and tags on paper or a spreadsheet first. Once VMs start accumulating tags, restructuring becomes painful.</li>
+            <li><strong>Keep it simple.</strong> Start with a handful of meaningful categories. You can always add more later. It's much harder to clean up a mess of redundant tags.</li>
+            <li><strong>Think about cardinality early.</strong> Getting this wrong isn't the end of the world, but fixing it requires reassigning tags across potentially many VMs.</li>
+          </ul>
+
+          <p>Tags may look like a minor housekeeping feature, but they become genuinely useful the moment you start doing anything at scale such as automation, reporting, policy enforcement, or just trying to find all the VMs belonging to a particular team. They're worth setting up properly from the start.</p>
+
+          <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide">vSphere VM Tagging Guide — the concepts behind tags and categories</a></li>
+              <li><a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi Basics</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">vCenter Update 8 Update 3b to 3g</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <!-- Ad: End of Post (between post-content and post-nav) 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle" style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto" data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
+
+        <!-- Post Navigation -->
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="/blog/linux/2026-03-20-oracle-linux-verify-cves-patched.html" class="post-nav-link">
+            ← Previous
+            <span>Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</span>
+          </a>
+        </nav>
+
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about" class="footer-link">About</a>
+        <a href="/say-hello" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+
+  <script src="/js/main.js"></script>
+
+</body>
+</html>
