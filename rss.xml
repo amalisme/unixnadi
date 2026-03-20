@@ -29,6 +29,20 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
 
+    <!-- Post: Oracle Linux CVEs -->
+    <item>
+      <title>Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</title>
+      <link>https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched</guid>
+      <pubDate>Fri, 20 Mar 2026 00:00:00 +0000</pubDate>
+      <category>Linux</category>
+      <description>Security team asking if CVEs are patched? Here's how to use dnf and rpm to check what's been fixed — and what's still missing — on Oracle Linux.</description>
+      <content:encoded><![CDATA[
+        <p>Security team asking if CVEs are patched? Here's how to use dnf and rpm to check what's been fixed — and what's still missing — on Oracle Linux.</p>
+        <p><a href="https://unixpulse.com/blog/linux/2026-03-20-oracle-linux-verify-cves-patched">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
     <!-- Post: vSphere Tagging -->
     <item>
       <title>VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations</title>
