@@ -1,5 +1,16 @@
 [
   {
+    "title": "Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux",
+    "slug": "2026-03-20-oracle-linux-verify-cves-patched",
+    "category": "Linux",
+    "subcategory": "",
+    "categoryPath": "linux",
+    "date": "2026-03-20",
+    "dateDisplay": "March 20, 2026",
+    "readTime": "7 min read",
+    "excerpt": "Security team asking if CVEs are patched? Here's how to use dnf and rpm to check what's been fixed — and what's still missing — on Oracle Linux."
+  },
+  {
     "title": "VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations",
     "slug": "2026-03-14-vsphere-vm-tagging-guide",
     "category": "VMware",
