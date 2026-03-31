@@ -62,7 +62,7 @@
     "categoryPath": "aix",
     "date": "2026-02-17",
     "dateDisplay": "February 17, 2026",
-    "readTime": "5 min read",
+    "readTime": "3 min read",
     "excerpt": "A practical guide to managing filesystems in IBM AIX. Learn how to check filesystem size, increase or reduce mount points, and understand LVM commands like chfs, lsvg, and lslv."
   },
   {
