@@ -188,6 +188,17 @@
 
           <p>The solution? Edit the template file instead of the generated config file.</p>
 
+          <!-- Ad: In-Content 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h2>The Environment</h2>
 
           <p>Before we dive into the steps, here's what I was working with:</p>
@@ -261,6 +272,17 @@
             <p>⚠️ <strong>Important:</strong> At this point, your changes are active but NOT permanent. If you reboot the appliance or the container gets recreated, you'll need to repeat these steps. For permanent changes, continue to Part 2.</p>
           </div>
 
+          <!-- Ad: Mid-Content 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h2>Part 2: Making Changes Permanent</h2>
 
           <p>Once you've tested your changes and confirmed everything works, it's time to make them permanent. There are several ways to do this, but here's the approach I use because it's straightforward and gives you a rollback option.</p>
@@ -318,7 +340,7 @@ vmware/tenant-app-ui    latest               68d18468034b   3 years ago      362
           <ul>
             <li><strong>Always create timestamped backups</strong> before making changes. That <code>$(date +%Y%m%d-%H%M%S)</code> pattern has saved me more times than I can count.</li>
             <li><strong>Host-based editing is your friend</strong> when working with containers. It's much easier than trying to edit files with limited tools inside a container.</li>
-            <li><strong>Check the logs</strong> after every change. Nginx errors can be subtle, and you don't want to discover a syntax error during a production issue.</li>
+            <li><strong>Check the logs</strong> after every change. Nginx errors can be subtle, and you don't want to discover a syntax error during a production incident.</li>
             <li><strong>Document your changes.</strong> Future you (or your team) will appreciate knowing exactly what was modified and why.</li>
           </ul>
 
@@ -331,17 +353,42 @@ vmware/tenant-app-ui    latest               68d18468034b   3 years ago      362
           <p>Have you run into similar issues with other VMware products or Docker containers? I'd be interested to hear what you've learned. Feel free to reach out.</p>
 
           <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</a></li>
+              <li><a href="/blog/vmware/esxi/2026-01-17-esxi-host-disconnected-troubleshooting">VMware ESXi Host Disconnected: Troubleshooting Guide</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">How to Update VMware vCenter 8 from Update 3b to 3g</a></li>
+              <li><a href="/blog/web-dev/2025-12-05-deploy-website-github-cloudflare">Deploy a Static Website with GitHub + Cloudflare</a></li>
+            </ul>
+          </div>
+
+          <div class="post-related-box">
             <p class="post-related-box-title">💼 Need Help With VMware?</p>
             <p>Running into other VMware issues or need help with your environment? I offer VMware consulting services — check out the <a href="/work-with-me">Work With Me</a> page to see how I can help.</p>
           </div>
 
         </div>
 
+        <!-- Ad: End of Post 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
+
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
           <a href="/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix" class="post-nav-link">
             ← Previous
             <span>Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</span>
+          </a>
+          <a href="/blog/vmware/esxi/2026-01-17-esxi-host-disconnected-troubleshooting" class="post-nav-link" style="text-align: right;">
+            Next →
+            <span>VMware ESXi Host Disconnected: Troubleshooting Guide</span>
           </a>
         </nav>
 
