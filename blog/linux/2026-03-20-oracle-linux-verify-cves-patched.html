@@ -6,7 +6,9 @@
 
   <!-- Primary Meta Tags -->
   <title>Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux - UnixPulse</title>
+  <meta name="title" content="Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux - UnixPulse">
   <meta name="description" content="Learn how to use dnf and rpm to check whether CVEs have been patched on Oracle Linux and how to tell if the system is still vulnerable.">
+  <meta name="keywords" content="Oracle Linux, CVE, patch, dnf, rpm, security, updateinfo, ELSA, vulnerability">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
 
@@ -115,19 +117,20 @@
   </header>
 
   <main>
-    <article>
 
-      <!-- Breadcrumb -->
-      <div class="container content-width">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
-            <li class="breadcrumb-item"><a href="/blog/linux/">Linux</a></li>
-            <li class="breadcrumb-item breadcrumb-current" aria-current="page">Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</li>
-          </ol>
-        </nav>
-      </div>
+    <!-- Breadcrumb -->
+    <div class="container content-width">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+          <li class="breadcrumb-item"><a href="/blog/linux/">Linux</a></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</li>
+        </ol>
+      </nav>
+    </div>
+
+    <article>
 
       <!-- Post Header -->
       <header class="post-header">
@@ -203,7 +206,7 @@ CVE-2023-4408    Important/Sec. bind-export-libs-32:9.11.36-11.el8_9.1.x86_64</c
           <pre><code class="language-bash">sudo dnf updateinfo list installed cves | sort -nr | more</code></pre>
 
           <p>This is the sorted CVEs:</p>
-          
+
           <pre><code>CVE-2026-25749   Moderate/Sec.  vim-minimal-2:8.0.1763-22.0.1.el8_10.x86_64
 CVE-2026-25646   Important/Sec. libpng-2:1.6.34-10.el8_10.x86_64
 CVE-2026-23097   Moderate/Sec.  python3-perf-4.18.0-553.109.1.el8_10.x86_64
@@ -219,7 +222,7 @@ CVE-2025-6965    Important/Sec. sqlite-libs-3.26.0-20.el8_10.x86_64
 CVE-2025-6965    Important/Sec. sqlite-3.26.0-20.el8_10.x86_64</code></pre>
 
           <p>This brings the newest CVEs (e.g., CVE-2026-xxxxx) to the top. It doesn't change the underlying data. It just makes it easier to scan, especially when you're looking for something specific from a recent security report.</p>
-          
+
           <!-- Ad: Mid-Content (after a natural section break, roughly halfway) 
           <div class="ad-unit ad-unit--mid-content">
             <ins class="adsbygoogle" style="display:block"
@@ -239,7 +242,7 @@ CVE-2025-6965    Important/Sec. sqlite-3.26.0-20.el8_10.x86_64</code></pre>
 
           <pre><code>CVE-2025-68285   Important/Sec. perf-4.18.0-553.92.1.el8_10.x86_64
 CVE-2025-68285   Important/Sec. python3-perf-4.18.0-553.92.1.el8_10.x86_64</code></pre>
-          
+
           <p>If it shows up, it's patched. If nothing is returned, either the patch hasn't been applied yet, or that CVE simply doesn't affect this system.</p>
 
           <div class="info-box">
@@ -348,7 +351,10 @@ sudo dnf updateinfo list security | grep CVE-XXXX-XXXXX</code></pre>
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Related Articles</p>
             <ul>
-              <li><a href="/blog/linux/">More Linux notes →</a></li>
+              <li><a href="/blog/linux/2026-02-20-oracle-linux-reset-failed-login-faillock">Oracle Linux 8: Reset Failed Login Attempts Using Faillock</a></li>
+              <li><a href="/blog/linux/2026-02-20-oracle-linux-reset-root-password">Oracle Linux 8: How to Reset Root Password</a></li>
+              <li><a href="/blog/linux/2025-12-09-getting-started-with-linux">Getting Started with Linux: A Beginner's Journey</a></li>
+              <li><a href="/blog/aix/2026-02-17-aix-filesystem-management-resize">AIX Filesystem Management: How to Check and Resize Mount Points</a></li>
             </ul>
           </div>
 
