@@ -8,6 +8,7 @@
   <title>Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter - UnixPulse</title>
   <meta name="title" content="Fixing the &quot;Collecting but Not Receiving Data&quot; Warning in vROps NSX ALB Adapter - UnixPulse">
   <meta name="description" content="Quick troubleshooting fix for when the NSX Advanced Load Balancer adapter gets stuck in a warning state in VMware vRealize Operations 8.10.">
+  <meta name="keywords" content="VMware, vROps, vRealize Operations, NSX ALB, NSX Advanced Load Balancer, adapter, warning, collecting not receiving data, Aria Operations">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
 
@@ -177,6 +178,17 @@
 
           <p>The frustrating part? No obvious errors. The adapter was configured correctly, credentials were valid, and the NSX ALB controller was reachable. Yet the warning persisted.</p>
 
+          <!-- Ad: In-Content 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h2>What I Tried First</h2>
 
           <p>My first instinct was to validate the connection. In vROps, I went to the adapter instance and hit <strong>VALIDATE CONNECTION</strong> multiple times. The first time, it prompted me to accept new certificate. Each time: success. No errors, no complaints. The adapter could clearly talk to the NSX ALB controller.</p>
@@ -196,9 +208,22 @@
 
           <p>Everything checked out, but the problem remained.</p>
 
+          <!-- Ad: Mid-Content 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h2>The Fix: Rebooting the vROps Cluster</h2>
 
-          <p>After exhausting the obvious options, I decided to restart the vROps cluster. Sometimes that's just what it takes.</p>
+          <p>After exhausting the obvious options, I decided to restart the vROps cluster. Sometimes that's just what it takes. If you've run into other Aria Operations cluster issues, the
+            <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline">cluster node offline troubleshooting guide</a>
+            covers a related scenario where nodes fail to come back up properly.</p>
 
           <p>In the vROps admin interface, I initiated a cluster restart and waited for all nodes to come back online. It takes a few minutes, so grab a coffee.</p>
 
@@ -230,17 +255,42 @@
           <p>If you're running vROps 8.10 with the NSX ALB adapter and see this warning, try the connection validation first. But if that comes back clean and the warning persists, a cluster reboot might be your answer.</p>
 
           <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline">VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-lvm-db">VMware Aria Operations 8.10: Failed to Start File System Check on /dev/data/db</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root">VMware Aria Operations 8.10: Failed to Start File System Check on Standard Root</a></li>
+              <li><a href="/blog/vmware/aria-operations-for-networks/2026-01-29-vrni-upgrade-6-9-to-6-14-offline">Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade</a></li>
+            </ul>
+          </div>
+
+          <div class="post-related-box">
             <p class="post-related-box-title">💼 Need Help With VMware?</p>
             <p>Running into other vROps adapter issues? I do VMware consulting and might be able to help — check out the <a href="/work-with-me">Work With Me</a> page.</p>
           </div>
 
         </div>
 
+        <!-- Ad: End of Post 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
+
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
-          <a href="/blog/linux/2025-01-09-getting-started-with-linux" class="post-nav-link">
+          <a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics" class="post-nav-link">
             ← Previous
-            <span>Getting Started with Linux: A Beginner's Journey</span>
+            <span>VMware ESXi: The Basics</span>
+          </a>
+          <a href="/blog/vmware/esxi/2026-01-17-esxi-host-disconnected-troubleshooting" class="post-nav-link" style="text-align: right;">
+            Next →
+            <span>VMware ESXi Host Disconnected: Troubleshooting Guide</span>
           </a>
         </nav>
 
