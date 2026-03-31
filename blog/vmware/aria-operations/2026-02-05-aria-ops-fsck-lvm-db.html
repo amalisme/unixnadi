@@ -211,6 +211,17 @@
 
           <p>I observed that I was unable to Take Cluster Offline and also failed to Force Take Cluster Offline. So I proceeded to shut down the appliances following the proper sequence.</p>
 
+          <!-- Ad: In-Content 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h2>Shutdown and Startup Sequence</h2>
 
           <p>Following the <a href="https://knowledge.broadcom.com/external/article/341964" target="_blank" rel="noopener">Broadcom KB on proper shutdown sequence</a>, I powered off the appliances in this order:</p>
@@ -239,7 +250,8 @@
 
           <h3>Step 1: Identify the Filesystem Type</h3>
 
-          <p>First, take note that <code>/storage/db</code> is an LVM type filesystem, not a standard partition filesystem. The same applies to <code>/storage/log</code> and <code>/storage/core</code> — they are all LVM filesystems.</p>
+          <p>First, take note that <code>/storage/db</code> is an LVM type filesystem, not a standard partition filesystem. The same applies to <code>/storage/log</code> and <code>/storage/core</code> — they are all LVM filesystems. This distinction matters because LVM filesystems require a different recovery approach than standard partitions — the process for standard filesystems is covered in
+            <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root">Part 2 of this series</a>.</p>
 
           <h3>Step 2: Enter Single User Mode</h3>
 
@@ -254,6 +266,17 @@
           <pre><code class="language-bash">rw init=/bin/bash</code></pre>
 
           <p>Press <strong>F10</strong> or <strong>Ctrl+X</strong> to boot in single user mode.</p>
+
+          <!-- Ad: Mid-Content 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
 
           <h3>Step 3: Activate the LVM</h3>
 
@@ -330,7 +353,28 @@ e2fsck -y /dev/mapper/data-log</code></pre>
             <p>Read <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root">Part 2: Failed to Start File System Check on /dev/disk/by-label/root</a> to see how I resolved the filesystem check issue on standard filesystems for the Data node.</p>
           </div>
 
+          <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-fsck-standard-root">VMware Aria Operations 8.10: Failed to Start File System Check on /dev/disk/by-label/root</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline">VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</a></li>
+              <li><a href="/blog/aix/2026-02-17-aix-filesystem-management-resize">AIX Filesystem Management: How to Check and Resize Mount Points</a></li>
+            </ul>
+          </div>
+
         </div>
+
+        <!-- Ad: End of Post 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
 
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
