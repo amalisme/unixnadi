@@ -14,7 +14,7 @@
 
   <!-- Open Graph -->
   <meta property="og:type" content="article">
-  <meta property="og:url" content="https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update.html">
+  <meta property="og:url" content="https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">
   <meta property="og:title" content="How to Use Broadcom Token to Update vCenter Server via VAMI - UnixPulse">
   <meta property="og:description" content="vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token.">
   <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
@@ -28,7 +28,7 @@
   <meta name="twitter:description" content="vCenter VAMI can't connect to Broadcom's update repository? Here's how to configure the VAMI update URL with your Broadcom token.">
 
   <!-- Canonical & Feeds -->
-  <link rel="canonical" href="https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update.html">
+  <link rel="canonical" href="https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">
   <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
   <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
 
@@ -64,7 +64,7 @@
     "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
     "datePublished": "2026-01-20",
     "dateModified": "2026-01-20",
-    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update.html"}
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update"}
   }
   </script>
 
@@ -78,7 +78,7 @@
       {"@type": "ListItem", "position": 2, "name": "Blog", "item": "https://unixpulse.com/blog/"},
       {"@type": "ListItem", "position": 3, "name": "VMware", "item": "https://unixpulse.com/blog/vmware/"},
       {"@type": "ListItem", "position": 4, "name": "vCenter", "item": "https://unixpulse.com/blog/vmware/vcenter/"},
-      {"@type": "ListItem", "position": 5, "name": "How to Use Broadcom Token to Update vCenter Server via VAMI", "item": "https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update.html"}
+      {"@type": "ListItem", "position": 5, "name": "How to Use Broadcom Token to Update vCenter Server via VAMI", "item": "https://unixpulse.com/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update"}
     ]
   }
   </script>
@@ -101,10 +101,10 @@
         <ul class="nav-list">
           <li><a href="/" class="nav-link">Home</a></li>
           <li><a href="/blog/" class="nav-link active">Blog</a></li>
-          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
-          <li><a href="/projects.html" class="nav-link">Projects</a></li>
-          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
-          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+          <li><a href="/toolbox" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello" class="nav-link">Say Hello</a></li>
         </ul>
         <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
           <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -172,9 +172,20 @@
 
           <p>I was planning to update my vCenter to 8.0 Update 3g next week to resolve VMSA-2025. While running through my pre-check activities, noticed that the VAMI couldn't connect to Broadcom's update repository. The check for updates was failing silently. No available updates showing up at all.</p>
 
-          <p>Since I'd just gone through a similar exercise with <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager.html">ESXi Lifecycle Manager</a>, I figured the fix would be the same: use my Broadcom token. Turns out I was right. The process for vCenter is slightly different (you configure it in VAMI settings rather than Lifecycle Manager), but the concept is identical.</p>
+          <p>Since I'd just gone through a similar exercise with <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager">ESXi Lifecycle Manager</a>, I figured the fix would be the same: use my Broadcom token. Turns out I was right. The process for vCenter is slightly different (you configure it in VAMI settings rather than Lifecycle Manager), but the concept is identical.</p>
 
           <p>Here's how to get vCenter updates working again using your Broadcom token.</p>
+
+          <!-- Ad: In-Content 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
 
           <h2>Pre-Requisites</h2>
 
@@ -216,6 +227,17 @@
 
           <img src="/images/vami-fill-in-new-url.png" alt="Fill in the new URL by selecting specific option instead of default" loading="lazy">
 
+          <!-- Ad: Mid-Content 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h3>Step 4: Save and Verify</h3>
 
           <p>Click <strong>Save</strong> to apply the new URL. Go back to the main Update tab and click <strong>Check Updates</strong>. If everything is configured correctly, you should now see available vCenter updates, including 8.0 Update 3g.</p>
@@ -228,7 +250,7 @@
 
           <h2>What's Next</h2>
 
-          <p>Once you can see the target version in VAMI, you're ready to proceed with the actual update. If you need a walkthrough of the update process itself, check out my guide on <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g.html">updating vCenter 8.0 Update 3b to 3g via URL</a>.</p>
+          <p>Once you can see the target version in VAMI, you're ready to proceed with the actual update. If you need a walkthrough of the update process itself, check out my guide on <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">updating vCenter 8.0 Update 3b to 3g</a>.</p>
 
           <h2>Wrapping Up</h2>
 
@@ -238,24 +260,36 @@
 
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Related Articles</p>
-            <p>This is part of a series on VMware updates with Broadcom tokens:</p>
             <ul>
-              <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager.html">How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager</a></li>
-              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g.html">How to Update VMware vCenter 8.0 Update 3b to 3g via URL</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager">How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">How to Update VMware vCenter 8 from Update 3b to 3g</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method">How to Update VMware vCenter Using the CD-ROM (Offline) Method</a></li>
+              <li><a href="/blog/vmware/esxi/2026-01-17-esxi-host-disconnected-troubleshooting">ESXi Host Disconnected: 6 Quick Checks Before Calling Support</a></li>
             </ul>
           </div>
 
         </div>
 
+        <!-- Ad: End of Post 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
+
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
-          <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager.html" class="post-nav-link">
+          <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager" class="post-nav-link">
             ← Previous
             <span>How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager</span>
           </a>
-          <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g.html" class="post-nav-link" style="text-align: right;">
+          <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g" class="post-nav-link" style="text-align: right;">
             Next →
-            <span>How to Update VMware vCenter 8.0 Update 3b to 3g via URL</span>
+            <span>How to Update VMware vCenter 8.0 Update 3b to 3g</span>
           </a>
         </nav>
 
@@ -268,8 +302,8 @@
     <div class="container footer-inner">
       <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
       <nav class="footer-links" aria-label="Footer navigation">
-        <a href="/about.html" class="footer-link">About</a>
-        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/about" class="footer-link">About</a>
+        <a href="/say-hello" class="footer-link">Contact</a>
         <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
           <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
             <path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/>
