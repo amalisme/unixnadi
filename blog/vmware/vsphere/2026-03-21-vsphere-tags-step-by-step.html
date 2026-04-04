@@ -6,7 +6,9 @@
 
   <!-- Primary Meta Tags -->
   <title>VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step) - UnixPulse</title>
+  <meta name="title" content="VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step) - UnixPulse">
   <meta name="description" content="Learn how to create tag categories, assign tags to virtual machines, and browse tagged VMs in vSphere Client; step by step with screenshots.">
+  <meta name="keywords" content="VMware, vSphere, tags, tag categories, vSphere Client, virtual machines, organize VMs, VCDA, tagging">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
 
@@ -116,20 +118,21 @@
   </header>
 
   <main>
-    <article>
 
-      <!-- Breadcrumb — Pattern B (VMware subcategory, depth 5) -->
-      <div class="container content-width">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
-            <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
-            <li class="breadcrumb-item"><a href="/blog/vmware/vsphere/">vSphere</a></li>
-            <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)</li>
-          </ol>
-        </nav>
-      </div>
+    <!-- Breadcrumb -->
+    <div class="container content-width">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+          <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
+          <li class="breadcrumb-item"><a href="/blog/vmware/vsphere/">vSphere</a></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)</li>
+        </ol>
+      </nav>
+    </div>
+
+    <article>
 
       <!-- Post Header -->
       <header class="post-header">
@@ -176,15 +179,15 @@
 
           <p>Getting cardinality wrong is one of those things you only regret after the fact, so think it through before you create the category.</p>
 
-          <!-- Ad: In-Content (after intro — keep here) 
+          <!-- Ad: In-Content (after intro) 
           <div class="ad-unit ad-unit--in-content">
             <ins class="adsbygoogle" style="display:block"
                  data-ad-client="ca-pub-5557027774085981"
                  data-ad-slot="auto" data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          </div> -->
-
+          </div>  -->
+          
           <h2>Step 1: Create a Tag Category</h2>
 
           <p>In this example, I want to tag virtual machines that have replication configured. Specifically, VMs replicated using VMware Cloud Director Availability (VCDA). The first thing I need is a category to put that tag in.</p>
@@ -231,15 +234,15 @@
 
           <p>You now have a tag called <strong>VCDA-Replicated</strong> sitting inside the <strong>Replication</strong> category. Next, assign it to your VMs.</p>
 
-          <!-- Ad: Mid-Content (after a natural section break, roughly halfway) 
+          <!-- Ad: Mid-Content (after a natural section break, roughly halfway) -->
           <div class="ad-unit ad-unit--mid-content">
             <ins class="adsbygoogle" style="display:block"
                  data-ad-client="ca-pub-5557027774085981"
                  data-ad-slot="auto" data-ad-format="auto"
                  data-full-width-responsive="true"></ins>
             <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
-          </div> -->
-
+          </div>  -->
+          
           <h2>Step 3: Assign the Tag to a Virtual Machine</h2>
 
           <p>Navigate to the VM you want to tag. In the Summary tab, search for this tile, and you'll notice the Tags section is empty.</p>
@@ -253,7 +256,7 @@
           <figure class="post-image">
             <img src="/images/vsphere-tags-assigning-vm-tag.png" alt="A popup of created tags and categories in vSphere" loading="lazy">
           </figure>
-          
+
           <p>That's it. The tag now appears on the VM's Summary page.</p>
 
           <figure class="post-image">
@@ -269,7 +272,7 @@
           <figure class="post-image">
             <img src="/images/vsphere-tags-tagged-objects.png" alt="A list showing objects with VCDA-Replicated tag assigned" loading="lazy">
           </figure>
-          
+
           <h2>A Few Things Worth Keeping in Mind</h2>
 
           <p>Tags are easy to create, which makes it tempting to go overboard. A few principles that help keep things clean:</p>
@@ -285,9 +288,10 @@
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Related Articles</p>
             <ul>
-              <li><a href="/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide">vSphere VM Tagging Guide — the concepts behind tags and categories</a></li>
-              <li><a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi Basics</a></li>
-              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">vCenter Update 8 Update 3b to 3g</a></li>
+              <li><a href="/blog/vmware/vsphere/2026-03-14-vsphere-vm-tagging-guide">VMware vSphere VM Tagging Guide: Concepts, Use Cases, and Aria Operations Integration</a></li>
+              <li><a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi Basics: What I Wish I Knew Earlier</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">How to Update VMware vCenter 8 from Update 3b to 3g</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</a></li>
             </ul>
           </div>
 
@@ -301,10 +305,10 @@
                data-full-width-responsive="true"></ins>
           <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div> -->
-
+        
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
-          <a href="/blog/linux/2026-03-20-oracle-linux-verify-cves-patched.html" class="post-nav-link">
+          <a href="/blog/linux/2026-03-20-oracle-linux-verify-cves-patched" class="post-nav-link">
             ← Previous
             <span>Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</span>
           </a>
