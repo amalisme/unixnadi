@@ -190,12 +190,23 @@
 
           <p>Log into vSphere Client and check the overall health of your vCenter Server. Look for any warnings or errors that should be resolved before updating. A healthy vCenter going into an update dramatically reduces the chance of problems.</p>
 
+          <!-- Ad: In-Content
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h3>Verify VAMI URL Connectivity</h3>
 
           <p>Since we're using the URL method, make sure your vCenter appliance can reach the update repository. Log into VAMI at <code>https://your-vcenter:5480</code> and navigate to the Update section. If you see available updates listed, connectivity is good. If not, check your firewall rules and proxy settings — or see my guide on <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">configuring Broadcom token authentication for VAMI</a>.</p>
 
           <div class="info-box">
-            <p>💡 <strong>Alternative Method:</strong> If your vCenter can't reach the internet, you can download the ISO from Broadcom's portal and use the CD-ROM method instead. The process is similar, but you'll mount the ISO to the vCenter VM first.</p>
+            <p>💡 <strong>Alternative Method:</strong> If your vCenter can't reach the internet, you can download the ISO from Broadcom's portal and use the CD-ROM method instead. The process is similar, but you'll mount the ISO to the vCenter VM first. See the <a href="/blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method">offline CD-ROM update guide</a> for that walkthrough.</p>
           </div>
 
           <h2>Implementation Steps</h2>
@@ -229,6 +240,17 @@
             <li>Select <strong>Check URL</strong> (or Check CD-ROM if using the ISO method)</li>
             <li>Wait for the available updates to load</li>
           </ul>
+
+          <!-- Ad: Mid-Content
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
 
           <h3>Step 4: Select the Target Version</h3>
 
@@ -285,11 +307,32 @@
           <p>If you're managing multiple vCenter instances, the process is the same for each one. Just make sure to check interoperability with any linked vCenters before updating.</p>
 
           <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method">How to Update VMware vCenter Using the CD-ROM (Offline) Method</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">How to Use Broadcom Token to Update vCenter Server via VAMI</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager">How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager</a></li>
+              <li><a href="/blog/vmware/aria-operations-for-networks/2026-01-29-vrni-upgrade-6-9-to-6-14-offline">Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade</a></li>
+            </ul>
+          </div>
+
+          <div class="post-related-box">
             <p class="post-related-box-title">💼 Need Help With VMware Updates?</p>
             <p>Planning a major vCenter upgrade or dealing with a complex VMware environment? I offer consulting services for VMware infrastructure. Check out the <a href="/work-with-me">Work With Me</a> page to see how I can help.</p>
           </div>
 
         </div>
+
+        <!-- Ad: End of Post 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
 
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
