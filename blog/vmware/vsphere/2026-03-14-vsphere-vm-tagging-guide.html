@@ -6,7 +6,9 @@
 
   <!-- Primary Meta Tags -->
   <title>VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations - UnixPulse</title>
+  <meta name="title" content="VMware vSphere VM Tagging Guide: How to Organize Virtual Machines and Extend Tags into Aria Operations - UnixPulse">
   <meta name="description" content="Learn how vSphere tagging works, why it matters in large environments, and how to extend VM tags into VMware Aria Operations for dynamic monitoring groups.">
+  <meta name="keywords" content="VMware, vSphere, tagging, tags, categories, Aria Operations, virtual machines, monitoring, classification">
   <meta name="author" content="UnixPulse">
   <meta name="robots" content="index, follow">
 
@@ -116,20 +118,21 @@
   </header>
 
   <main>
-    <article>
 
-      <!-- Breadcrumb — Pattern B (VMware subcategory, depth 5) -->
-      <div class="container content-width">
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <ol class="breadcrumb-list">
-            <li class="breadcrumb-item"><a href="/">Home</a></li>
-            <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
-            <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
-            <li class="breadcrumb-item"><a href="/blog/vmware/vsphere/">vSphere</a></li>
-            <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware vSphere VM Tagging Guide</li>
-          </ol>
-        </nav>
-      </div>
+    <!-- Breadcrumb -->
+    <div class="container content-width">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb-list">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item"><a href="/blog/">Blog</a></li>
+          <li class="breadcrumb-item"><a href="/blog/vmware/">VMware</a></li>
+          <li class="breadcrumb-item"><a href="/blog/vmware/vsphere/">vSphere</a></li>
+          <li class="breadcrumb-item breadcrumb-current" aria-current="page">VMware vSphere VM Tagging Guide</li>
+        </ol>
+      </nav>
+    </div>
+
+    <article>
 
       <!-- Post Header -->
       <header class="post-header">
@@ -243,7 +246,7 @@
             <li>Capacity analytics</li>
           </ul>
 
-          <p>This allows monitoring strategies to scale automatically as new virtual machines are deployed and tagged. There is no need to manually update groups or reconfigure policies every time a new VM is added — the tag does the work for you.</p>
+          <p>This allows monitoring strategies to scale automatically as new virtual machines are deployed and tagged. There is no need to manually update groups or reconfigure policies every time a new VM is added — the tag does the work for you. If you run into issues with Aria Operations itself, the <a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline">cluster node offline troubleshooting guide</a> covers cluster recovery.</p>
 
           <h2>Wrapping Up</h2>
 
@@ -254,7 +257,10 @@
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Related Articles</p>
             <ul>
-              <li><a href="/blog/linux/2026-03-13-oracle-linux-8-reset-failed-login-attempts-faillock">Oracle Linux 8: Reset Failed Login Attempts Using Faillock</a></li>
+              <li><a href="/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step">VMware vSphere Tags: A Beginner-Friendly Step-by-Step Guide</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline">VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</a></li>
+              <li><a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi Basics: What I Wish I Knew Earlier</a></li>
             </ul>
           </div>
 
@@ -275,7 +281,7 @@
             ← Previous
             <span>Oracle Linux 8: Reset Failed Login Attempts Using Faillock</span>
           </a>
-          <a href="/blog/linux/2026-03-20-oracle-linux-verify-cves-patched" class="post-nav-link">
+          <a href="/blog/linux/2026-03-20-oracle-linux-verify-cves-patched" class="post-nav-link" style="text-align: right;">
             Next →
             <span>Oracle Linux 8: How to Verify If CVEs Are Patched on Oracle Linux</span>
           </a>
