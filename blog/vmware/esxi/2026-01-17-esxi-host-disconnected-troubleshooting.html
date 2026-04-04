@@ -174,7 +174,7 @@
 
           <p>But here's the thing, most ESXi disconnection issues can be resolved in minutes with some methodical troubleshooting. I've dealt with dozens of these situations, and the majority turn out to be simple problems with quick fixes.</p>
 
-          <p>Before you spend hours on hold with support, let's walk through six critical checks that will solve most disconnection issues. Understanding what's actually happening is half the battle.</p>
+          <p>Before you spend hours on hold with support, let's walk through six critical checks that will solve most disconnection issues. If you're not yet familiar with ESXi fundamentals like hostd, vpxa, and how vCenter communicates with hosts, the <a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi basics guide</a> is worth reading first.</p>
 
           <h2>Understanding the Difference: Not Responding vs. Disconnected</h2>
 
@@ -209,6 +209,17 @@
           </table><br>
 
           <p>Now let's get into the troubleshooting steps.</p>
+
+          <!-- Ad: In-Content -->
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
 
           <h2>Check 1: Verify Network Connectivity and Port Access</h2>
 
@@ -271,6 +282,17 @@
 
           <p>You might see messages like "hostd detected to be non-responsive" in the logs. If hostd is struggling, restarting it (Check #2) often resolves the issue temporarily, but you'll need to address the underlying cause.</p>
 
+          <!-- Ad: Mid-Content -->
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div>
+
           <h2>Check 4: Validate vCenter Managed IP Address</h2>
 
           <p>This one is subtle and catches a lot of people off guard. ESXi hosts send their heartbeats to a specific IP address configured in vCenter Server settings. If this IP is wrong or changed, your hosts will stop checking in.</p>
@@ -326,7 +348,7 @@
             <li>Select <strong>Connection</strong> → <strong>Connect</strong></li>
           </ul>
 
-          <p>If this fails, pay close attention to the error message. It will often tell you exactly what's wrong — certificate mismatch, version incompatibility, or authentication failure. That error message is your roadmap for the next troubleshooting step.</p>
+          <p>If this fails, pay close attention to the error message. It will often tell you exactly what's wrong — certificate mismatch, version incompatibility, or authentication failure. That error message is your roadmap for the next troubleshooting step. Keeping vCenter up to date also reduces the chance of version-related connection failures — see the <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">vCenter 8 update guide</a> for the update process.</p>
 
           <h2>Quick Reference: Useful Commands</h2>
 
@@ -392,10 +414,31 @@
           <p>Got a disconnection issue that turned out to be something unusual? I'd be interested to hear about it.</p>
 
           <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi Basics: What I Wish I Knew Earlier</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">How to Update VMware vCenter 8 from Update 3b to 3g</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-01-15-vrops-nsx-alb-adapter-warning-fix">Fixing the "Collecting but Not Receiving Data" Warning in vROps NSX ALB Adapter</a></li>
+              <li><a href="/blog/vmware/aria-operations/2026-02-05-aria-ops-cluster-node-offline">VMware Aria Operations 8.10: Node Primary Replica Failed to Go Offline</a></li>
+            </ul>
+          </div>
+
+          <div class="post-related-box">
             <p class="post-related-box-title">💼 Need Help With VMware?</p>
             <p>Dealing with persistent ESXi or vCenter issues? I offer VMware consulting services and can help troubleshoot, optimize, or fix complex problems in your environment. Check out the <a href="/work-with-me">Work With Me</a> page to see how I can help.</p>
           </div>
 
+        </div>
+
+        <!-- Ad: End of Post -->
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
         </div>
 
         <!-- Post Navigation -->
@@ -403,6 +446,10 @@
           <a href="/blog/vmware/chargeback/2026-01-15-persistent-nginx-vmware-chargeback" class="post-nav-link">
             ← Previous
             <span>Making Persistent Nginx Changes in VMware Chargeback Docker Containers</span>
+          </a>
+          <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update" class="post-nav-link" style="text-align: right;">
+            Next →
+            <span>How to Generate a Broadcom Token for vCenter Update</span>
           </a>
         </nav>
 
