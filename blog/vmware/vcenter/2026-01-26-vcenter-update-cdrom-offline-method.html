@@ -172,7 +172,18 @@
 
           <p>If your vCenter Server doesn't have internet access to Broadcom's update repository or you simply prefer to have more control over the update process, the CD-ROM method is your best option. Instead of pulling updates directly from Broadcom's servers, you download the ISO file manually, upload it to a datastore, and mount it to the vCenter appliance.</p>
 
-          <p>This offline approach is common in air-gapped environments or when you want to stage updates locally before applying them. Here's how to do it step by step.</p>
+          <p>This offline approach is common in air-gapped environments or when you want to stage updates locally before applying them. If your vCenter does have internet access and you'd prefer the online approach, the <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">URL method guide</a> covers that instead. Here's how to do the CD-ROM method step by step.</p>
+
+          <!-- Ad: In-Content
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
 
           <h2>Pre-Requisites</h2>
 
@@ -207,6 +218,17 @@
           <p>Before proceeding, click on the pre-check option. The system will analyze your current environment and show you the current version, target version, and any potential issues.</p>
 
           <img src="/images/vcenter-cdrom-update-precheck.webp" alt="vCenter VAMI pre-check screen showing current version, target version, and pre-check link" loading="lazy">
+
+          <!-- Ad: Mid-Content
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
 
           <h3>Step 4: Review Warnings</h3>
 
@@ -285,14 +307,26 @@
 
           <div class="post-related-box">
             <p class="post-related-box-title">📝 Related Articles</p>
-            <p>Looking for other vCenter update methods?</p>
             <ul>
               <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">How to Update VMware vCenter 8.0 Update 3b to 3g via URL</a></li>
               <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">How to Use Broadcom Token to Update vCenter Server via VAMI</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-esxi-lifecycle-manager">How to Use Broadcom Token to Download ESXi Updates in vCenter Lifecycle Manager</a></li>
+              <li><a href="/blog/vmware/aria-operations-for-networks/2026-01-29-vrni-upgrade-6-9-to-6-14-offline">Upgrade vRealize Network Insight from 6.9.0 to 6.14.1 Using Single-Click Offline Upgrade</a></li>
             </ul>
           </div>
 
         </div>
+
+        <!-- Ad: End of Post 
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
 
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
