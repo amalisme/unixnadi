@@ -182,6 +182,17 @@
 
           <p>Here's how to get your ESXi updates flowing again.</p>
 
+          <!-- Ad: In-Content 
+          <div class="ad-unit ad-unit--in-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h2>Pre-Requisites</h2>
 
           <h3>Generate Your Broadcom Token</h3>
@@ -219,6 +230,17 @@ https://dl.broadcom.com/&lt;Download Token&gt;/PROD/COMP/ESX_HOST/vmtools-main/v
 
           <p>Paste each of the four URLs you created earlier, adding them one at a time. Give each one a descriptive name so you can identify them later (e.g., "Broadcom ESXi Main", "Broadcom ESXi Add-ons", etc.).</p>
 
+          <!-- Ad: Mid-Content 
+          <div class="ad-unit ad-unit--mid-content">
+            <ins class="adsbygoogle"
+                 style="display:block"
+                 data-ad-client="ca-pub-5557027774085981"
+                 data-ad-slot="auto"
+                 data-ad-format="auto"
+                 data-full-width-responsive="true"></ins>
+            <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+          </div> -->
+
           <h3>Step 3: Enable the New Sources</h3>
 
           <p>After adding the URLs, check the <strong>Connectivity Status</strong> column. If any show as "Not Connected", click <strong>Enable</strong> to activate them.</p>
@@ -239,7 +261,10 @@ https://dl.broadcom.com/&lt;Download Token&gt;/PROD/COMP/ESX_HOST/vmtools-main/v
 
           <img src="/images/vcsa-lifecycle-ok.png" alt="vCenter Lifecycle Manager are now connected to the right repository and the latest release of ESXi, vmtools, add-ons, and I/O vendor drivers are available" loading="lazy">
 
-          <p>From here, you can proceed with your normal ESXi update workflow through Lifecycle Manager — create a baseline, check compliance, and remediate your hosts.</p>
+          <p>From here, you can proceed with your normal ESXi update workflow through Lifecycle Manager — create a baseline, check compliance, and remediate your hosts. Once your ESXi hosts are updated, you may also want to update vCenter itself — the
+            <a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">vCenter 8 update guide</a> and the
+            <a href="/blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method">offline CD-ROM update method</a>
+            cover both approaches.</p>
 
           <h2>Wrapping Up</h2>
 
@@ -248,11 +273,27 @@ https://dl.broadcom.com/&lt;Download Token&gt;/PROD/COMP/ESX_HOST/vmtools-main/v
           <p>If you're also looking to update vCenter itself using the same token-based repository approach, I've written a separate guide for that. Check the link below.</p>
 
           <div class="post-related-box">
-            <p class="post-related-box-title">📝 Related Article</p>
-            <p>Need to update vCenter Server as well? See <a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">How to Use Broadcom Token to Update vCenter Server via VAMI</a> for the VAMI-based approach.</p>
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-broadcom-token-vcenter-update">How to Use Broadcom Token to Update vCenter Server via VAMI</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-20-vcenter-update-8-update-3b-to-3g">How to Update VMware vCenter 8 from Update 3b to 3g</a></li>
+              <li><a href="/blog/vmware/vcenter/2026-01-26-vcenter-update-cdrom-offline-method">How to Update VMware vCenter Using the CD-ROM (Offline) Method</a></li>
+              <li><a href="/blog/vmware/esxi/2025-12-02-vmware-esxi-basics">VMware ESXi Basics: What I Wish I Knew Earlier</a></li>
+            </ul>
           </div>
 
         </div>
+
+        <!-- Ad: End of Post
+        <div class="ad-unit ad-unit--end-content">
+          <ins class="adsbygoogle"
+               style="display:block"
+               data-ad-client="ca-pub-5557027774085981"
+               data-ad-slot="auto"
+               data-ad-format="auto"
+               data-full-width-responsive="true"></ins>
+          <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+        </div> -->
 
         <!-- Post Navigation -->
         <nav class="post-nav" aria-label="Post navigation">
