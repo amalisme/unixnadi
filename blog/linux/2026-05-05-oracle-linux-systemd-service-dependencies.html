@@ -362,7 +362,7 @@ systemctl stop cups.socket cups.path cups.service
 
           <h2>Wrapping Up</h2>
 
-          <p>systemd's dependency model is more nuanced than the old SysV init scripts it replaced, and that nuance trips people up. But once you internalize that a "service" is often a service plus a socket plus a timer plus a path watcher — all loosely coupled through dependency directives — the warnings start to make sense, and <code>systemctl</code> becomes a much more predictable tool.</p>
+          <p>systemd's dependency model is more nuanced than the old SysV init scripts it replaced, and that nuance trips people up. But once you internalize that a "service" is often a service plus a socket plus a timer plus a path watcher; all loosely coupled through dependency directives, the warnings start to make sense, and <code>systemctl</code> becomes a much more predictable tool.</p>
 
           <p>Next time a service mysteriously restarts itself, your first move should be:</p>
 
