@@ -7,7 +7,7 @@
     "categoryPath": "linux",
     "date": "2026-05-05",
     "dateDisplay": "May 5, 2026",
-    "readTime": "5 min read",
+    "readTime": "6 min read",
     "excerpt": "Learn why services restart after systemctl stop on Oracle Linux. Understand systemd unit dependencies, socket activation, and how to stop services properly."
   },
   {
