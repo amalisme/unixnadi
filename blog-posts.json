@@ -1,5 +1,16 @@
 [
   {
+    "title": "Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux",
+    "slug": "2026-05-05-oracle-linux-systemd-service-dependencies",
+    "category": "Linux",
+    "subcategory": "",
+    "categoryPath": "linux",
+    "date": "2026-05-05",
+    "dateDisplay": "May 5, 2026",
+    "readTime": "8 min read",
+    "excerpt": "Learn why services restart after systemctl stop on Oracle Linux. Understand systemd unit dependencies, socket activation, and how to stop services properly."
+  }
+  {
     "title": "VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)",
     "slug": "2026-03-21-vsphere-tags-step-by-step",
     "category": "VMware",
