@@ -29,6 +29,20 @@
          Example: Thu, 09 Jan 2025 00:00:00 +0000
          ============================================ -->
 
+    <!-- Post: Linux Systemd Dependencies -->
+    <item>
+      <title>Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux</title>
+      <link>https://unixpulse.com/blog/linux/2026-05-05-oracle-linux-systemd-service-dependencies</link>
+      <guid isPermaLink="true">https://unixpulse.com/blog/linux/2026-05-05-oracle-linux-systemd-service-dependencies</guid>
+      <pubDate>Tue, 05 May 2026 00:00:00 +0000</pubDate>
+      <category>Linux</category>
+      <description>Learn why services restart after systemctl stop on Oracle Linux. Understand systemd unit dependencies, socket activation, and how to stop services properly.</description>
+      <content:encoded><![CDATA[
+        <p>If you've ever run <code>systemctl stop</code> on a service and watched it spring back to life moments later, you've bumped into one of systemd's most useful — and most confusing — features: unit dependencies. This post walks through how systemctl exposes those relationships, why a service might restart on its own, and how to inspect and manage them on Oracle Linux.</p>
+        <p><a href="https://unixpulse.com/blog/linux/2026-05-05-oracle-linux-systemd-service-dependencies">Read more →</a></p>
+      ]]></content:encoded>
+    </item>
+    
     <!-- Post: vSphere Create New Tagging -->
     <item>
       <title>VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)</title>
