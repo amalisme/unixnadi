@@ -148,7 +148,7 @@
       <div class="container content-width">
         <div class="post-content">
 
-          <p>If you've ever run <code>systemctl stop</code> on a service and watched it spring back to life moments later, you've bumped into one of systemd's most useful — and most confusing — features: <strong>unit dependencies</strong>.</p>
+          <p>If you've ever run <code>systemctl stop</code> on a service and watched it spring back to life moments later, you've bumped into one of systemd's most useful and most confusing features: <strong>unit dependencies</strong>.</p>
 
           <p>In this post, I'll walk through how <code>systemctl</code> exposes these dependencies, why a service might restart on its own, and how to inspect and manage the relationships between units on Oracle Linux.</p>
 
@@ -215,7 +215,7 @@
 
           <pre><code class="language-bash">service syslog stop</code></pre>
 
-          <p>It "worked" — but then I saw this warning:</p>
+          <p>It "worked" but then I saw this warning:</p>
 
           <pre><code class="language-text">Warning: Stopping syslog.service, but it can still be activated by:
   syslog.socket</code></pre>
@@ -224,19 +224,28 @@
 
           <pre><code class="language-bash">systemctl status rsyslog</code></pre>
 
-          <pre><code class="language-text">rsyslog.service - System Logging Service
-   Active: active (running) since Mon 2026-05-04 15:10:41 +08; 11s ago</code></pre>
+          <pre><code class="language-text"># systemctl status syslog
+● rsyslog.service - System Logging Service
+   Loaded: loaded (/lib/systemd/system/rsyslog.service; enabled; vendor preset: enabled)
+   Active: active (running) since Mon 2026-05-04 00:55:24 +08; 10s ago
+     Docs: man:rsyslogd(8)
+           https://www.rsyslog.com/doc/
+ Main PID: 6231 (rsyslogd)
+    Tasks: 5 (limit: 4915)
+   Memory: 83.8M
+   CGroup: /system.slice/rsyslog.service
+           └─6231 /usr/sbin/rsyslogd -n</code></pre>
 
           <p>It was running again. Why?</p>
 
-          <p>Because <strong><code>rsyslog.socket</code> is socket-activated</strong>. The socket unit listens on <code>/run/systemd/journal/syslog</code>, and the moment any process writes a log message to it, systemd automatically starts <code>rsyslog.service</code> to handle it. My own <code>sudo</code> commands were generating audit traffic, which woke the socket, which restarted the service.</p>
+          <p>Because <strong><code>rsyslog.socket</code> is socket-activated</strong>. The socket unit listens on <code>/run/systemd/journal/syslog</code>, and the moment any process writes a log message to it, systemd automatically starts <code>rsyslog.service</code> to handle it. My own <code>commands</code> were generating audit traffic, which woke the socket, which restarted the service.</p>
 
           <p>This is a feature, not a bug. It's how systemd lazy-loads services on demand. But it means stopping the service alone isn't enough if you need the daemon truly off.</p>
 
           <p>The fix: stop the activator first, then the service.</p>
 
-          <pre><code class="language-bash">systemctl stop rsyslog.socket
-systemctl stop rsyslog.service</code></pre>
+          <pre><code class="language-bash"># systemctl stop rsyslog.socket
+# systemctl stop rsyslog.service</code></pre>
 
           <h2>Inspecting Dependencies with systemctl</h2>
 
@@ -244,21 +253,21 @@ systemctl stop rsyslog.service</code></pre>
 
           <h3>See What a Unit Depends On</h3>
 
-          <pre><code class="language-bash">systemctl list-dependencies rsyslog.service</code></pre>
+          <pre><code class="language-bash"># systemctl list-dependencies rsyslog.service</code></pre>
 
-          <p>This shows everything the unit <em>requires</em> before it can start — a tree of targets, sockets, mounts, and other services.</p>
+          <p>This shows everything the unit <em>requires</em> before it can start - a tree of targets, sockets, mounts, and other services.</p>
 
           <h3>See What Depends on This Unit</h3>
 
           <p>The reverse is often more interesting: <em>who needs me?</em></p>
 
-          <pre><code class="language-bash">systemctl list-dependencies rsyslog.service --reverse</code></pre>
+          <pre><code class="language-bash"># systemctl list-dependencies rsyslog.service --reverse</code></pre>
 
           <p>If you're thinking about stopping a service, run this first. It tells you what else might break.</p>
 
           <h3>Show the Raw Dependency Directives</h3>
 
-          <pre><code class="language-bash">systemctl show rsyslog.service | grep -E '^(Requires|Wants|After|Before|BindsTo|TriggeredBy)='</code></pre>
+          <pre><code class="language-bash"># systemctl show rsyslog.service | grep -E '^(Requires|Wants|After|Before|BindsTo|TriggeredBy)='</code></pre>
 
           <p>You'll see directives like:</p>
 
@@ -298,11 +307,11 @@ systemctl stop cups.service
 # Stop it properly
 systemctl stop cups.socket cups.path cups.service
 
-# Now it stays stopped until you start it again — or reboot.</code></pre>
+# Now it stays stopped until you start it again, or reboot.</code></pre>
 
           <p>If you want to stop it across reboots too:</p>
 
-          <pre><code class="language-bash">systemctl disable --now cups.socket cups.path cups.service</code></pre>
+          <pre><code class="language-bash"># systemctl disable --now cups.socket cups.path cups.service</code></pre>
 
           <p>The <code>--now</code> flag combines <code>disable</code> (don't start at boot) with <code>stop</code> (stop right now).</p>
 
@@ -333,11 +342,11 @@ systemctl stop cups.socket cups.path cups.service
             </tbody>
           </table>
 
-          <p>A socket-activated service can be <code>inactive</code> but still come up the next time something pokes its socket. That's not a bug — it's the design.</p>
+          <p>A socket-activated service can be <code>inactive</code> but still come up the next time something pokes its socket. That's not a bug; it's the design.</p>
 
           <h2>Practical Tips</h2>
 
-          <p>A few things I've learned the hard way:</p>
+          <p>A few things I've learned:</p>
 
           <ol>
             <li><strong>Always read the warning text.</strong> When <code>systemctl stop</code> says "but it can still be activated by:", that list is your homework.</li>
