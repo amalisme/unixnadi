@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux - UnixPulse</title>
+  <meta name="title" content="Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux - UnixPulse">
+  <meta name="description" content="Learn why services restart after running systemctl stop on Oracle Linux. Understand systemd unit dependencies, socket activation, and how to properly stop services that keep coming back.">
+  <meta name="keywords" content="Oracle Linux, systemd, systemctl, service dependencies, socket activation, rsyslog, unit files, Linux administration">
+  <meta name="author" content="UnixPulse">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://unixpulse.com/blog/linux/2026-05-05-oracle-linux-systemd-service-dependencies.html">
+  <meta property="og:title" content="Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux - UnixPulse">
+  <meta property="og:description" content="Learn why services restart after running systemctl stop on Oracle Linux. Understand systemd unit dependencies and socket activation.">
+  <meta property="og:image" content="https://unixpulse.com/images/og-image.png">
+  <meta property="article:published_time" content="2026-05-05">
+  <meta property="article:author" content="UnixPulse">
+  <meta property="article:section" content="Linux">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux - UnixPulse">
+  <meta name="twitter:description" content="Learn why services restart after running systemctl stop on Oracle Linux. Understand systemd unit dependencies and socket activation.">
+  <link rel="icon" type="image/svg+xml" href="/images/favicon.svg">
+  <link rel="canonical" href="https://unixpulse.com/blog/linux/2026-05-05-oracle-linux-systemd-service-dependencies.html">
+  <link rel="alternate" type="application/rss+xml" title="UnixPulse RSS Feed" href="/rss.xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@400;600;700&family=JetBrains+Mono:wght@400;500&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux",
+    "description": "Learn why services restart after running systemctl stop on Oracle Linux. Understand systemd unit dependencies, socket activation, and how to properly stop services that keep coming back.",
+    "author": {"@type": "Person", "name": "UnixPulse"},
+    "publisher": {"@type": "Organization", "name": "UnixPulse", "url": "https://unixpulse.com"},
+    "datePublished": "2026-05-05",
+    "dateModified": "2026-05-05",
+    "mainEntityOfPage": {"@type": "WebPage", "@id": "https://unixpulse.com/blog/linux/2026-05-05-oracle-linux-systemd-service-dependencies.html"}
+  }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <div class="container header-inner">
+      <a href="/" class="logo" aria-label="UnixPulse Home">
+        <svg viewBox="0 0 200 50" fill="none" aria-hidden="true">
+          <path d="M8 15 L18 25 L8 35" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M28 25 L38 25 L44 12 L52 38 L60 18 L66 32 L72 25 L82 25" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="92" y="32" font-family="system-ui, sans-serif" font-size="22" font-weight="600" fill="currentColor">
+            <tspan>Unix</tspan><tspan font-weight="400">Pulse</tspan>
+          </text>
+        </svg>
+      </a>
+      <nav class="nav" aria-label="Main navigation">
+        <ul class="nav-list">
+          <li><a href="/" class="nav-link">Home</a></li>
+          <li><a href="/blog/" class="nav-link active">Blog</a></li>
+          <li><a href="/toolbox.html" class="nav-link">Toolbox</a></li>
+          <li><a href="/projects.html" class="nav-link">Projects</a></li>
+          <li><a href="/work-with-me.html" class="nav-link">Work With Me</a></li>
+          <li><a href="/say-hello.html" class="nav-link">Say Hello</a></li>
+        </ul>
+        <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle theme">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+        </button>
+        <button class="mobile-menu-btn" aria-label="Toggle menu" aria-expanded="false">
+          <svg class="icon-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+          <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <article>
+      <header class="post-header">
+        <div class="container content-width">
+          <span class="post-category">Linux</span>
+          <h1>Why systemctl stop Doesn't Always Work: Understanding Service Dependencies on Oracle Linux</h1>
+          <div class="post-meta">
+            <time datetime="2026-05-05">May 5, 2026</time>
+            <span class="reading-time">8 min read</span>
+          </div>
+        </div>
+      </header>
+      
+      <div class="container content-width">
+        <div class="post-content">
+          
+          <p>If you've ever run <code>systemctl stop</code> on a service and watched it spring back to life moments later, you've bumped into one of systemd's most useful—and most confusing—features: <strong>unit dependencies</strong>.</p>
+
+          <p>In this post, I'll walk through how <code>systemctl</code> exposes these dependencies, why a service might restart on its own, and how to inspect and manage the relationships between units on Oracle Linux.</p>
+
+          <h2>The Building Blocks: systemd Unit Types</h2>
+
+          <p>systemd doesn't just manage services. It manages <strong>units</strong>, and a service is just one type. Here are the most common types you'll encounter:</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Unit Type</th>
+                <th>Purpose</th>
+                <th>Example</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>.service</code></td>
+                <td>A daemon or process</td>
+                <td><code>rsyslog.service</code></td>
+              </tr>
+              <tr>
+                <td><code>.socket</code></td>
+                <td>A listening socket that can activate a service</td>
+                <td><code>rsyslog.socket</code></td>
+              </tr>
+              <tr>
+                <td><code>.timer</code></td>
+                <td>A scheduled trigger (systemd's cron)</td>
+                <td><code>logrotate.timer</code></td>
+              </tr>
+              <tr>
+                <td><code>.target</code></td>
+                <td>A grouping of units (like runlevels)</td>
+                <td><code>multi-user.target</code></td>
+              </tr>
+              <tr>
+                <td><code>.mount</code></td>
+                <td>A filesystem mount point</td>
+                <td><code>var-log.mount</code></td>
+              </tr>
+              <tr>
+                <td><code>.path</code></td>
+                <td>Watches a file or directory for changes</td>
+                <td><code>cups.path</code></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>A single "service" you care about is often actually a small constellation of these units working together.</p>
+
+          <h2>A Real Example: Why rsyslog Came Back from the Dead</h2>
+
+          <p>I ran into this recently while following a vendor KB to clear a full <code>/storage/log</code> partition. The instructions said:</p>
+
+          <pre><code class="language-bash">service syslog stop</code></pre>
+
+          <p>It "worked"—but then I saw this warning:</p>
+
+          <pre><code class="language-text">Warning: Stopping syslog.service, but it can still be activated by:
+  syslog.socket</code></pre>
+
+          <p>I ignored it and checked the status a few seconds later:</p>
+
+          <pre><code class="language-bash">systemctl status rsyslog</code></pre>
+
+          <pre><code class="language-text">rsyslog.service - System Logging Service
+   Active: active (running) since Mon 2026-05-04 15:10:41 +08; 11s ago</code></pre>
+
+          <p>It was running again. Why?</p>
+
+          <p>Because <strong><code>rsyslog.socket</code> is socket-activated</strong>. The socket unit listens on <code>/run/systemd/journal/syslog</code>, and the moment any process writes a log message to it, systemd automatically starts <code>rsyslog.service</code> to handle it. My own <code>sudo</code> commands were generating audit traffic, which woke the socket, which restarted the service.</p>
+
+          <p>This is a feature, not a bug—it's how systemd lazy-loads services on demand. But it means stopping the service alone isn't enough if you need the daemon truly off.</p>
+
+          <p>The fix: stop the activator first, then the service.</p>
+
+          <pre><code class="language-bash">systemctl stop rsyslog.socket
+systemctl stop rsyslog.service</code></pre>
+
+          <h2>Inspecting Dependencies with systemctl</h2>
+
+          <p>systemd ships with several commands to make these relationships visible. Here are the ones I reach for most often.</p>
+
+          <h3>See What a Unit Depends On</h3>
+
+          <pre><code class="language-bash">systemctl list-dependencies rsyslog.service</code></pre>
+
+          <p>This shows everything the unit <em>requires</em> before it can start—a tree of targets, sockets, mounts, and other services.</p>
+
+          <h3>See What Depends on This Unit</h3>
+
+          <p>The reverse is often more interesting: <em>who needs me?</em></p>
+
+          <pre><code class="language-bash">systemctl list-dependencies rsyslog.service --reverse</code></pre>
+
+          <p>If you're thinking about stopping a service, run this first. It tells you what else might break.</p>
+
+          <h3>Show the Raw Dependency Directives</h3>
+
+          <pre><code class="language-bash">systemctl show rsyslog.service | grep -E '^(Requires|Wants|After|Before|BindsTo|TriggeredBy)='</code></pre>
+
+          <p>You'll see directives like:</p>
+
+          <ul>
+            <li><strong><code>Requires=</code></strong> — hard dependency; if this fails, we fail</li>
+            <li><strong><code>Wants=</code></strong> — soft dependency; nice to have, but not fatal</li>
+            <li><strong><code>After=</code> / <code>Before=</code></strong> — ordering only, not a dependency</li>
+            <li><strong><code>BindsTo=</code></strong> — even stronger than Requires; if the other unit stops, we stop</li>
+            <li><strong><code>TriggeredBy=</code></strong> — <em>this is the one that bit me</em>; lists the sockets/timers/paths that can activate this service</li>
+          </ul>
+
+          <p>If you see <code>TriggeredBy=rsyslog.socket</code>, you know stopping the service alone won't be enough.</p>
+
+          <h2>A Simple Worked Example</h2>
+
+          <p>Let's build some intuition with something smaller than a syslog daemon. Most Oracle Linux systems have <code>cups</code> (the printing service) installed, which is also socket-activated.</p>
+
+          <pre><code class="language-bash"># What activates cups?
+systemctl show cups.service | grep TriggeredBy
+# TriggeredBy=cups.path cups.socket
+
+# Stop just the service
+systemctl stop cups.service
+
+# Try to print something (or just open a print dialog)
+# ...cups.service starts itself back up because the socket caught the request.
+
+# Stop it properly
+systemctl stop cups.socket cups.path cups.service
+
+# Now it stays stopped until you start it again—or reboot.</code></pre>
+
+          <p>If you want to stop it across reboots too:</p>
+
+          <pre><code class="language-bash">systemctl disable --now cups.socket cups.path cups.service</code></pre>
+
+          <p>The <code>--now</code> flag combines <code>disable</code> (don't start at boot) with <code>stop</code> (stop right now).</p>
+
+          <h2>The Three States You Should Know</h2>
+
+          <p>When you ask "is this service running?", there are actually three answers:</p>
+
+          <table>
+            <thead>
+              <tr>
+                <th>Command</th>
+                <th>What It Tells You</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><code>systemctl is-active foo.service</code></td>
+                <td>Is the process running <em>right now</em>?</td>
+              </tr>
+              <tr>
+                <td><code>systemctl is-enabled foo.service</code></td>
+                <td>Will it start at next boot?</td>
+              </tr>
+              <tr>
+                <td><code>systemctl is-failed foo.service</code></td>
+                <td>Did it crash recently?</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <p>A socket-activated service can be <code>inactive</code> but still come up the next time something pokes its socket. That's not a bug—it's the design.</p>
+
+          <h2>Practical Tips</h2>
+
+          <p>A few things I've learned the hard way:</p>
+
+          <ol>
+            <li><strong>Always read the warning text.</strong> When <code>systemctl stop</code> says "but it can still be activated by:", that list is your homework.</li>
+            <li><strong>Stop activators before services.</strong> Sockets, paths, and timers should generally be stopped <em>before</em> the service they trigger, otherwise you're playing whack-a-mole.</li>
+            <li><strong>Use <code>--now</code> when disabling.</strong> <code>systemctl disable foo.service</code> only affects boot behavior; the service keeps running until you stop it or reboot.</li>
+            <li><strong>Check both directions.</strong> <code>list-dependencies</code> and <code>list-dependencies --reverse</code> answer different questions. Run both before making changes in production.</li>
+            <li><strong><code>systemctl cat foo.service</code></strong> shows you the full unit file with any drop-in overrides. Useful when something behaves differently from what the man page suggests.</li>
+          </ol>
+
+          <h2>Wrapping Up</h2>
+
+          <p>systemd's dependency model is more nuanced than the old SysV init scripts it replaced, and that nuance trips people up. But once you internalize that a "service" is often a service plus a socket plus a timer plus a path watcher—all loosely coupled through dependency directives—the warnings start to make sense, and <code>systemctl</code> becomes a much more predictable tool.</p>
+
+          <p>Next time a service mysteriously restarts itself, your first move should be:</p>
+
+          <pre><code class="language-bash">systemctl show &lt;unit&gt; | grep TriggeredBy</code></pre>
+
+          <p>The answer is usually right there.</p>
+
+          <div class="post-related-box">
+            <p class="post-related-box-title">📝 Related Articles</p>
+            <ul>
+              <li><a href="/blog/linux/2025-12-09-getting-started-with-linux">Getting Started with Linux</a> — If you're new to Linux administration</li>
+              <li><a href="/blog/linux/2026-02-20-oracle-linux-reset-root-password">Oracle Linux: How to Reset Root Password</a> — Another common Oracle Linux task</li>
+              <li><a href="/blog/linux/2026-03-20-oracle-linux-verify-cves-patched">Oracle Linux: Verify CVEs Are Patched</a> — Security maintenance on Oracle Linux</li>
+            </ul>
+          </div>
+          
+        </div>
+        
+        <nav class="post-nav" aria-label="Post navigation">
+          <a href="/blog/vmware/vsphere/2026-03-21-vsphere-tags-step-by-step.html" class="post-nav-link">
+            ← Previous
+            <span>vSphere Tags Step by Step</span>
+          </a>
+        </nav>
+      </div>
+    </article>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-text">© 2026 UnixPulse. Made with ☕ and curiosity.</p>
+      <nav class="footer-links" aria-label="Footer navigation">
+        <a href="/about.html" class="footer-link">About</a>
+        <a href="/say-hello.html" class="footer-link">Contact</a>
+        <a href="/rss.xml" class="footer-link rss-link" aria-label="RSS Feed">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.18 15.64a2.18 2.18 0 0 1 2.18 2.18C8.36 19 7.38 20 6.18 20C5 20 4 19 4 17.82a2.18 2.18 0 0 1 2.18-2.18M4 4.44A15.56 15.56 0 0 1 19.56 20h-2.83A12.73 12.73 0 0 0 4 7.27V4.44m0 5.66a9.9 9.9 0 0 1 9.9 9.9h-2.83A7.07 7.07 0 0 0 4 12.93V10.1z"/></svg>
+          RSS
+        </a>
+      </nav>
+    </div>
+  </footer>
+  <script src="/js/main.js"></script>
+</body>
+</html>
