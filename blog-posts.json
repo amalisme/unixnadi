@@ -9,7 +9,7 @@
     "dateDisplay": "May 5, 2026",
     "readTime": "8 min read",
     "excerpt": "Learn why services restart after systemctl stop on Oracle Linux. Understand systemd unit dependencies, socket activation, and how to stop services properly."
-  }
+  },
   {
     "title": "VMware vSphere Tags: A Beginner-Friendly Guide to Organizing Virtual Machines (Step-by-Step)",
     "slug": "2026-03-21-vsphere-tags-step-by-step",
